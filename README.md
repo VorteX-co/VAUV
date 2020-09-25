@@ -1,2 +1,2 @@
 # VAUV
-VorteX AUV
+VorteX AUV.
