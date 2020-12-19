@@ -1,0 +1,15 @@
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/ament_index/resource_index/package_run_dependencies/sensor_interface_and_fusion
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/ament_index/resource_index/parent_prefix_path/sensor_interface_and_fusion
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/ament_prefix_path.sh
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/ament_prefix_path.dsv
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/path.sh
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/path.dsv
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.bash
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.sh
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.zsh
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.dsv
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.dsv
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/ament_index/resource_index/packages/sensor_interface_and_fusion
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/cmake/sensor_interface_and_fusionConfig.cmake
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/cmake/sensor_interface_and_fusionConfig-version.cmake
+/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.xml

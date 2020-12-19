@@ -1,0 +1,9 @@
+/home/fatma/AUV_ws/build/vision/CMakeFiles/install/strip.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/install.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/vision_uninstall.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/uninstall.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/install/local.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/test.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/list_install_components.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/edit_cache.dir
+/home/fatma/AUV_ws/build/vision/CMakeFiles/rebuild_cache.dir

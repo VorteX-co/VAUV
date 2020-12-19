@@ -1,0 +1,46 @@
+[0.062s] Invoking command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/sensor_interface_and_fusion -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/sensor_interface_and_fusion
+[3.077s] -- The C compiler identification is GNU 7.5.0
+[5.313s] -- The CXX compiler identification is GNU 7.5.0
+[5.525s] -- Check for working C compiler: /usr/bin/cc
+[5.686s] -- Check for working C compiler: /usr/bin/cc -- works
+[5.726s] -- Detecting C compiler ABI info
+[5.873s] -- Detecting C compiler ABI info - done
+[6.028s] -- Detecting C compile features
+[6.384s] -- Detecting C compile features - done
+[6.413s] -- Check for working CXX compiler: /usr/bin/c++
+[6.570s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[6.581s] -- Detecting CXX compiler ABI info
+[6.703s] -- Detecting CXX compiler ABI info - done
+[6.861s] -- Detecting CXX compile features
+[7.514s] -- Detecting CXX compile features - done
+[7.657s] -- Found ament_cmake: 0.8.2 (/opt/ros/eloquent/share/ament_cmake/cmake)
+[7.762s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.6.9", minimum required is "3") 
+[7.763s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[8.306s] -- Found ament_lint_auto: 0.8.1 (/opt/ros/eloquent/share/ament_lint_auto/cmake)
+[8.580s] -- Added test 'lint_cmake' to check CMake code style
+[8.587s] -- Added test 'xmllint' to check XML markup files
+[8.599s] -- Configuring done
+[8.613s] -- Generating done
+[8.614s] -- Build files have been written to: /home/fatma/AUV_ws/build/sensor_interface_and_fusion
+[8.621s] Invoked command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/sensor_interface_and_fusion -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/sensor_interface_and_fusion
+[8.625s] Invoking command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion -- -j4 -l4
+[8.668s] Invoked command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion -- -j4 -l4
+[8.703s] Invoking command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion --target install -- -j4 -l4
+[8.740s] [36mInstall the project...[0m
+[8.748s] -- Install configuration: ""
+[8.748s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/ament_index/resource_index/package_run_dependencies/sensor_interface_and_fusion
+[8.748s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/ament_index/resource_index/parent_prefix_path/sensor_interface_and_fusion
+[8.748s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/ament_prefix_path.sh
+[8.749s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/ament_prefix_path.dsv
+[8.749s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/path.sh
+[8.750s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/environment/path.dsv
+[8.750s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.bash
+[8.751s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.sh
+[8.751s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.zsh
+[8.751s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/local_setup.dsv
+[8.752s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.dsv
+[8.752s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/ament_index/resource_index/packages/sensor_interface_and_fusion
+[8.753s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/cmake/sensor_interface_and_fusionConfig.cmake
+[8.753s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/cmake/sensor_interface_and_fusionConfig-version.cmake
+[8.753s] -- Installing: /home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.xml
+[8.885s] Invoked command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion --target install -- -j4 -l4

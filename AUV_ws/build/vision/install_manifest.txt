@@ -1,0 +1,15 @@
+/home/fatma/AUV_ws/install/vision/share/ament_index/resource_index/package_run_dependencies/vision
+/home/fatma/AUV_ws/install/vision/share/ament_index/resource_index/parent_prefix_path/vision
+/home/fatma/AUV_ws/install/vision/share/vision/environment/ament_prefix_path.sh
+/home/fatma/AUV_ws/install/vision/share/vision/environment/ament_prefix_path.dsv
+/home/fatma/AUV_ws/install/vision/share/vision/environment/path.sh
+/home/fatma/AUV_ws/install/vision/share/vision/environment/path.dsv
+/home/fatma/AUV_ws/install/vision/share/vision/local_setup.bash
+/home/fatma/AUV_ws/install/vision/share/vision/local_setup.sh
+/home/fatma/AUV_ws/install/vision/share/vision/local_setup.zsh
+/home/fatma/AUV_ws/install/vision/share/vision/local_setup.dsv
+/home/fatma/AUV_ws/install/vision/share/vision/package.dsv
+/home/fatma/AUV_ws/install/vision/share/ament_index/resource_index/packages/vision
+/home/fatma/AUV_ws/install/vision/share/vision/cmake/visionConfig.cmake
+/home/fatma/AUV_ws/install/vision/share/vision/cmake/visionConfig-version.cmake
+/home/fatma/AUV_ws/install/vision/share/vision/package.xml

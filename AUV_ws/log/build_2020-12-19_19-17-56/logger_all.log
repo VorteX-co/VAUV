@@ -1,0 +1,261 @@
+[0.571s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.571s] DEBUG:colcon:Parsed command line arguments: Namespace(ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f87c765d198>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=4, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f87c765d198>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f87c765d4e0>)
+[0.613s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.614s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.614s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.614s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.614s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.614s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.614s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/fatma/AUV_ws'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.614s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.615s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.628s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.628s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.629s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.629s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.630s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.630s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.630s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.630s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.630s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.630s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['ignore', 'ignore_ament_install']
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'ignore'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'ignore_ament_install'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['colcon_pkg']
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'colcon_pkg'
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['colcon_meta']
+[0.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'colcon_meta'
+[0.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['ros']
+[0.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'ros'
+[0.672s] DEBUG:colcon.colcon_core.package_identification:Package 'src/health_monitor' with type 'ros.ament_cmake' and name 'health_monitor'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extensions ['ignore', 'ignore_ament_install']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extension 'ignore'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extension 'ignore_ament_install'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extensions ['colcon_pkg']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extension 'colcon_pkg'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extensions ['colcon_meta']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extension 'colcon_meta'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extensions ['ros']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensor_interface_and_fusion) by extension 'ros'
+[0.673s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sensor_interface_and_fusion' with type 'ros.ament_cmake' and name 'sensor_interface_and_fusion'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['ignore', 'ignore_ament_install']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'ignore'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'ignore_ament_install'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['colcon_pkg']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'colcon_pkg'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['colcon_meta']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'colcon_meta'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['ros']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'ros'
+[0.674s] DEBUG:colcon.colcon_core.package_identification:Package 'src/vision' with type 'ros.ament_cmake' and name 'vision'
+[0.674s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.675s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.675s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.675s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.675s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_target' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_clean_cache' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_clean_first' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_force_configure' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'ament_cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'catkin_cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.778s] DEBUG:colcon.colcon_core.verb:Building package 'health_monitor' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/fatma/AUV_ws/build/health_monitor', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/fatma/AUV_ws/install/health_monitor', 'merge_install': False, 'path': '/home/fatma/AUV_ws/src/health_monitor', 'symlink_install': False, 'test_result_base': None}
+[0.782s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'cmake_args' from command line to 'None'
+[0.782s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'cmake_target' from command line to 'None'
+[0.782s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.782s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'cmake_clean_cache' from command line to 'False'
+[0.782s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'cmake_clean_first' from command line to 'False'
+[0.783s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'cmake_force_configure' from command line to 'False'
+[0.783s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'ament_cmake_args' from command line to 'None'
+[0.783s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'catkin_cmake_args' from command line to 'None'
+[0.783s] Level 5:colcon.colcon_core.verb:set package 'sensor_interface_and_fusion' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.783s] DEBUG:colcon.colcon_core.verb:Building package 'sensor_interface_and_fusion' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/fatma/AUV_ws/build/sensor_interface_and_fusion', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/fatma/AUV_ws/install/sensor_interface_and_fusion', 'merge_install': False, 'path': '/home/fatma/AUV_ws/src/sensor_interface_and_fusion', 'symlink_install': False, 'test_result_base': None}
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_args' from command line to 'None'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_target' from command line to 'None'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_clean_cache' from command line to 'False'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_clean_first' from command line to 'False'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_force_configure' from command line to 'False'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'ament_cmake_args' from command line to 'None'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'catkin_cmake_args' from command line to 'None'
+[0.787s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.787s] DEBUG:colcon.colcon_core.verb:Building package 'vision' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/fatma/AUV_ws/build/vision', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/fatma/AUV_ws/install/vision', 'merge_install': False, 'path': '/home/fatma/AUV_ws/src/vision', 'symlink_install': False, 'test_result_base': None}
+[0.788s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.790s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.791s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/fatma/AUV_ws/src/health_monitor' with build type 'ament_cmake'
+[0.791s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/fatma/AUV_ws/src/health_monitor'
+[0.831s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.832s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.832s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.873s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/eloquent'
+[0.876s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/fatma/AUV_ws/src/sensor_interface_and_fusion' with build type 'ament_cmake'
+[0.877s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/fatma/AUV_ws/src/sensor_interface_and_fusion'
+[0.878s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.878s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.881s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/eloquent'
+[0.884s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/fatma/AUV_ws/src/vision' with build type 'ament_cmake'
+[0.885s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/fatma/AUV_ws/src/vision'
+[0.886s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.886s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.889s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/eloquent'
+[0.897s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/health_monitor -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/health_monitor
+[0.943s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/sensor_interface_and_fusion -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/sensor_interface_and_fusion
+[0.948s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/vision -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/vision
+[9.487s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/vision -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/vision
+[9.492s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision -- -j4 -l4
+[9.502s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/sensor_interface_and_fusion -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/sensor_interface_and_fusion
+[9.506s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion -- -j4 -l4
+[9.508s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/health_monitor -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/health_monitor
+[9.511s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor -- -j4 -l4
+[9.528s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision -- -j4 -l4
+[9.543s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor -- -j4 -l4
+[9.549s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion -- -j4 -l4
+[9.566s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision --target install -- -j4 -l4
+[9.576s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor --target install -- -j4 -l4
+[9.585s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion --target install -- -j4 -l4
+[9.623s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vision)
+[9.627s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision --target install -- -j4 -l4
+[9.706s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision' for CMake module files
+[9.707s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision' for CMake config files
+[9.708s] Level 1:colcon.colcon_core.shell:create_environment_hook('vision', 'cmake_prefix_path')
+[9.709s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/vision/share/vision/hook/cmake_prefix_path.ps1'
+[9.722s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/AUV_ws/install/vision/share/vision/hook/cmake_prefix_path.dsv'
+[9.735s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/vision/share/vision/hook/cmake_prefix_path.sh'
+[9.737s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision/bin'
+[9.737s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision/lib/pkgconfig/vision.pc'
+[9.738s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision/lib/python3.6/site-packages'
+[9.738s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.ps1'
+[9.740s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/AUV_ws/install/vision/share/vision/package.dsv'
+[9.741s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.sh'
+[9.743s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.bash'
+[9.748s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.zsh'
+[9.758s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/AUV_ws/install/vision/share/colcon-core/packages/vision)
+[9.763s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sensor_interface_and_fusion)
+[9.765s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion' for CMake module files
+[9.766s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/sensor_interface_and_fusion' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/sensor_interface_and_fusion --target install -- -j4 -l4
+[9.767s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion' for CMake config files
+[9.767s] Level 1:colcon.colcon_core.shell:create_environment_hook('sensor_interface_and_fusion', 'cmake_prefix_path')
+[9.768s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/hook/cmake_prefix_path.ps1'
+[9.769s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/hook/cmake_prefix_path.dsv'
+[9.770s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/hook/cmake_prefix_path.sh'
+[9.771s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/bin'
+[9.771s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/lib/pkgconfig/sensor_interface_and_fusion.pc'
+[9.771s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/lib/python3.6/site-packages'
+[9.773s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.ps1'
+[9.774s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.dsv'
+[9.775s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.sh'
+[9.776s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.bash'
+[9.794s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.zsh'
+[9.795s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/colcon-core/packages/sensor_interface_and_fusion)
+[9.798s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(health_monitor)
+[9.800s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor' for CMake module files
+[9.802s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/AUV_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor --target install -- -j4 -l4
+[9.802s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor' for CMake config files
+[9.803s] Level 1:colcon.colcon_core.shell:create_environment_hook('health_monitor', 'cmake_prefix_path')
+[9.804s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.ps1'
+[9.806s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.dsv'
+[9.806s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.sh'
+[9.808s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor/bin'
+[9.808s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor/lib/pkgconfig/health_monitor.pc'
+[9.808s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor/lib/python3.6/site-packages'
+[9.810s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.ps1'
+[9.811s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.dsv'
+[9.812s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.sh'
+[9.813s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.bash'
+[9.813s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.zsh'
+[9.814s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/AUV_ws/install/health_monitor/share/colcon-core/packages/health_monitor)
+[9.821s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vision)
+[9.822s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision' for CMake module files
+[9.823s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision' for CMake config files
+[9.824s] Level 1:colcon.colcon_core.shell:create_environment_hook('vision', 'cmake_prefix_path')
+[9.825s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/vision/share/vision/hook/cmake_prefix_path.ps1'
+[9.826s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/AUV_ws/install/vision/share/vision/hook/cmake_prefix_path.dsv'
+[9.826s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/vision/share/vision/hook/cmake_prefix_path.sh'
+[9.828s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision/bin'
+[9.829s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision/lib/pkgconfig/vision.pc'
+[9.829s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/vision/lib/python3.6/site-packages'
+[9.831s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.ps1'
+[9.832s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/AUV_ws/install/vision/share/vision/package.dsv'
+[9.834s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.sh'
+[9.835s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.bash'
+[9.836s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/vision/share/vision/package.zsh'
+[9.837s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/AUV_ws/install/vision/share/colcon-core/packages/vision)
+[9.839s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sensor_interface_and_fusion)
+[9.841s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion' for CMake module files
+[9.842s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion' for CMake config files
+[9.842s] Level 1:colcon.colcon_core.shell:create_environment_hook('sensor_interface_and_fusion', 'cmake_prefix_path')
+[9.843s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/hook/cmake_prefix_path.ps1'
+[9.844s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/hook/cmake_prefix_path.dsv'
+[9.844s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/hook/cmake_prefix_path.sh'
+[9.846s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/bin'
+[9.846s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/lib/pkgconfig/sensor_interface_and_fusion.pc'
+[9.846s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/lib/python3.6/site-packages'
+[9.847s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.ps1'
+[9.848s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.dsv'
+[9.849s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.sh'
+[9.849s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.bash'
+[9.849s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/sensor_interface_and_fusion/package.zsh'
+[9.850s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/AUV_ws/install/sensor_interface_and_fusion/share/colcon-core/packages/sensor_interface_and_fusion)
+[9.851s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(health_monitor)
+[9.853s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor' for CMake module files
+[9.854s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor' for CMake config files
+[9.855s] Level 1:colcon.colcon_core.shell:create_environment_hook('health_monitor', 'cmake_prefix_path')
+[9.856s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.ps1'
+[9.856s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.dsv'
+[9.857s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.sh'
+[9.858s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor/bin'
+[9.858s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor/lib/pkgconfig/health_monitor.pc'
+[9.858s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/AUV_ws/install/health_monitor/lib/python3.6/site-packages'
+[9.859s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.ps1'
+[9.860s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.dsv'
+[9.860s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.sh'
+[9.861s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.bash'
+[9.862s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/AUV_ws/install/health_monitor/share/health_monitor/package.zsh'
+[9.862s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/AUV_ws/install/health_monitor/share/colcon-core/packages/health_monitor)
+[9.863s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[9.866s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[9.866s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[9.866s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[9.886s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[9.887s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[9.887s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[9.896s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[9.897s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/AUV_ws/install/local_setup.ps1'
+[9.899s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/fatma/AUV_ws/install/_local_setup_util_ps1.py'
+[9.907s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/AUV_ws/install/setup.ps1'
+[9.941s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/AUV_ws/install/local_setup.sh'
+[9.971s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/fatma/AUV_ws/install/_local_setup_util_sh.py'
+[9.972s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/AUV_ws/install/setup.sh'
+[9.976s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/AUV_ws/install/local_setup.bash'
+[9.977s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/AUV_ws/install/setup.bash'
+[9.980s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/AUV_ws/install/local_setup.zsh'
+[9.981s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/AUV_ws/install/setup.zsh'

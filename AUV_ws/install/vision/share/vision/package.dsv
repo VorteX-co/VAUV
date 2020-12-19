@@ -1,0 +1,8 @@
+source;share/vision/hook/cmake_prefix_path.ps1
+source;share/vision/hook/cmake_prefix_path.dsv
+source;share/vision/hook/cmake_prefix_path.sh
+source;share/vision/local_setup.bash
+source;share/vision/local_setup.dsv
+source;share/vision/local_setup.ps1
+source;share/vision/local_setup.sh
+source;share/vision/local_setup.zsh

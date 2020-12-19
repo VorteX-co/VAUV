@@ -1,0 +1,6 @@
+Invoking command in '/home/fatma/AUV_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/vision -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/vision
+Invoked command in '/home/fatma/AUV_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/vision -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/vision
+Invoking command in '/home/fatma/AUV_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision -- -j4 -l4
+Invoked command in '/home/fatma/AUV_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision -- -j4 -l4
+Invoking command in '/home/fatma/AUV_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision --target install -- -j4 -l4
+Invoked command in '/home/fatma/AUV_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/vision --target install -- -j4 -l4

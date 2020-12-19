@@ -1,0 +1,6 @@
+Invoking command in '/home/fatma/AUV_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/health_monitor -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/health_monitor
+Invoked command in '/home/fatma/AUV_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/AUV_ws/src/health_monitor -DCMAKE_INSTALL_PREFIX=/home/fatma/AUV_ws/install/health_monitor
+Invoking command in '/home/fatma/AUV_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor -- -j4 -l4
+Invoked command in '/home/fatma/AUV_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor -- -j4 -l4
+Invoking command in '/home/fatma/AUV_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor --target install -- -j4 -l4
+Invoked command in '/home/fatma/AUV_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/AUV_ws/build/health_monitor --target install -- -j4 -l4

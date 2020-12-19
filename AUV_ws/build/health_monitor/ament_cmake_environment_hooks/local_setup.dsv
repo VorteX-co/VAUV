@@ -1,0 +1,2 @@
+source;share/health_monitor/environment/ament_prefix_path.sh
+source;share/health_monitor/environment/path.sh
