@@ -4,7 +4,7 @@
   <name>missionplanning</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="shorouk.talat23@gmail.com">shorouk</maintainer>
+  <maintainer email="info@vortex-co.com">vortex</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
