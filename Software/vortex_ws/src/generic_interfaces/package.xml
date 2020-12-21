@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>motion_planning_and_control</name>
+  <name>generic_interfaces</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="khadegaassem22@gmail.com">khadija</maintainer>
-  <license>TODO: License declaration</license>
+  <maintainer email="info@vortex-co.com">vortex-co.</maintainer>
+  <license>GNU GENERAL PUBLIC LICENSE</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
