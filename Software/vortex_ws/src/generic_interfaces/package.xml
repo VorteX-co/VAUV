@@ -3,7 +3,7 @@
 <package format="3">
   <name>generic_interfaces</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Generic interfaces package</description>
   <maintainer email="info@vortex-co.com">vortex-co</maintainer>
   <license>TODO: License declaration</license>
 
