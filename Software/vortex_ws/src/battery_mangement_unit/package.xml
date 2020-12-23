@@ -3,9 +3,9 @@
 <package format="3">
   <name>battery_mangement_unit</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>This ROs package for battery mangement(support C++ and python)</description>
   <maintainer email="info@vortex-co.com">vortex</maintainer>
-  <license>TODO: License declaration</license>
+  <license>GNU</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
