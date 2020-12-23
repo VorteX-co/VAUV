@@ -3,9 +3,9 @@
 <package format="3">
   <name>health_monitor</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="you@example.com">fatma</maintainer>
-  <license>TODO: License declaration</license>
+  <description>health monitor package</description>
+  <maintainer email="info@vortex-co.com">fatma</maintainer>
+  <license>GNU GENERAL PUBLIC LICENSE</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
