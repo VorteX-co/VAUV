@@ -4,7 +4,7 @@
   <name>vision</name>
   <version>0.0.0</version>
   <description>vision package</description>
-  <maintainer email="info@vortex-co.com">fatma</maintainer>
+  <maintainer email="info@vortex-co.com">vortex-co</maintainer>
   <license>GNU GENERAL PUBLIC LICENSE</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
