@@ -3,7 +3,7 @@
 <package format="3">
   <name>localization</name>
   <version>0.0.0</version>
-  <description>This package for the localization of Pickups that support C++ and Python </description>
+  <description>This package for the localization of Pingers and also supports C++ and Python </description>
   <maintainer email="info@vortex-co.com">vortex</maintainer>
   <license>GNU</license>
 
