@@ -3,9 +3,9 @@
 <package format="3">
   <name>localization</name>
   <version>0.0.0</version>
-  <description>This package for the localization of Pingers and also supports C++ and Python </description>
+  <description>Pingers localization package</description>
   <maintainer email="info@vortex-co.com">vortex</maintainer>
-  <license>GNU</license>
+  <license>GNU GENERAL PUBLIC LICENSE</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 

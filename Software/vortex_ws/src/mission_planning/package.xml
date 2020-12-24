@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>missionplanning</name>
+  <name>mission_planning</name>
   <version>0.0.0</version>
-  <description>Ros package for misssion planning that support C++ and python</description>
+  <description>mission planning package</description>
   <maintainer email="info@vortex-co.com">vortex</maintainer>
-  <license>GNU</license>
+  <license>GNU GENERAL PUBLIC LICENSE</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
