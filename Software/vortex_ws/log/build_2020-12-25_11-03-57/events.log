@@ -1,0 +1,125 @@
+[0.000000] (-) TimerEvent: {}
+[0.001314] (vision) JobQueued: {'identifier': 'vision', 'dependencies': OrderedDict()}
+[0.001377] (vision) JobStarted: {'identifier': 'vision'}
+[0.063777] (vision) JobProgress: {'identifier': 'vision', 'progress': 'cmake'}
+[0.064182] (vision) Command: {'cmd': ['/usr/local/bin/cmake', '/home/fatma/VAUV/Software/vortex_ws/src/vision', '-DCMAKE_INSTALL_PREFIX=/home/fatma/VAUV/Software/vortex_ws/install/vision'], 'cwd': '/home/fatma/VAUV/Software/vortex_ws/build/vision', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'fatma'), ('LC_TIME', 'ar_EG.UTF-8'), ('TEXTDOMAIN', 'gdm'), ('XDG_SEAT', 'seat0'), ('SSH_AGENT_PID', '1183'), ('XDG_SESSION_TYPE', 'x11'), ('LD_LIBRARY_PATH', '/opt/ros/eloquent/opt/yaml_cpp_vendor/lib:/opt/ros/eloquent/opt/rviz_ogre_vendor/lib:/opt/ros/eloquent/lib/x86_64-linux-gnu:/opt/ros/eloquent/lib'), ('SHLVL', '1'), ('QT4_IM_MODULE', 'xim'), ('HOME', '/home/fatma'), ('OLDPWD', '/home/fatma/VAUV/Software/vortex_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ar_EG.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/fatma/.nvm'), ('_colcon_cd_root', '/home/fatma/ros2_install'), ('IM_CONFIG_PHASE', '2'), ('ROS_DISTRO', 'eloquent'), ('LOGNAME', 'fatma'), ('GTK_IM_MODULE', 'ibus'), ('DESKTOP_AUTOSTART_ID', '10104ab388d45d8296160888662781422000000009430007'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('USERNAME', 'fatma'), ('XDG_SESSION_ID', '1'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '1'), ('PATH', '/opt/ros/eloquent/bin:/home/fatma/anaconda3/bin:/home/fatma/gems/bin:/home/fatma/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/fatma-HP-15-Notebook-PC:@/tmp/.ICE-unix/943,unix/fatma-HP-15-Notebook-PC:/tmp/.ICE-unix/943'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/787d6411_5264_4075_abca_0d099d7f7a16'), ('LC_ADDRESS', 'ar_EG.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ar_EG.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XMODIFIERS', '@im=ibus'), ('GNOME_TERMINAL_SERVICE', ':1.81'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('AMENT_PREFIX_PATH', '/opt/ros/eloquent'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('LC_NAME', 'ar_EG.UTF-8'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GEM_HOME', '/home/fatma/gems'), ('LC_MEASUREMENT', 'ar_EG.UTF-8'), ('TEXTDOMAINDIR', '/usr/share/locale/'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ar_EG.UTF-8'), ('XDG_VTNR', '1'), ('QT_IM_MODULE', 'ibus'), ('LC_ALL', 'en_US.UTF-8'), ('PWD', '/home/fatma/VAUV/Software/vortex_ws/build/vision'), ('CLUTTER_IM_MODULE', 'xim'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('LC_NUMERIC', 'ar_EG.UTF-8'), ('PYTHONPATH', '/opt/ros/eloquent/lib/python3.6/site-packages'), ('LC_PAPER', 'ar_EG.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '5202'), ('NVM_RC_VERSION', ''), ('CMAKE_PREFIX_PATH', '/opt/ros/eloquent')]), 'shell': False}
+[0.101625] (-) TimerEvent: {}
+[0.202545] (-) TimerEvent: {}
+[0.303015] (-) TimerEvent: {}
+[0.403441] (-) TimerEvent: {}
+[0.503840] (-) TimerEvent: {}
+[0.604335] (-) TimerEvent: {}
+[0.704902] (-) TimerEvent: {}
+[0.805436] (-) TimerEvent: {}
+[0.906163] (-) TimerEvent: {}
+[1.006937] (-) TimerEvent: {}
+[1.107708] (-) TimerEvent: {}
+[1.208528] (-) TimerEvent: {}
+[1.309295] (-) TimerEvent: {}
+[1.410066] (-) TimerEvent: {}
+[1.510805] (-) TimerEvent: {}
+[1.611585] (-) TimerEvent: {}
+[1.712448] (-) TimerEvent: {}
+[1.813138] (-) TimerEvent: {}
+[1.913863] (-) TimerEvent: {}
+[2.014553] (-) TimerEvent: {}
+[2.115343] (-) TimerEvent: {}
+[2.216114] (-) TimerEvent: {}
+[2.316890] (-) TimerEvent: {}
+[2.417529] (-) TimerEvent: {}
+[2.436872] (vision) StdoutLine: {'line': b'-- The C compiler identification is GNU 7.5.0\n'}
+[2.517662] (-) TimerEvent: {}
+[2.618108] (-) TimerEvent: {}
+[2.718678] (-) TimerEvent: {}
+[2.819293] (-) TimerEvent: {}
+[2.920065] (-) TimerEvent: {}
+[3.020795] (-) TimerEvent: {}
+[3.121535] (-) TimerEvent: {}
+[3.222231] (-) TimerEvent: {}
+[3.322942] (-) TimerEvent: {}
+[3.423748] (-) TimerEvent: {}
+[3.524532] (-) TimerEvent: {}
+[3.625278] (-) TimerEvent: {}
+[3.726140] (-) TimerEvent: {}
+[3.826681] (-) TimerEvent: {}
+[3.927239] (-) TimerEvent: {}
+[4.027688] (-) TimerEvent: {}
+[4.074247] (vision) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 7.5.0\n'}
+[4.127959] (-) TimerEvent: {}
+[4.228535] (-) TimerEvent: {}
+[4.273495] (vision) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[4.328662] (-) TimerEvent: {}
+[4.429054] (-) TimerEvent: {}
+[4.430359] (vision) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[4.454473] (vision) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[4.529287] (-) TimerEvent: {}
+[4.592417] (vision) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[4.629356] (-) TimerEvent: {}
+[4.691332] (vision) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[4.729516] (-) TimerEvent: {}
+[4.829845] (-) TimerEvent: {}
+[4.930235] (-) TimerEvent: {}
+[4.988496] (vision) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[5.025264] (vision) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[5.030329] (-) TimerEvent: {}
+[5.120906] (vision) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[5.127220] (vision) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[5.130416] (-) TimerEvent: {}
+[5.221089] (vision) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[5.230500] (-) TimerEvent: {}
+[5.309060] (vision) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[5.330653] (-) TimerEvent: {}
+[5.431128] (-) TimerEvent: {}
+[5.531547] (-) TimerEvent: {}
+[5.631917] (-) TimerEvent: {}
+[5.732306] (-) TimerEvent: {}
+[5.832688] (-) TimerEvent: {}
+[5.841699] (vision) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[5.932926] (-) TimerEvent: {}
+[5.994158] (vision) StdoutLine: {'line': b'-- Found ament_cmake: 0.8.2 (/opt/ros/eloquent/share/ament_cmake/cmake)\n'}
+[6.033068] (-) TimerEvent: {}
+[6.112516] (vision) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.6.9", minimum required is "3") \n'}
+[6.113193] (vision) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[6.133173] (-) TimerEvent: {}
+[6.233552] (-) TimerEvent: {}
+[6.333862] (-) TimerEvent: {}
+[6.434220] (-) TimerEvent: {}
+[6.534670] (-) TimerEvent: {}
+[6.587873] (vision) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.8.1 (/opt/ros/eloquent/share/ament_lint_auto/cmake)\n'}
+[6.634787] (-) TimerEvent: {}
+[6.735203] (-) TimerEvent: {}
+[6.819626] (vision) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[6.824318] (vision) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[6.835298] (-) TimerEvent: {}
+[6.838793] (vision) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.844551] (vision) StdoutLine: {'line': b'-- Generating done\n'}
+[6.847785] (vision) StdoutLine: {'line': b'-- Build files have been written to: /home/fatma/VAUV/Software/vortex_ws/build/vision\n'}
+[6.852717] (vision) CommandEnded: {'returncode': 0}
+[6.853832] (vision) JobProgress: {'identifier': 'vision', 'progress': 'build'}
+[6.854735] (vision) Command: {'cmd': ['/usr/local/bin/cmake', '--build', '/home/fatma/VAUV/Software/vortex_ws/build/vision', '--', '-j4', '-l4'], 'cwd': '/home/fatma/VAUV/Software/vortex_ws/build/vision', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'fatma'), ('LC_TIME', 'ar_EG.UTF-8'), ('TEXTDOMAIN', 'gdm'), ('XDG_SEAT', 'seat0'), ('SSH_AGENT_PID', '1183'), ('XDG_SESSION_TYPE', 'x11'), ('LD_LIBRARY_PATH', '/opt/ros/eloquent/opt/yaml_cpp_vendor/lib:/opt/ros/eloquent/opt/rviz_ogre_vendor/lib:/opt/ros/eloquent/lib/x86_64-linux-gnu:/opt/ros/eloquent/lib'), ('SHLVL', '1'), ('QT4_IM_MODULE', 'xim'), ('HOME', '/home/fatma'), ('OLDPWD', '/home/fatma/VAUV/Software/vortex_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ar_EG.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/fatma/.nvm'), ('_colcon_cd_root', '/home/fatma/ros2_install'), ('IM_CONFIG_PHASE', '2'), ('ROS_DISTRO', 'eloquent'), ('LOGNAME', 'fatma'), ('GTK_IM_MODULE', 'ibus'), ('DESKTOP_AUTOSTART_ID', '10104ab388d45d8296160888662781422000000009430007'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('USERNAME', 'fatma'), ('XDG_SESSION_ID', '1'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '1'), ('PATH', '/opt/ros/eloquent/bin:/home/fatma/anaconda3/bin:/home/fatma/gems/bin:/home/fatma/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/fatma-HP-15-Notebook-PC:@/tmp/.ICE-unix/943,unix/fatma-HP-15-Notebook-PC:/tmp/.ICE-unix/943'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/787d6411_5264_4075_abca_0d099d7f7a16'), ('LC_ADDRESS', 'ar_EG.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ar_EG.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XMODIFIERS', '@im=ibus'), ('GNOME_TERMINAL_SERVICE', ':1.81'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('AMENT_PREFIX_PATH', '/opt/ros/eloquent'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('LC_NAME', 'ar_EG.UTF-8'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GEM_HOME', '/home/fatma/gems'), ('LC_MEASUREMENT', 'ar_EG.UTF-8'), ('TEXTDOMAINDIR', '/usr/share/locale/'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ar_EG.UTF-8'), ('XDG_VTNR', '1'), ('QT_IM_MODULE', 'ibus'), ('LC_ALL', 'en_US.UTF-8'), ('PWD', '/home/fatma/VAUV/Software/vortex_ws/build/vision'), ('CLUTTER_IM_MODULE', 'xim'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('LC_NUMERIC', 'ar_EG.UTF-8'), ('PYTHONPATH', '/opt/ros/eloquent/lib/python3.6/site-packages'), ('LC_PAPER', 'ar_EG.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '5202'), ('NVM_RC_VERSION', ''), ('CMAKE_PREFIX_PATH', '/opt/ros/eloquent')]), 'shell': False}
+[6.881849] (vision) CommandEnded: {'returncode': 0}
+[6.904030] (vision) JobProgress: {'identifier': 'vision', 'progress': 'install'}
+[6.913620] (vision) Command: {'cmd': ['/usr/local/bin/cmake', '--build', '/home/fatma/VAUV/Software/vortex_ws/build/vision', '--target', 'install', '--', '-j4', '-l4'], 'cwd': '/home/fatma/VAUV/Software/vortex_ws/build/vision', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'fatma'), ('LC_TIME', 'ar_EG.UTF-8'), ('TEXTDOMAIN', 'gdm'), ('XDG_SEAT', 'seat0'), ('SSH_AGENT_PID', '1183'), ('XDG_SESSION_TYPE', 'x11'), ('LD_LIBRARY_PATH', '/opt/ros/eloquent/opt/yaml_cpp_vendor/lib:/opt/ros/eloquent/opt/rviz_ogre_vendor/lib:/opt/ros/eloquent/lib/x86_64-linux-gnu:/opt/ros/eloquent/lib'), ('SHLVL', '1'), ('QT4_IM_MODULE', 'xim'), ('HOME', '/home/fatma'), ('OLDPWD', '/home/fatma/VAUV/Software/vortex_ws/src'), ('DESKTOP_SESSION', 'ubuntu'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ar_EG.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/fatma/.nvm'), ('_colcon_cd_root', '/home/fatma/ros2_install'), ('IM_CONFIG_PHASE', '2'), ('ROS_DISTRO', 'eloquent'), ('LOGNAME', 'fatma'), ('GTK_IM_MODULE', 'ibus'), ('DESKTOP_AUTOSTART_ID', '10104ab388d45d8296160888662781422000000009430007'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('USERNAME', 'fatma'), ('XDG_SESSION_ID', '1'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('WINDOWPATH', '1'), ('PATH', '/opt/ros/eloquent/bin:/home/fatma/anaconda3/bin:/home/fatma/gems/bin:/home/fatma/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/fatma-HP-15-Notebook-PC:@/tmp/.ICE-unix/943,unix/fatma-HP-15-Notebook-PC:/tmp/.ICE-unix/943'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/787d6411_5264_4075_abca_0d099d7f7a16'), ('LC_ADDRESS', 'ar_EG.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ar_EG.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XMODIFIERS', '@im=ibus'), ('GNOME_TERMINAL_SERVICE', ':1.81'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('AMENT_PREFIX_PATH', '/opt/ros/eloquent'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('LC_NAME', 'ar_EG.UTF-8'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GEM_HOME', '/home/fatma/gems'), ('LC_MEASUREMENT', 'ar_EG.UTF-8'), ('TEXTDOMAINDIR', '/usr/share/locale/'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ar_EG.UTF-8'), ('XDG_VTNR', '1'), ('QT_IM_MODULE', 'ibus'), ('LC_ALL', 'en_US.UTF-8'), ('PWD', '/home/fatma/VAUV/Software/vortex_ws/build/vision'), ('CLUTTER_IM_MODULE', 'xim'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('LC_NUMERIC', 'ar_EG.UTF-8'), ('PYTHONPATH', '/opt/ros/eloquent/lib/python3.6/site-packages'), ('LC_PAPER', 'ar_EG.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '5202'), ('NVM_RC_VERSION', ''), ('CMAKE_PREFIX_PATH', '/opt/ros/eloquent')]), 'shell': False}
+[6.935450] (-) TimerEvent: {}
+[6.945734] (vision) StdoutLine: {'line': b'\x1b[36mInstall the project...\x1b[0m\n'}
+[6.950155] (vision) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[6.950805] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/ament_index/resource_index/package_run_dependencies/vision\n'}
+[6.951342] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/ament_index/resource_index/parent_prefix_path/vision\n'}
+[6.951800] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/ament_prefix_path.sh\n'}
+[6.952273] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/ament_prefix_path.dsv\n'}
+[6.952699] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/path.sh\n'}
+[6.953113] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/path.dsv\n'}
+[6.953521] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.bash\n'}
+[6.953934] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.sh\n'}
+[6.954342] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.zsh\n'}
+[6.954721] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.dsv\n'}
+[6.955125] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.dsv\n'}
+[6.955604] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/ament_index/resource_index/packages/vision\n'}
+[6.956133] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/cmake/visionConfig.cmake\n'}
+[6.956416] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/cmake/visionConfig-version.cmake\n'}
+[6.956786] (vision) StdoutLine: {'line': b'-- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.xml\n'}
+[6.959248] (vision) CommandEnded: {'returncode': 0}
+[7.035651] (-) TimerEvent: {}
+[7.136075] (-) TimerEvent: {}
+[7.158690] (vision) JobEnded: {'identifier': 'vision', 'rc': 0}
+[7.160224] (-) EventReactorShutdown: {}

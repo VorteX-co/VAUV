@@ -1,0 +1,29 @@
+[0.033s] Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision -- -j4 -l4
+[0.124s] -- Found ament_cmake: 0.8.2 (/opt/ros/eloquent/share/ament_cmake/cmake)
+[0.195s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.681s] -- Found ament_lint_auto: 0.8.1 (/opt/ros/eloquent/share/ament_lint_auto/cmake)
+[0.876s] -- Added test 'lint_cmake' to check CMake code style
+[0.882s] -- Added test 'xmllint' to check XML markup files
+[0.892s] -- Configuring done
+[0.903s] -- Generating done
+[0.910s] -- Build files have been written to: /home/fatma/VAUV/Software/vortex_ws/build/vision
+[0.924s] Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision -- -j4 -l4
+[0.951s] Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision --target install -- -j4 -l4
+[0.983s] [36mInstall the project...[0m
+[0.988s] -- Install configuration: ""
+[0.988s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/ament_index/resource_index/package_run_dependencies/vision
+[0.989s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/ament_index/resource_index/parent_prefix_path/vision
+[0.989s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/ament_prefix_path.sh
+[0.989s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/ament_prefix_path.dsv
+[0.990s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/path.sh
+[0.990s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/environment/path.dsv
+[0.991s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.bash
+[0.991s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.sh
+[0.991s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.zsh
+[0.991s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/local_setup.dsv
+[0.992s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.dsv
+[0.992s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/ament_index/resource_index/packages/vision
+[0.993s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/cmake/visionConfig.cmake
+[0.993s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/cmake/visionConfig-version.cmake
+[0.993s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.xml
+[0.999s] Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision --target install -- -j4 -l4

@@ -1,0 +1,29 @@
+[0.034s] Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor -- -j4 -l4
+[0.113s] -- Found ament_cmake: 0.8.2 (/opt/ros/eloquent/share/ament_cmake/cmake)
+[0.176s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.491s] -- Found ament_lint_auto: 0.8.1 (/opt/ros/eloquent/share/ament_lint_auto/cmake)
+[0.641s] -- Added test 'lint_cmake' to check CMake code style
+[0.648s] -- Added test 'xmllint' to check XML markup files
+[0.657s] -- Configuring done
+[0.666s] -- Generating done
+[0.670s] -- Build files have been written to: /home/fatma/VAUV/Software/vortex_ws/build/health_monitor
+[0.681s] Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor -- -j4 -l4
+[0.710s] Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor --target install -- -j4 -l4
+[0.749s] [36mInstall the project...[0m
+[0.775s] -- Install configuration: ""
+[0.775s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/ament_index/resource_index/package_run_dependencies/health_monitor
+[0.776s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/ament_index/resource_index/parent_prefix_path/health_monitor
+[0.776s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/environment/ament_prefix_path.sh
+[0.776s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/environment/ament_prefix_path.dsv
+[0.776s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/environment/path.sh
+[0.776s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/environment/path.dsv
+[0.777s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/local_setup.bash
+[0.777s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/local_setup.sh
+[0.777s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/local_setup.zsh
+[0.777s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/local_setup.dsv
+[0.777s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.dsv
+[0.778s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/ament_index/resource_index/packages/health_monitor
+[0.778s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/cmake/health_monitorConfig.cmake
+[0.778s] -- Up-to-date: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/cmake/health_monitorConfig-version.cmake
+[0.778s] -- Installing: /home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.xml
+[0.830s] Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor --target install -- -j4 -l4

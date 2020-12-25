@@ -1,1 +1,1 @@
-All the ROS packages should be created in this fo;der
+All the ROS packages should be created in this folder

@@ -1,0 +1,6 @@
+Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/VAUV/Software/vortex_ws/src/sensors -DCMAKE_INSTALL_PREFIX=/home/fatma/VAUV/Software/vortex_ws/install/sensors
+Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/VAUV/Software/vortex_ws/src/sensors -DCMAKE_INSTALL_PREFIX=/home/fatma/VAUV/Software/vortex_ws/install/sensors
+Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors -- -j4 -l4
+Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors -- -j4 -l4
+Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors --target install -- -j4 -l4
+Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors --target install -- -j4 -l4
