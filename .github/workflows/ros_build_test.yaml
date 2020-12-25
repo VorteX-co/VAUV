@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - name: Setup ROS 2
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    
+    - name: Ros2 Setup
       uses: ros-tooling/setup-ros@0.1.1
       with:
         required-ros-distributions: eloquent
@@ -21,6 +24,7 @@ jobs:
       with:
         target-ros2-distro: eloquent
         package-name: custom_ros_interfaces generic_interfaces localization mission_planning motion_planning
+        vcs-repo-file-url: ""
 
     - name: Upload Logs
       uses: actions/upload-artifact@v2
