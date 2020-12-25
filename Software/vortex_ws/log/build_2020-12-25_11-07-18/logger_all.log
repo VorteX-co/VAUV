@@ -1,0 +1,257 @@
+[0.223s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.223s] DEBUG:colcon:Parsed command line arguments: Namespace(ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fcaf410e128>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=4, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fcaf410e128>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7fcaf410e470>)
+[0.230s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.230s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.230s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.230s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.230s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.230s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.230s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/fatma/VAUV/Software/vortex_ws'
+[0.230s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/health_monitor) by extension 'ros'
+[0.251s] DEBUG:colcon.colcon_core.package_identification:Package 'src/health_monitor' with type 'ros.ament_cmake' and name 'health_monitor'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extension 'ignore_ament_install'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extensions ['colcon_pkg']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extension 'colcon_pkg'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extensions ['colcon_meta']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extension 'colcon_meta'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extensions ['ros']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/sensors) by extension 'ros'
+[0.252s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sensors' with type 'ros.ament_cmake' and name 'sensors'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['ignore', 'ignore_ament_install']
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'ignore'
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'ignore_ament_install'
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['colcon_pkg']
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'colcon_pkg'
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['colcon_meta']
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'colcon_meta'
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extensions ['ros']
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision) by extension 'ros'
+[0.254s] DEBUG:colcon.colcon_core.package_identification:Package 'src/vision' with type 'ros.ament_cmake' and name 'vision'
+[0.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_target' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_clean_cache' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_clean_first' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'cmake_force_configure' from command line to 'False'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'ament_cmake_args' from command line to 'None'
+[0.284s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'catkin_cmake_args' from command line to 'None'
+[0.285s] Level 5:colcon.colcon_core.verb:set package 'health_monitor' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.285s] DEBUG:colcon.colcon_core.verb:Building package 'health_monitor' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor', 'merge_install': False, 'path': '/home/fatma/VAUV/Software/vortex_ws/src/health_monitor', 'symlink_install': False, 'test_result_base': None}
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'cmake_args' from command line to 'None'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'cmake_target' from command line to 'None'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'cmake_clean_cache' from command line to 'False'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'cmake_clean_first' from command line to 'False'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'cmake_force_configure' from command line to 'False'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'ament_cmake_args' from command line to 'None'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'catkin_cmake_args' from command line to 'None'
+[0.289s] Level 5:colcon.colcon_core.verb:set package 'sensors' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.289s] DEBUG:colcon.colcon_core.verb:Building package 'sensors' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/fatma/VAUV/Software/vortex_ws/build/sensors', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/fatma/VAUV/Software/vortex_ws/install/sensors', 'merge_install': False, 'path': '/home/fatma/VAUV/Software/vortex_ws/src/sensors', 'symlink_install': False, 'test_result_base': None}
+[0.293s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_args' from command line to 'None'
+[0.293s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_target' from command line to 'None'
+[0.293s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.294s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_clean_cache' from command line to 'False'
+[0.294s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_clean_first' from command line to 'False'
+[0.294s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'cmake_force_configure' from command line to 'False'
+[0.294s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'ament_cmake_args' from command line to 'None'
+[0.294s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'catkin_cmake_args' from command line to 'None'
+[0.294s] Level 5:colcon.colcon_core.verb:set package 'vision' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.294s] DEBUG:colcon.colcon_core.verb:Building package 'vision' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/fatma/VAUV/Software/vortex_ws/build/vision', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/fatma/VAUV/Software/vortex_ws/install/vision', 'merge_install': False, 'path': '/home/fatma/VAUV/Software/vortex_ws/src/vision', 'symlink_install': False, 'test_result_base': None}
+[0.294s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.297s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.297s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/fatma/VAUV/Software/vortex_ws/src/health_monitor' with build type 'ament_cmake'
+[0.297s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/fatma/VAUV/Software/vortex_ws/src/health_monitor'
+[0.303s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.303s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.303s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.306s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/eloquent'
+[0.310s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/fatma/VAUV/Software/vortex_ws/src/sensors' with build type 'ament_cmake'
+[0.310s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/fatma/VAUV/Software/vortex_ws/src/sensors'
+[0.312s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.312s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.314s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/eloquent'
+[0.317s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/fatma/VAUV/Software/vortex_ws/src/vision' with build type 'ament_cmake'
+[0.318s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/fatma/VAUV/Software/vortex_ws/src/vision'
+[0.319s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.319s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.321s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/eloquent'
+[0.331s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/VAUV/Software/vortex_ws/src/health_monitor -DCMAKE_INSTALL_PREFIX=/home/fatma/VAUV/Software/vortex_ws/install/health_monitor
+[0.344s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors -- -j4 -l4
+[0.351s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision -- -j4 -l4
+[0.377s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision -- -j4 -l4
+[0.383s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors -- -j4 -l4
+[0.414s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/vision': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision --target install -- -j4 -l4
+[0.425s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors --target install -- -j4 -l4
+[0.470s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vision)
+[0.472s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/vision' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/vision --target install -- -j4 -l4
+[0.477s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision' for CMake module files
+[0.478s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision' for CMake config files
+[0.478s] Level 1:colcon.colcon_core.shell:create_environment_hook('vision', 'cmake_prefix_path')
+[0.479s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/hook/cmake_prefix_path.ps1'
+[0.481s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/hook/cmake_prefix_path.dsv'
+[0.482s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/hook/cmake_prefix_path.sh'
+[0.484s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision/bin'
+[0.484s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision/lib/pkgconfig/vision.pc'
+[0.484s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision/lib/python3.6/site-packages'
+[0.485s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.ps1'
+[0.486s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.dsv'
+[0.487s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.sh'
+[0.488s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.bash'
+[0.490s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.zsh'
+[0.491s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/VAUV/Software/vortex_ws/install/vision/share/colcon-core/packages/vision)
+[0.495s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sensors)
+[0.497s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors' for CMake module files
+[0.498s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/sensors' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/sensors --target install -- -j4 -l4
+[0.499s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors' for CMake config files
+[0.499s] Level 1:colcon.colcon_core.shell:create_environment_hook('sensors', 'cmake_prefix_path')
+[0.501s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/hook/cmake_prefix_path.ps1'
+[0.502s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/hook/cmake_prefix_path.dsv'
+[0.502s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/hook/cmake_prefix_path.sh'
+[0.504s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors/bin'
+[0.504s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors/lib/pkgconfig/sensors.pc'
+[0.505s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors/lib/python3.6/site-packages'
+[0.506s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.ps1'
+[0.507s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.dsv'
+[0.508s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.sh'
+[0.509s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.bash'
+[0.510s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.zsh'
+[0.511s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/colcon-core/packages/sensors)
+[0.518s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vision)
+[0.519s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision' for CMake module files
+[0.520s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision' for CMake config files
+[0.520s] Level 1:colcon.colcon_core.shell:create_environment_hook('vision', 'cmake_prefix_path')
+[0.521s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/hook/cmake_prefix_path.ps1'
+[0.522s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/hook/cmake_prefix_path.dsv'
+[0.523s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/hook/cmake_prefix_path.sh'
+[0.545s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision/bin'
+[0.546s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision/lib/pkgconfig/vision.pc'
+[0.546s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/vision/lib/python3.6/site-packages'
+[0.547s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.ps1'
+[0.547s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.dsv'
+[0.548s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.sh'
+[0.549s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.bash'
+[0.550s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/vision/share/vision/package.zsh'
+[0.550s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/VAUV/Software/vortex_ws/install/vision/share/colcon-core/packages/vision)
+[0.553s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sensors)
+[0.555s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors' for CMake module files
+[0.556s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors' for CMake config files
+[0.556s] Level 1:colcon.colcon_core.shell:create_environment_hook('sensors', 'cmake_prefix_path')
+[0.557s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/hook/cmake_prefix_path.ps1'
+[0.558s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/hook/cmake_prefix_path.dsv'
+[0.558s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/hook/cmake_prefix_path.sh'
+[0.559s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors/bin'
+[0.560s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors/lib/pkgconfig/sensors.pc'
+[0.560s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/sensors/lib/python3.6/site-packages'
+[0.561s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.ps1'
+[0.561s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.dsv'
+[0.562s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.sh'
+[0.563s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.bash'
+[0.563s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.zsh'
+[0.564s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/colcon-core/packages/sensors)
+[2.485s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake /home/fatma/VAUV/Software/vortex_ws/src/health_monitor -DCMAKE_INSTALL_PREFIX=/home/fatma/VAUV/Software/vortex_ws/install/health_monitor
+[2.488s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor -- -j4 -l4
+[2.516s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor -- -j4 -l4
+[2.541s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor --target install -- -j4 -l4
+[2.586s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(health_monitor)
+[2.587s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor --target install -- -j4 -l4
+[2.589s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor' for CMake module files
+[2.590s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor' for CMake config files
+[2.590s] Level 1:colcon.colcon_core.shell:create_environment_hook('health_monitor', 'cmake_prefix_path')
+[2.591s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.ps1'
+[2.591s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.dsv'
+[2.592s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.sh'
+[2.593s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/bin'
+[2.593s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/lib/pkgconfig/health_monitor.pc'
+[2.593s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/lib/python3.6/site-packages'
+[2.594s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.ps1'
+[2.595s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.dsv'
+[2.595s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.sh'
+[2.596s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.bash'
+[2.597s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.zsh'
+[2.597s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/colcon-core/packages/health_monitor)
+[2.620s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(health_monitor)
+[2.621s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor' for CMake module files
+[2.621s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor' for CMake config files
+[2.622s] Level 1:colcon.colcon_core.shell:create_environment_hook('health_monitor', 'cmake_prefix_path')
+[2.622s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.ps1'
+[2.623s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.dsv'
+[2.624s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/hook/cmake_prefix_path.sh'
+[2.625s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/bin'
+[2.625s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/lib/pkgconfig/health_monitor.pc'
+[2.625s] Level 1:colcon.colcon_core.environment:checking '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/lib/python3.6/site-packages'
+[2.626s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.ps1'
+[2.627s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.dsv'
+[2.627s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.sh'
+[2.628s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.bash'
+[2.628s] INFO:colcon.colcon_core.shell:Creating package script '/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/health_monitor/package.zsh'
+[2.629s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/fatma/VAUV/Software/vortex_ws/install/health_monitor/share/colcon-core/packages/health_monitor)
+[2.629s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.631s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.631s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.632s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.640s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.640s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.641s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.644s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.646s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/VAUV/Software/vortex_ws/install/local_setup.ps1'
+[2.648s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/fatma/VAUV/Software/vortex_ws/install/_local_setup_util_ps1.py'
+[2.651s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/VAUV/Software/vortex_ws/install/setup.ps1'
+[2.658s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/VAUV/Software/vortex_ws/install/local_setup.sh'
+[2.660s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/fatma/VAUV/Software/vortex_ws/install/_local_setup_util_sh.py'
+[2.661s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/VAUV/Software/vortex_ws/install/setup.sh'
+[2.668s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/VAUV/Software/vortex_ws/install/local_setup.bash'
+[2.669s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/VAUV/Software/vortex_ws/install/setup.bash'
+[2.675s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/fatma/VAUV/Software/vortex_ws/install/local_setup.zsh'
+[2.676s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/fatma/VAUV/Software/vortex_ws/install/setup.zsh'

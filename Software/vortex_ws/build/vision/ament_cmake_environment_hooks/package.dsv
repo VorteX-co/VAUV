@@ -1,0 +1,4 @@
+source;share/vision/local_setup.bash
+source;share/vision/local_setup.dsv
+source;share/vision/local_setup.sh
+source;share/vision/local_setup.zsh

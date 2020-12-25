@@ -1,0 +1,4 @@
+Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor -- -j4 -l4
+Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor -- -j4 -l4
+Invoking command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor --target install -- -j4 -l4
+Invoked command in '/home/fatma/VAUV/Software/vortex_ws/build/health_monitor' returned '0': CMAKE_PREFIX_PATH=/opt/ros/eloquent /usr/local/bin/cmake --build /home/fatma/VAUV/Software/vortex_ws/build/health_monitor --target install -- -j4 -l4

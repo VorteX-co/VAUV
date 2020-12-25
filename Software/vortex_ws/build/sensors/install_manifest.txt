@@ -1,0 +1,15 @@
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/ament_index/resource_index/package_run_dependencies/sensors
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/ament_index/resource_index/parent_prefix_path/sensors
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/environment/ament_prefix_path.sh
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/environment/ament_prefix_path.dsv
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/environment/path.sh
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/environment/path.dsv
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/local_setup.bash
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/local_setup.sh
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/local_setup.zsh
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/local_setup.dsv
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.dsv
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/ament_index/resource_index/packages/sensors
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/cmake/sensorsConfig.cmake
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/cmake/sensorsConfig-version.cmake
+/home/fatma/VAUV/Software/vortex_ws/install/sensors/share/sensors/package.xml
