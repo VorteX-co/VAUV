@@ -13,8 +13,8 @@ jobs:
     steps:
     - name: Setup ROS 2
       uses: ros-tooling/setup-ros@0.1.1
-    with:
-      required-ros-distributions: eloquent
+      with:
+        required-ros-distributions: eloquent
 
     - name: Run Tests
       uses: ros-tooling/action-ros-ci@0.1
