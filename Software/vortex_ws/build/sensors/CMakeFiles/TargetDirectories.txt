@@ -1,9 +1,0 @@
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/install/strip.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/install.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/uninstall.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/install/local.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/test.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/list_install_components.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/edit_cache.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/sensors_uninstall.dir
-/home/fatma/VAUV/Software/vortex_ws/build/sensors/CMakeFiles/rebuild_cache.dir

@@ -1,9 +1,0 @@
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/install/strip.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/install.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/health_monitor_uninstall.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/uninstall.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/install/local.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/test.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/list_install_components.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/edit_cache.dir
-/home/fatma/VAUV/Software/vortex_ws/build/health_monitor/CMakeFiles/rebuild_cache.dir
