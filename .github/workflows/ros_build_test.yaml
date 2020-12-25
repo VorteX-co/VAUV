@@ -1,0 +1,29 @@
+name: ROS2 Build and Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Setup ROS 2
+      uses: ros-tooling/setup-ros@0.1.1
+    with:
+      required-ros-distributions: eloquent
+
+    - name: Run Tests
+      uses: ros-tooling/action-ros-ci@0.1
+      with:
+        package-name: custom_ros_interfaces generic_interfaces localization mission_planning motion_planning
+
+    - name: Upload Logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: Ros-build-logs
+        path: ./**/log
+      if: always()
