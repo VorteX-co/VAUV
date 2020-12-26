@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>battery_mangement_unit</name>
+  <name>battery_management_unit</name>
   <version>0.0.0</version>
-  <description>ROs package for battery mangement</description>
+  <description>battery management unit package</description>
   <maintainer email="info@vortex-co.com">vortex</maintainer>
   <license>GNU GENERAL PUBLIC LICENSE</license>
 
