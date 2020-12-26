@@ -1,4 +1,4 @@
-name: ROS2 Build and Test
+name: ROS2 Build & Test WS
 
 on:
   pull_request:
@@ -23,7 +23,7 @@ jobs:
       uses: ros-tooling/action-ros-ci@0.1.0
       with:
         target-ros2-distro: eloquent
-        package-name: custom_ros_interfaces generic_interfaces localization mission_planning motion_planning
+        package-name: battery_management_unit custom_ros_interfaces generic_interfaces health_monitor localization mission_planning motion_planning sensors vision
         vcs-repo-file-url: ""
 
     - name: Upload Logs
