@@ -1,0 +1,34 @@
+name: ROS2 Build & Test WS
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    
+    - name: Ros2 Setup
+      uses: ros-tooling/setup-ros@0.1.1
+      with:
+        required-ros-distributions: eloquent
+
+    - name: Run Tests
+      uses: ros-tooling/action-ros-ci@0.1.0
+      with:
+        target-ros2-distro: eloquent
+        package-name: battery_management_unit custom_ros_interfaces generic_interfaces health_monitor localization mission_planning motion_planning sensors vision
+        vcs-repo-file-url: ""
+
+    - name: Upload Logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: Ros-build-logs
+        path: ./**/log
+      if: always()
