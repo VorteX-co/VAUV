@@ -70,13 +70,13 @@ To build from source, clone the latest version from this repository into your  w
 ## Launch files
 
 
- 2
-    - **`...`**
+ 
+     **`...`**
 
 * **...**
 
 ## Nodes
-#localization
+
 
 pose_estimation :estimates 3D state of the AUV with the usage of DVl,IMU,point cloud data and visual odometry from the streo camera .
 
@@ -87,60 +87,67 @@ fused_date
 #### Published Topics
 estimated_pose‏
 #### Services
-
+..
 
 
 #### Parameters
+....
 
 local_SLAM      :generates a series of poses and submaps by scan matching and using a motion filter .
 #### Subscribed Topics
-estimated_pose‏
+* **...**estimated_pose‏
 
 #### Published Topics
-submaps
+* **...**submaps
 #### Services
 
-
+...
 
 #### Parameters‏
-
+...
 
 
 global_SlAM     : updates the poses/states from the Local SLAM system and then updates the submaps and create a Global 3D map .
 
 #### Subscribed Topics
-submaps
+* **...**submaps
 #### Published Topics
-Global_3D_map‏
+* **...**Global_3D_map‏
 
 #### Services
-
+...
 
 
 #### Parameters
+...
+
 searching_algorthim :it is an algorithm used for estimating the best path from starting point to goal point and also validates the generated path(validation rate ).
+
 #### Subscribed Topics
 
 
 #### Published Topics
-initial_path
+* **...**initial_path
 
 #### Services
 
-
+...
 
 #### Parameters
+...
+
 path_smoothing: Draws curved turns instead of sharp turns‏ by using a smoothing algorthim and the AUV's local pose.
+
 #### Subscribed Topics
 initial_path
 #### Published Topics
  smoothed_path‏
  
 #### Services
-
-
+....
 
 #### Parameters
+...
 
 obstacle_detection  :
 #### Subscribed Topics
@@ -162,18 +169,14 @@ vector_processing   :
 motion_control     : translate the set of control commands from the Local Planner into actions for the thrusters
 
 
-
-
-missionstate :
 #### Subscribed Topics
-
+..
 #### Published Topics
+..
 #### Services
-
-
-
+...
 #### Parameters
-
+..
 
 
 
