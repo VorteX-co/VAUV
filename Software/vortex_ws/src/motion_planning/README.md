@@ -79,14 +79,15 @@ To build from source, clone the latest version from this repository into your  w
 ## Nodes
 
 
-pose_estimation :estimates 3D state of the AUV with the usage of DVl,IMU,point cloud data and visual odometry from the streo camera .
+* pose_estimation node :estimates 3D state of the AUV with the usage of DVl,IMU,point cloud data and visual odometry from the streo camera .
 
 
 #### Subscribed Topics
-fused_date
+* fused_date
 
 #### Published Topics
-estimated_pose‏
+* estimated_pose‏
+
 #### Services
 ..
 
