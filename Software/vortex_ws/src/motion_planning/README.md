@@ -20,7 +20,7 @@ The source code is released under a [GNU GENERAL PUBLIC LICENSE].
 Affiliation: [VorteX-Co](https://vortex-co.com/home)<br />
 Maintainer: vortex-co, info@vortex-co.com**
 
-The Vision module package has been tested under [ROS2] eloquent on Ubuntu 18.04 
+The motion planning  module package has been tested under [ROS2] eloquent on Ubuntu 18.04 
 
 ## Table of contents
 * [Installation](#Installation)
