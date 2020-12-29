@@ -2,7 +2,6 @@
 
 echo "#########################################################"
 echo "#  prepration machine to install Vision Package         #"
-echo "#            AURTHOR\ ELabbasSalah                      #" 
 echo "#########################################################"
 
 #Create a workspace and clone all repos:
