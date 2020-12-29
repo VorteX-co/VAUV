@@ -2,13 +2,14 @@
 
 ## Description
 Vision is a ros2 package which responsible for mission recognition and object detection. 
-The vision module passes data to the mission planning module. Data contain 
-logs from the deep learning model and image analysis model.
-The logs from the deep learning models contain the detected object class ,and it's coordinates
-,and score of detection. The logs of the image analysis model contain image manifest, small object coordinates 
+* The vision module passes the data to the mission planning module.
+* Data contain logs from the deep learning model and image analysis model.
+* The logs from the deep learning models contain the detected object class ,and it's coordinates
+,and score of detection. 
+* The logs of the image analysis model contain image manifest, small object coordinates 
 ,and parameter values which may vary according to each task.
-Both the deep learning model ,and the image analysis model require a noise-free image.
-so, The input frame (from the camera (Sensor Fusion module)) is passed to a image enhancement node
+* Both the deep learning model ,and the image analysis model require a noise-free image.
+* So, The input frame (from the camera (Sensor Fusion module)) is passed to a image enhancement node
 to manipulates the image to fit the tasks.
 
 The source code is released under a [GNU GENERAL PUBLIC LICENSE](https://github.com/fatma-mohamed-98/VAUV/blob/master/LICENSE).
@@ -17,7 +18,7 @@ The source code is released under a [GNU GENERAL PUBLIC LICENSE](https://github.
 Affiliation: [VorteX-Co](https://vortex-co.com/home) <br />
 Maintainer: vortex-co, info@vortex-co.com**
 
-The Vision package has been tested under [ROS2] eloquent on Ubuntu 18.04
+The Vision package has been tested under [ROS2] eloquent on Ubuntu 18.04.
 ## Table of contents
 * [Installation](#installation)
 * [Usage](#usage)
@@ -32,7 +33,7 @@ The Vision package has been tested under [ROS2] eloquent on Ubuntu 18.04
 - [Robot Operating System (ROS2)](https://index.ros.org/doc/ros2/Installation/Eloquent/Linux-Install-Debians/) (Install Eloquent as Debian Package).
 - [Colcon](https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/)
 #### you can  install Dependencies at the first time by the following steps:
-* first download installSystem.sh and getRos2.sh then run the following commands.
+* first download **installSystem.sh** and **getRos2.sh** from dependencies folder then run the following commands.
 * ##### **System requirements¶**
 -   **Target platforms for Eloquent Elusor are [(see REP 2000)](https://www.ros.org/reps/rep-2000.html):**
     - **Tier 1: Ubuntu Linux - Bionic Beaver (18.04) 64-bit**
@@ -72,14 +73,6 @@ First go to project location and source it
 ## Config files
 * **...**
 ## Launch files
-
-[comment]: <> (* **launch_file_1.launch:** shortly explain what is launched &#40;e.g standard simulation, simulation with gdb,...&#41;)
-
-[comment]: <> (     Argument set 1)
-
-[comment]: <> (     - **`argument_1`** Short description &#40;e.g. as commented in launch file&#41;. Default: `default_value`.)
-
-[comment]: <> (    Argument set 2)
 * **...**
 
 ## Nodes
@@ -116,8 +109,6 @@ closed side coordinates and so on.
 * **`/image manifest`** ([str_msgs/Data])
   The image manifest and coordinates of small objects.
   
-
-
 
 
 ### Image_Processing_logs
