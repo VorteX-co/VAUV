@@ -3,7 +3,7 @@
 ![Vortex](./vortexLogoupdate.jpg)
 
 ## VorteX AUV
-
+Ibrahim Habib
 ---------
 
 Th project aims for developing the most basic and common functionalities for underwater AUV and the software solution for the RoboSub competition 
