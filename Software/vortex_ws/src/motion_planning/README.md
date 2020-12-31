@@ -1,8 +1,8 @@
-# motion planning package
+# Motion Planning Package
 
-## description
+## Description
 
-this package represents four modules (localization,global planner, local planner and motion control )
+This package represents four modules (localization,global planner, local planner and motion control )
 
 * Localization       : determine AUV's place in the 3D space around it and also determines the location of the obstacles and objects surrounding it.
 
@@ -14,13 +14,13 @@ this package represents four modules (localization,global planner, local planner
 
 ### License
 
-The source code is released under a [GNU GENERAL PUBLIC LICENSE].
+The source code is released under a [GNU GENERAL PUBLIC LICENSE](https://github.com/VorteX-co/VAUV/blob/master/LICENSE)
 
 **Author: vortex-co<br />
 Affiliation: [VorteX-Co](https://vortex-co.com/home)<br />
 Maintainer: vortex-co, info@vortex-co.com**
 
-The motion planning  module package has been tested under [ROS2] eloquent on Ubuntu 18.04 
+The motion planning  module package has been tested under [ROS2](https://index.ros.org/doc/ros2/) eloquent on Ubuntu 18.04 
 
 ## Table of contents
 * [Installation](#Installation)
@@ -36,8 +36,7 @@ The motion planning  module package has been tested under [ROS2] eloquent on Ubu
 
 Open a terminal, clone the repository
 
-    cd ~/ros2_ws/ #use your current ros2 workspace folder
-    git clone https://github.com/VorteX-co/VAUV.git
+     git clone https://github.com/VorteX-co/VAUV.git
     
 
 ### Building from Source
@@ -45,7 +44,7 @@ Open a terminal, clone the repository
 #### Dependencies
 
 - [Robot Operating System (ROS)](https://index.ros.org/doc/ros2/) (middleware for robotics),
--  colcon	
+-  [Colcon](https://index.ros.org/doc/ros2/Tutorials/Colcon-Tutorial/)
 	
         sudo apt install python3-colcon-common-extensions
 
@@ -54,16 +53,16 @@ Open a terminal, clone the repository
 To build from source, clone the latest version from this repository into your  workspace and compile the package using
 
        
-     cd ~/ros2_ws/VAUV/Software/vortex_ws/src/motion_planning/src/
+     cd ~/$HOME/VAUV/Software/vortex_ws/src/motion_planning/src/
      source /opt/ros/eloquent/setup.bash
      colcon build --symlink-install
 
-
+Where $HOME is the path you are planning to place the repo in
 
 ## Usage
  First go to project location and source it
 
-    cd ~/ros2_ws/VAUV/Software/vortex_ws/src/motion_planning/src/
+    cd ~/$HOME/VAUV/Software/vortex_ws/src/motion_planning/src/
     source install/setup.bash
 
    * Then we can start node by node with
@@ -78,11 +77,11 @@ To build from source, clone the latest version from this repository into your  w
 ## Config files
 
 
-
+...
 
 ## Launch files
 
-
+...
  
      
 
@@ -90,14 +89,14 @@ To build from source, clone the latest version from this repository into your  w
 
 
 ### pose_estimation node 
-estimates 3D state of the AUV with the usage of DVl,IMU,point cloud data and visual odometry from the streo camera .
+Estimates 3D state of the AUV with the usage of DVl,IMU,point cloud data and visual odometry from the streo camera .
 
 
 #### Subscribed Topics
-* fused_date
+* Fused_date
 
 #### Published Topics
-* estimated_pose
+* Estimated_pose
 
 #### Services
 ..
@@ -107,25 +106,25 @@ estimates 3D state of the AUV with the usage of DVl,IMU,point cloud data and vis
 ....
 
 ### local_SLAM node    
-generates a series of poses and submaps by scan matching and using a motion filter .
+Generates a series of poses and submaps by scan matching and using a motion filter .
 #### Subscribed Topics
-* estimated_pose‏
+* Estimated_pose
 
 #### Published Topics
-* submaps
+* Submaps
 #### Services
 
 ...
 
-#### Parameters‏
+#### Parameters
 ...
 
 
-### global_SlAM node  
+### Global_SlAM node  
 updates the poses/states from the Local SLAM system and then updates the submaps and create a Global 3D map .
 
 #### Subscribed Topics
-* submaps
+* Submaps
 #### Published Topics
 * Global_3D_map
 
@@ -136,14 +135,14 @@ updates the poses/states from the Local SLAM system and then updates the submaps
 #### Parameters
 ...
 
-### searching_algorthim node
-it is an algorithm used for estimating the best path from starting point to goal point and also validates the generated path(validation rate ).
+### Searching_algorthim node
+It is an algorithm used for estimating the best path from starting point to goal point and also validates the generated path(validation rate ).
 
 #### Subscribed Topics
 
 
 #### Published Topics
-* initial_path
+* Initial_path
 
 #### Services
 
@@ -152,13 +151,13 @@ it is an algorithm used for estimating the best path from starting point to goal
 #### Parameters
 ...
 
-### path_smoothing node 
+### Path_smoothing node 
 Draws curved turns instead of sharp turns‏ by using a smoothing algorthim and the AUV's local pose.
 
 #### Subscribed Topics
-* initial_path
+* Initial_path
 #### Published Topics
-* smoothed_path
+* Smoothed_path
  
 #### Services
 ....
@@ -166,27 +165,27 @@ Draws curved turns instead of sharp turns‏ by using a smoothing algorthim and 
 #### Parameters
 ...
 
-### obstacle_detection node  
+### Obstacle_detection node  
 
 #### Subscribed Topics
-
+....
 #### Published Topics
-
-## subnode_processing  
+..
+## Subnode_processing  
 
 #### Subscribed Topics
-
+...
 #### Published Topics
-
+...
 
 ### vector_processing node
 #### Subscribed Topics
-
+...
 #### Published Topics
 
-
+...
 ### motion_control node  
-translate the set of control commands from the Local Planner into actions for the thrusters
+Translate the set of control commands from the Local Planner into actions for the thrusters
 
 
 #### Subscribed Topics
@@ -196,7 +195,7 @@ translate the set of control commands from the Local Planner into actions for th
 #### Services
 ...
 #### Parameters
-..
+...
 
 
 
@@ -206,7 +205,7 @@ translate the set of control commands from the Local Planner into actions for th
 ## Hardware
 This package access the following hardware:
 
-* pixhawk
+* Pixhawk4
  
 
 [ROS]: http://www.ros.org
