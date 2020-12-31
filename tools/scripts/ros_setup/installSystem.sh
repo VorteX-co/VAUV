@@ -1,8 +1,8 @@
 #!bin/bash
 
 echo "#########################################################"
-echo "#  prepration machine to install Vision Package         #"
-echo "#            AUTHOR/VORTEX.Co                           #" 
+echo "#    Prepare machine to install VAUV packages           #"
+echo "#                                                       #" 
 echo "#########################################################"
 
 #locale # check for UTF-8
