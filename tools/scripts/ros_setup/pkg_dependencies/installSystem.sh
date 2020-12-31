@@ -2,7 +2,7 @@
 
 echo "#########################################################"
 echo "#  prepration machine to install Vision Package         #"
-echo "#            AURTHOR\ ELabbasSalah                      #" 
+echo "#            AUTHOR/VORTEX.Co                           #" 
 echo "#########################################################"
 
 #locale # check for UTF-8
