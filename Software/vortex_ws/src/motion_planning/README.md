@@ -36,10 +36,10 @@ The motion planning  module package has been tested under [ROS2](https://index.r
 
 ## Usage
  
-   * Source your ROS2 installation.
-        
-	source /opt/ros/eloquent/setup.bash
-
+   * Source your ROS2 installation
+   
+         source /opt/ros/eloquent/setup.bash
+     
    * Navigate to your workspace
    
          cd ~/$HOME/VAUV/Software/vortex_ws
@@ -103,7 +103,7 @@ Generates a series of poses and submaps by matching this generated poses with a 
 ...
 
 
-### Global_SlAM node  
+### global_SlAM node  
 updates the poses/states generated from local_SLAM node and then updates the submaps to create a Global 3D map .
 
 #### Subscribed Topics
@@ -118,7 +118,7 @@ updates the poses/states generated from local_SLAM node and then updates the sub
 #### Parameters
 ...
 
-### Searching node
+### searching node
 It aims to find the optimum path from the AUV current location to it is goal and continuously validating this path
 
 #### Subscribed Topics
@@ -134,7 +134,7 @@ It aims to find the optimum path from the AUV current location to it is goal and
 #### Parameters
 ...
 
-### Path_smoothing node 
+### path_smoothing node 
 Draws curved turns instead of sharp turns‏ by using a smoothing algorthim and the AUV's local pose.
 
 #### Subscribed Topics
@@ -148,13 +148,13 @@ Draws curved turns instead of sharp turns‏ by using a smoothing algorthim and 
 #### Parameters
 ...
 
-### Obstacle_detection node  
+### obstacle_detection node  
 Responsible of the process in which the upcoming objects in the path are detected using a deep learning model based on fused data from Sensors package.
 #### Subscribed Topics
 ....
 #### Published Topics
 ..
-## Subnode_processing node
+### subnode_processing node
 Regenerate a new path based on surrounding environement if an obstacle is detected.
 
 #### Subscribed Topics
