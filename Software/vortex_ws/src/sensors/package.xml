@@ -5,12 +5,13 @@
   <version>0.0.0</version>
   <description>sensors interfaces and fusion package</description>
   <maintainer email="info@vortex-co.com">vortex-co</maintainer>
-  <license>GNU GENERAL PUBLIC LICENSE</license>
+  <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
+  <depend>custom_ros_interfaces</depend>  
 
   <export>
     <build_type>ament_cmake</build_type>
