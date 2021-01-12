@@ -1,0 +1,222 @@
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378906973, 'xacc': 55, 'yacc': 25, 'zacc': -1003, 'xgyro': 36, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 318, 'zmag': 449, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673873, 'xacc': 38, 'yacc': 5, 'zacc': -1000, 'xgyro': 1, 'ygyro': 2, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673874, 'press_abs': 1015.2687377929688, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673874, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 304, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5808385610580444, 'nav_pitch': 3.1599581241607666, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354072093963623, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378909662, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673876, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378911963, 'xacc': 55, 'yacc': 25, 'zacc': -1003, 'xgyro': 36, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 318, 'zmag': 449, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673879, 'xacc': 37, 'yacc': 5, 'zacc': -1000, 'xgyro': 0, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673879, 'press_abs': 1015.2687377929688, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673879, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 308, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5808748006820679, 'nav_pitch': 3.1597814559936523, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.3540849685668945, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378914983, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673883, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378916995, 'xacc': 55, 'yacc': 25, 'zacc': -1003, 'xgyro': 36, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 318, 'zmag': 449, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673884, 'xacc': 37, 'yacc': 4, 'zacc': -1000, 'xgyro': 1, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673884, 'press_abs': 1015.2687377929688, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673884, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 315, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4979, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5815579891204834, 'nav_pitch': 3.1595184803009033, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354128837585449, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378919963, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673888, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378921985, 'xacc': 55, 'yacc': 25, 'zacc': -1004, 'xgyro': 36, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 318, 'zmag': 449, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673889, 'xacc': 36, 'yacc': 5, 'zacc': -1002, 'xgyro': 2, 'ygyro': 0, 'zgyro': -3, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673889, 'press_abs': 1015.2687377929688, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673889, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 321, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4979, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5812737941741943, 'nav_pitch': 3.15954327583313, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354140281677246, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378924971, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673893, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378926998, 'xacc': 55, 'yacc': 24, 'zacc': -1004, 'xgyro': 36, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 318, 'zmag': 449, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673894, 'xacc': 36, 'yacc': 5, 'zacc': -1003, 'xgyro': 2, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673894, 'press_abs': 1015.2687377929688, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673894, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 326, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5808006525039673, 'nav_pitch': 3.1594369411468506, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354184627532959, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378931945, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673898, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378932006, 'xacc': 55, 'yacc': 24, 'zacc': -1004, 'xgyro': 37, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 318, 'zmag': 449, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673899, 'xacc': 35, 'yacc': 5, 'zacc': -1004, 'xgyro': 2, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673899, 'press_abs': 1015.2687377929688, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673899, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 329, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.580661416053772, 'nav_pitch': 3.1593539714813232, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354198932647705, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378935189, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673902, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378935248, 'xacc': 54, 'yacc': 24, 'zacc': -1004, 'xgyro': 37, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 319, 'zmag': 447, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673902, 'xacc': 34, 'yacc': 5, 'zacc': -1004, 'xgyro': 3, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673902, 'press_abs': 1015.2835083007812, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673904, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 338, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5804715156555176, 'nav_pitch': 3.1597955226898193, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.35424280166626, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378939636, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673906, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378939735, 'xacc': 53, 'yacc': 24, 'zacc': -1004, 'xgyro': 37, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 319, 'zmag': 447, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673908, 'xacc': 34, 'yacc': 5, 'zacc': -1003, 'xgyro': 1, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673908, 'press_abs': 1015.2835083007812, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673909, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 341, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5806137323379517, 'nav_pitch': 3.159940004348755, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354259490966797, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378944635, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673911, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378944730, 'xacc': 52, 'yacc': 24, 'zacc': -1004, 'xgyro': 37, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 319, 'zmag': 447, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673913, 'xacc': 33, 'yacc': 5, 'zacc': -1001, 'xgyro': 1, 'ygyro': 0, 'zgyro': -2, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673913, 'press_abs': 1015.2835083007812, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'PilotGain', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673914, 'name': 'InputHold', 'value': 0.0}
+{'mavpackettype': 'SYS_STATUS', 'onboard_control_sensors_present': 52493583, 'onboard_control_sensors_enabled': 2137359, 'onboard_control_sensors_health': 17865735, 'load': 343, 'voltage_battery': 0, 'current_battery': -1, 'battery_remaining': -1, 'drop_rate_comm': 0, 'errors_comm': 0, 'errors_count1': 0, 'errors_count2': 0, 'errors_count3': 0, 'errors_count4': 0}
+{'mavpackettype': 'POWER_STATUS', 'Vcc': 4980, 'Vservo': 0, 'flags': 4}
+{'mavpackettype': 'MEMINFO', 'brkval': 0, 'freemem': 65535, 'freemem32': 312688}
+{'mavpackettype': 'NAV_CONTROLLER_OUTPUT', 'nav_roll': -1.5809377431869507, 'nav_pitch': 3.1599998474121094, 'nav_bearing': -84, 'target_bearing': 0, 'wp_dist': 0, 'alt_error': 7.354303359985352, 'aspd_error': 0.0, 'xtrack_error': 0.0}
+{'mavpackettype': 'MISSION_CURRENT', 'seq': 0}
+{'mavpackettype': 'SERVO_OUTPUT_RAW', 'time_usec': 1378949532, 'port': 0, 'servo1_raw': 1500, 'servo2_raw': 1500, 'servo3_raw': 1500, 'servo4_raw': 1500, 'servo5_raw': 1500, 'servo6_raw': 1500, 'servo7_raw': 1500, 'servo8_raw': 1500, 'servo9_raw': 0, 'servo10_raw': 0, 'servo11_raw': 0, 'servo12_raw': 0, 'servo13_raw': 0, 'servo14_raw': 0, 'servo15_raw': 0, 'servo16_raw': 0}
+{'mavpackettype': 'RC_CHANNELS', 'time_boot_ms': 5673916, 'chancount': 0, 'chan1_raw': 1500, 'chan2_raw': 1500, 'chan3_raw': 1500, 'chan4_raw': 1500, 'chan5_raw': 1500, 'chan6_raw': 1500, 'chan7_raw': 1500, 'chan8_raw': 1500, 'chan9_raw': 1100, 'chan10_raw': 1100, 'chan11_raw': 1100, 'chan12_raw': 0, 'chan13_raw': 0, 'chan14_raw': 0, 'chan15_raw': 0, 'chan16_raw': 0, 'chan17_raw': 0, 'chan18_raw': 0, 'rssi': 0}
+{'mavpackettype': 'RAW_IMU', 'time_usec': 1378949656, 'xacc': 52, 'yacc': 24, 'zacc': -1005, 'xgyro': 37, 'ygyro': 1, 'zgyro': -2, 'xmag': 9, 'ymag': 319, 'zmag': 447, 'id': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_IMU2', 'time_boot_ms': 5673916, 'xacc': 34, 'yacc': 4, 'zacc': -1000, 'xgyro': 0, 'ygyro': 0, 'zgyro': -1, 'xmag': 0, 'ymag': 0, 'zmag': 0, 'temperature': 0}
+{'mavpackettype': 'SCALED_PRESSURE', 'time_boot_ms': 5673916, 'press_abs': 1015.2835083007812, 'press_diff': 0.0, 'temperature': 3828, 'temperature_press_diff': 0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673919, 'name': 'CamTilt', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673919, 'name': 'CamPan', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673919, 'name': 'TetherTrn', 'value': 0.0}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673919, 'name': 'Lights1', 'value': 0.5}
+{'mavpackettype': 'NAMED_VALUE_FLOAT', 'time_boot_ms': 5673919, 'name': 'Lights2', 'value': 0.5}
+{'mavpackettype': 'TIMESYNC', 'tc1': 0, 'ts1': 5734934217001}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'STATUSTEXT', 'severity': 4, 'text': 'MYGCS: 255, heartbeat lost', 'id': 0, 'chunk_seq': 0}
+{'mavpackettype': 'STATUSTEXT', 'severity': 4, 'text': 'MYGCS: 255, heartbeat lost', 'id': 0, 'chunk_seq': 0}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
+{'mavpackettype': 'HEARTBEAT', 'type': 12, 'autopilot': 3, 'base_mode': 81, 'custom_mode': 19, 'system_status': 5, 'mavlink_version': 3}
