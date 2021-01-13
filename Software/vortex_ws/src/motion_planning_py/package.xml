@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>motion_planning_py</name>
+   <name>motion_planning</name>
+  <version>0.0.0</version>
+  <description>motion planning python package</description>
+  <maintainer email="info@vortex-co.com">vortex-co</maintainer>
+  <license>GNU GENERAL PUBLIC LICENSE</license>
+
+
+  <depend>rclpy</depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
