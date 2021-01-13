@@ -17,6 +17,15 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+"msg/SensorStatus.msg"
+"msg/NavController.msg"
+"msg/ServoMsg.msg"
+"msg/RcMsg.msg"
+)
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)

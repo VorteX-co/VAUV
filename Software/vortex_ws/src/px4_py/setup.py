@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'motion_planning_py'
+package_name = 'px4_py'
 
 setup(
     name=package_name,
@@ -13,12 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='islam',
+    maintainer='vortex',
     maintainer_email='info@vortex-co.com',
-    description='motion planning python package',
+    description='px4_py',
     license='GNU GENERAL PUBLIC LICENSE',
+    tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+ 	"px4 =px4_py.px4_test:main"
         ],
     },
 )
