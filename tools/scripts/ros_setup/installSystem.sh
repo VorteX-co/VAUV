@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo "#########################################################"
 echo "#    Prepare machine to install VAUV packages           #"
