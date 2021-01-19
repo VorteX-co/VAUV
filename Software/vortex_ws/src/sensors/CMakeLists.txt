@@ -15,11 +15,14 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(custom_ros_interfaces REQUIRED)
+
+add_executable(dvl src/dvl_serial.cpp src/linux_serial.cpp src/dvl_serial_parser.cpp)
+target_include_directories(dvl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/dvl_companion)
+ament_target_dependencies(dvl rclcpp custom_ros_interfaces)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -31,5 +34,10 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+
+
+install(TARGETS dvl DESTINATION lib/${PROJECT_NAME})
+
 
 ament_package()
