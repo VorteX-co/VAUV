@@ -37,9 +37,11 @@ Publisher::Publisher()
 : Node("a50_serial_pub")
 {
   this->declare_parameter<std::string>("Port", "/dev/ttyUSB1");
+  // declares a rclcpp param called Port with a default value
   this->declare_parameter<std::int64_t>("Baud_Rate", 115200);
+  std::string topic = "dvl_report";
   publisher_ =
-    this->create_publisher<custom_ros_interfaces::msg::DVL>("a50", 10);
+    this->create_publisher<custom_ros_interfaces::msg::DVL>(topic, 10);
 }
 void Publisher::publish(std::string packet)
 {
@@ -58,12 +60,17 @@ void Publisher::publish(std::string packet)
 }
 int main(int argc, char ** argv)
 {
-  std::string port_name;       // /dev/tty****
+  // /dev/tty****
+  std::string port_name;
   unsigned int baud_rate;
-  std::vector<unsigned char> buffer;       // the return type of read() is vector
+  // the return type of read() is vector
+  std::vector<unsigned char> buffer;
+  // init rclcpp params using terminal args.
   rclcpp::init(argc, argv);
   auto node = std::make_shared<Publisher>();
-  node->get_parameter("Port", port_name);       // get the default parameters
+  // if Port param passed as arg. store it in port_name
+  // else get the default Port value /dev/ttyUSB1
+  node->get_parameter("Port", port_name);
   node->get_parameter("Baud_Rate", baud_rate);
   if (!serial.open(port_name, baud_rate)) {
     RCLCPP_ERROR(node->get_logger(), "couldn't open port,");
