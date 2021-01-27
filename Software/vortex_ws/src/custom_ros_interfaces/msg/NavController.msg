@@ -1,9 +1,9 @@
-float64 nav_roll
-float64 nav_pitch
-float64 nav_bearing
+float32 nav_roll
+float32 nav_pitch
+int32 nav_bearing
 
-float64 target_bearing
-float64 wp_dist
-float64 alt_error
-float64 asdp_error
-float64 xtrack_error
+int32 target_bearing
+int32 wp_dist
+float32 alt_error
+float32 asdp_error
+float32 xtrack_error
