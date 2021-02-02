@@ -1,14 +1,29 @@
 #!/usr/bin/env python3
-import time
+
+# Copyright 2014-2015 Open Source Robotics Foundation, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 
 from pymavlink import mavutil
 
 # This class is used to control the AUV
-# It contains functionalized pymavlink commands that will control AUV params, movements, flight modes and arm disarm commands
-#
+# It contains functionalized pymavlink commands that will control AUV params,
+# movements, flight modes and arm disarm commands
 
 
 class Setinfo:
+
     def __init__(self, master):
         self.master = master
 
@@ -71,24 +86,42 @@ class Setinfo:
 
     # Method sets roll rotation channel
     def set_Roll(self, pwm):
-        set_rc_channel_pwm(2, pwm)
+        self.set_rc_channel_pwm(2, pwm)
 
     # Method sets pitch rotation channel
     def set_pitch(self, pwm):
-        set_rc_channel_pwm(1, pwm)
+        self.set_rc_channel_pwm(1, pwm)
 
     # Method sets yaw rotation channel
     def set_Yaw(self, pwm):
-        set_rc_channel_pwm(4, pwm)
+        self.set_rc_channel_pwm(4, pwm)
 
     # Method controls upwards and downwards movement channel
     def set_Throttle(self, pwm):
-        set_rc_channel_pwm(3, pwm)
+        self.set_rc_channel_pwm(3, pwm)
 
     # Method controls forward and backward movement channel
     def set_Forward(self, pwm):
-        set_rc_channel_pwm(5, pwm)
+        self.set_rc_channel_pwm(5, pwm)
 
     # Method controls Lateral movement channel
     def set_Lateral(self, pwm):
-        set_rc_channel_pwm(6, pwm)
+        self.set_rc_channel_pwm(6, pwm)
+
+    # """ Set RC channel pwm value
+    # Args:
+    #     channel_id (TYPE): Channel ID
+    #     pwm (int, optional): Channel pwm value 1100-1900
+    # """
+
+    def set_rc_channel_pwm(self, channel_id, pwm=1500):
+        if channel_id < 1 or channel_id > 18:
+            print('Channel does not exist.')
+            return
+
+        rc_channel_values = [65535 for _ in range(18)]
+        rc_channel_values[channel_id - 1] = pwm
+        self.master.mav.rc_channels_override_send(
+            self.master.target_system,                # target_system
+            self.master.target_component,             # target_component
+            *rc_channel_values)
