@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2014-2015 Open Source Robotics Foundation, Inc.
+# Copyright 2020-2021 Vortex-co.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,85 +15,84 @@
 # limitations under the License.
 
 
-# import messages
-from custom_ros_interfaces.msg import (NavController, RcMsg, SensorStatus,
-                                       ServoMsg)
+import threading
 
-# import util classes for pixhawk4
+from custom_ros_interfaces.msg import (Attitude, NavController, RcMsg,
+                                       SensorStatus, ServoMsg)
+from custom_ros_interfaces.srv import Arm, Heartbeat, PublishData, SetMode
+
 from pixhawk4.Getinfo import Getinfo
-from pixhawk4.MsgCreate import MsgCreate
+from pixhawk4.Px4_utils import Px4_utils
 from pixhawk4.Setinfo import Setinfo
 
-from pymavlink import mavutil
 import rclpy
 from rclpy.node import Node
-import serial
 
 
 class px4_node(Node):
-    # initilizing node
+    # initializing node
     def __init__(self):
         super().__init__('px4')
-    # auto detection of serial port pixhawk4 connected to unix in
-        # serial = mavutil.auto_detect_serial()
 
-        try:
-            serial = findSerial()
-            # try establishing connection with pixhawk
-            self.master = mavutil.mavlink_connection(
-                serial[0], baud=115200)
-        except serial.SerialException:
-            print('Unable to establish connection')
-            exit(1)
-        self.master.wait_heartbeat()
-        self.master.mav.heartbeat_send(
-            mavutil.mavlink.MAV_TYPE_GCS,
-            mavutil.mavlink.MAV_AUTOPILOT_INVALID,
-            0, 0, 0)
+        self.master = Px4_utils.init_px4()
+
+        self.heartbeat = threading.Thread(
+            target=Px4_utils.heart_beats, args=(self,))
+        self.publish_data = threading.Thread(
+            target=Px4_utils.publish_data, args=(self,))
+
     # create publishing objects
 
-        self.imu_publisher = self.create_publisher(SensorStatus, 'Imu_raw', 10)
+        self.imu_publisher = self.create_publisher(
+            SensorStatus, 'Scaled_IMU', 10)
         self.nav_publisher = self.create_publisher(
-            NavController, 'Nav_raw', 10)
+            NavController, 'Nav_Controller', 10)
         self.rc_publisher = self.create_publisher(
             RcMsg, 'Rc_channel', 10)
         self.servo_publisher = self.create_publisher(
             ServoMsg, 'Servo_raw', 10)
 
+        self.attitude_publisher = self.create_publisher(
+            Attitude, 'Attitude', 10)
+
+    # create px4 node services
+        self.arm_service = self.create_service(Arm, 'Arm', self.callback_arm)
+        self.setmode_service = self.create_service(
+            SetMode, 'SetFlightMode', self.callback_setFlightMode)
+        self.heartbeat_service = self.create_service(
+            Heartbeat, 'StartHeartBeat', self.callback_heartbeat)
+        self.data_stream_service = self.create_service(
+            PublishData, 'StartPublishData', self.callback_publishdata)
+
     # creating information and control pixhawk objects
+
         self.info_px4 = Getinfo(self.master)
         self.control = Setinfo(self.master)
-        self.master.mav.request_data_stream_send(
-            self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_DATA_STREAM_ALL,
-            1, 1)
-        # self.control.arm()
 
-    # px4 Node publishing functions
+    # Callback functions of services
+    def callback_arm(self, request, response):
+        isArm = request.arm
+        if isArm:
+            response.ack = self.control.arm()
+        else:
+            response.ack = self.control.disarm()
+        return response
 
-    def publish_imu(self):
-        data = Getinfo.getIMU(self.info_px4)
-        print('hi ')
-        message = MsgCreate.getIMUMsg(data)
-        print('hi publisher')
-        print('xacc:%d', message.xacc)
-        self.imu_publisher.publish(message)
+    def callback_setFlightMode(self, request, response):
+        response.ack = self.control.setFlight_mode(request.mode)
+        return response
 
-    def publish_nav(self):
-        data = Getinfo.getNav(self.info_px4)
-        message = MsgCreate.getNavMsg(data)
-        print('roll:%f', message.nav_roll)
-        self.nav_publisher.publish(message)
+    def callback_heartbeat(self, request, response):
+        if request.start:
+            self.heartbeat.start()
+            response.ack = True
+        return response
 
-    def publish_rc(self):
-        data = Getinfo.getRc_channel(self.info_px4)
-        message = MsgCreate.getRcMsg(data)
-        self.rc_publisher.publish(message)
-
-    def publish_servo(self):
-        data = Getinfo.getServoStatus(self.info_px4)
-        message = MsgCreate.getServoMsg(data)
-        self.servo_publisher.publish(message)
+    def callback_publishdata(self, request, response):
+        if request.start:
+            self.publish_data.start()
+            response.ack = True
+        return response
 
 # main function that starts px4 node
 
@@ -101,35 +100,9 @@ class px4_node(Node):
 def main(args=None):
     rclpy.init(args=args)
     px4 = px4_node()
-    while True:
-        px4_node.publish_imu(px4)
-        px4_node.publish_nav(px4)
-        px4_node.publish_rc(px4)
-        px4_node.publish_servo(px4)
 
     rclpy.spin(px4)
     rclpy.shutdown()
-# function used to detect pixhawk ports its connected to
-
-
-def findSerial():
-    serials = []
-    gen_port = '/dev/ttyACM'
-    i = 0
-    while True:
-        if len(serials) == 2:
-            return serials
-        port = gen_port + '' + i
-        i = i+1
-        try:
-            ser = serial.Serial(port)
-            if ser.name == 'Pixhawk 4':
-                serials.append(port)
-            else:
-                continue
-
-        except serial.SerialException:
-            continue
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2014-2015 Open Source Robotics Foundation, Inc.
+# Copyright 2020-2021 Vortex-co.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
 # limitations under the License.
 
 
-from custom_ros_interfaces.msg import (NavController, RcMsg, SensorStatus,
-                                       ServoMsg)
+from custom_ros_interfaces.msg import (Attitude, NavController, RcMsg,
+                                       SensorStatus, ServoMsg)
 
 # This module is used to create messages that will be published by pixhawk
 
@@ -27,34 +27,35 @@ class MsgCreate:
 
     def getIMUMsg(data):
         msg = SensorStatus()
-        msg.xacc = data.xacc
-        msg.yacc = data.yacc
-        msg.zacc = data.zacc
-        msg.xgyro = data.xgyro
-        msg.ygyro = data.ygyro
-        msg.zgyro = data.zgyro
-        msg.xmag = data.xmag
-        msg.ymag = data.ymag
-        msg.zmag = data.zmag
+        msg.xacc = data.xacc  # mG
+        msg.yacc = data.yacc  # mG
+        msg.zacc = data.zacc  # mG
+        msg.xgyro = data.xgyro  # mrad/s
+        msg.ygyro = data.ygyro  # mrad/s
+        msg.zgyro = data.zgyro  # mrad/s
+        msg.xmag = data.xmag  # mgauss
+        msg.ymag = data.ymag  # mgauss
+        msg.zmag = data.zmag  # mgauss
         return msg
     # This method creates a ros2 message
     # from NAV_CONTROLLER_OUTPUT object message received from pixhawk4
 
     def getNavMsg(data):
         msg = NavController()
-        msg.nav_roll = data.nav_roll
-        msg.nav_pitch = data.nav_pitch
-        msg.nav_bearing = data.nav_bearing
+        msg.nav_roll = data.nav_roll  # current desired roll                   deg
+        msg.nav_pitch = data.nav_pitch  # current desired pitch                  deg
+        msg.nav_bearing = data.nav_bearing  # current desired heading                deg
+        # Bearing to current target              deg
         msg.target_bearing = data.target_bearing
-        msg.wp_dist = data.wp_dist
-        msg.alt_error = data.alt_error
-        msg.xtrack_error = data.xtrack_error
+        msg.wp_dist = data.wp_dist  # Distance to active waypoint            meters
+        msg.alt_error = data.alt_error  # Current altitude error                 meters
+        msg.xtrack_error = data.xtrack_error  # Current crosstrack error on x-y plane  m
         return msg
 
     # This method creates a ros2 message
     # from RC_CHANNELS object message received from pixhawk4
 
-    def getRcMsg(data):
+    def getRcMsg(data):  # ALL IN microSeconds
         msg = RcMsg()
         msg.chan1_raw = data.chan1_raw
         msg.chan2_raw = data.chan2_raw
@@ -79,7 +80,7 @@ class MsgCreate:
     # This method creates a ros2 message
     # from SERVO_OUTPUT_RAW object message received from pixhawk4
 
-    def getServoMsg(data):
+    def getServoMsg(data):  # ALL in microseconds
         msg = ServoMsg()
         msg.servo1_raw = data.servo1_raw
         msg.servo2_raw = data.servo2_raw
@@ -98,3 +99,12 @@ class MsgCreate:
         msg.servo15_raw = data.servo15_raw
         msg.servo16_raw = data.servo16_raw
         return msg
+
+    def getAttitudeMsg(data):
+        msg = Attitude()
+        msg.roll = data.roll  # radians
+        msg.rollspeed = data.rollspeed  # radians/s
+        msg.pitch = data.pitch  # radians
+        msg.pitchspeed = data.pitchspeed  # radians/s
+        msg.yaw = data.yaw  # radians
+        msg.yawspeed = data.yawspeed  # radians/s

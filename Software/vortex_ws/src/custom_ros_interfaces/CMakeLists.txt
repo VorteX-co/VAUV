@@ -26,6 +26,12 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "msg/NavController.msg"
 "msg/ServoMsg.msg"
 "msg/RcMsg.msg"
+"msg/Attitude.msg"
+"srv/Arm.srv"
+"srv/SetMode.srv"
+"srv/Heartbeat.srv"
+"srv/PublishData.srv"
+
 )
 
 ament_package()

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2014-2015 Open Source Robotics Foundation, Inc.
+# Copyright 2020-2021 Vortex-co.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,38 +31,56 @@ class Getinfo:
         self.master = master
 
     # Method used to get Raw_IMU object message
+
     def getIMU(self):
-
-        self.master.mav.heartbeat_send(
-            mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-            mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
-
+        self.master.mav.request_data_stream_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_DATA_STREAM_ALL,
+            1, 1)
         while True:
 
-            messageIMU = self.master.recv_match(type='RAW_IMU', blocking=True)
+            messageIMU = self.master.recv_match(
+                type='SCALED_IMU', blocking=True)
 
-            if messageIMU.get_type() == 'RAW_IMU':
+            if messageIMU.get_type() == 'SCALED_IMU':
                 return messageIMU
             else:
                 print('NOT IMU')
                 return
 
     # Method used to get Nav_controller_output object message
+
     def getNav(self):
-        self.master.mav.heartbeat_send(
-            mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-            mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
+        self.master.mav.request_data_stream_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_DATA_STREAM_RAW_CONTROLLER,
+            1, 1)
         while True:
             messageNav = self.master.recv_match(
                 type='NAV_CONTROLLER_OUTPUT', blocking=True)
             if messageNav.get_type() == 'NAV_CONTROLLER_OUTPUT':
                 return messageNav
 
+    # Method used to extract ATTITUDE object Message
+
+    def getAttitude(self):
+        self.master.mav.request_data_stream_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_DATA_STREAM_RAW_CONTROLLER,
+            1, 1)
+        while True:
+            messageAttitude = self.master.recv_match(
+                type='ATTITUDE', blocking=True)
+            if messageAttitude.get_type() == 'ATTITUDE':
+                return messageAttitude
+
     # Method used to get Servo_output_Raw object message
+
     def getServoStatus(self):
-        self.master.mav.heartbeat_send(
-            mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-            mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
+        self.master.mav.request_data_stream_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_DATA_STREAM_RC_CHANNELS,
+            1, 1)
         while True:
             messageServo = self.master.recv_match(
                 type='SERVO_OUTPUT_RAW', blocking=True)
@@ -72,9 +90,10 @@ class Getinfo:
     # Method used to get Rc_channel object message
 
     def getRc_channel(self):
-        self.master.mav.heartbeat_send(
-            mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-            mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
+        self.master.mav.request_data_stream_send(
+            self.master.target_system, self.master.target_component,
+            mavutil.mavlink.MAV_DATA_STREAM_RC_CHANNELS,
+            1, 1)
         while True:
             messageRc = self.master.recv_match(
                 type='RC_CHANNELS', blocking=True)
@@ -82,7 +101,4 @@ class Getinfo:
                 return messageRc
 
     def getFlight_modes(self):
-        self.master.mav.heartbeat_send(
-            mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-            mavutil.mavlink.MAV_AUTOPILOT_INVALID, 0, 0, 0)
         return self.master.mode_mapping().keys()
