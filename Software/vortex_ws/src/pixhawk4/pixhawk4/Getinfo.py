@@ -30,7 +30,7 @@ class Getinfo:
     def __init__(self, master):
         self.master = master
 
-    # Method used to get Raw_IMU object message
+    # Method used to get Scaled_IMU object message
 
     def getIMU(self):
         self.master.mav.request_data_stream_send(
@@ -40,20 +40,17 @@ class Getinfo:
         while True:
 
             messageIMU = self.master.recv_match(
-                type='SCALED_IMU', blocking=True)
+                type='RAW_IMU', blocking=True)
 
-            if messageIMU.get_type() == 'SCALED_IMU':
+            if messageIMU.get_type() == 'RAW_IMU':
                 return messageIMU
-            else:
-                print('NOT IMU')
-                return
 
     # Method used to get Nav_controller_output object message
 
     def getNav(self):
         self.master.mav.request_data_stream_send(
             self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_DATA_STREAM_RAW_CONTROLLER,
+            mavutil.mavlink.MAV_DATA_STREAM_ALL,
             1, 1)
         while True:
             messageNav = self.master.recv_match(
@@ -66,7 +63,7 @@ class Getinfo:
     def getAttitude(self):
         self.master.mav.request_data_stream_send(
             self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_DATA_STREAM_RAW_CONTROLLER,
+            mavutil.mavlink.MAV_DATA_STREAM_ALL,
             1, 1)
         while True:
             messageAttitude = self.master.recv_match(

@@ -6,13 +6,3 @@ int32 chan5_raw
 int32 chan6_raw
 int32 chan7_raw
 int32 chan8_raw
-int32 chan9_raw
-int32 chan10_raw
-int32 chan11_raw
-int32 chan12_raw
-int32 chan13_raw
-int32 chan14_raw
-int32 chan15_raw
-int32 chan16_raw
-int32 chan17_raw
-int32 chan18_raw

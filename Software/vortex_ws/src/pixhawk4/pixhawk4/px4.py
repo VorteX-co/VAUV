@@ -21,9 +21,10 @@ from custom_ros_interfaces.msg import (Attitude, NavController, RcMsg,
                                        SensorStatus, ServoMsg)
 from custom_ros_interfaces.srv import Arm, Heartbeat, PublishData, SetMode
 
+from pixhawk4.Commands import Commands
 from pixhawk4.Getinfo import Getinfo
 from pixhawk4.Px4_utils import Px4_utils
-from pixhawk4.Setinfo import Setinfo
+
 
 import rclpy
 from rclpy.node import Node
@@ -44,7 +45,7 @@ class px4_node(Node):
     # create publishing objects
 
         self.imu_publisher = self.create_publisher(
-            SensorStatus, 'Scaled_IMU', 10)
+            SensorStatus, 'Raw_IMU', 10)
         self.nav_publisher = self.create_publisher(
             NavController, 'Nav_Controller', 10)
         self.rc_publisher = self.create_publisher(
@@ -67,7 +68,7 @@ class px4_node(Node):
     # creating information and control pixhawk objects
 
         self.info_px4 = Getinfo(self.master)
-        self.control = Setinfo(self.master)
+        self.control = Commands(self.master)
 
     # Callback functions of services
     def callback_arm(self, request, response):

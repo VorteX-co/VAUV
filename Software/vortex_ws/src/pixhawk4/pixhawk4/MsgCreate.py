@@ -65,16 +65,6 @@ class MsgCreate:
         msg.chan6_raw = data.chan6_raw
         msg.chan7_raw = data.chan7_raw
         msg.chan8_raw = data.chan8_raw
-        msg.chan9_raw = data.chan9_raw
-        msg.chan10_raw = data.chan10_raw
-        msg.chan11_raw = data.chan11_raw
-        msg.chan12_raw = data.chan12_raw
-        msg.chan13_raw = data.chan13_raw
-        msg.chan14_raw = data.chan14_raw
-        msg.chan15_raw = data.chan15_raw
-        msg.chan16_raw = data.chan16_raw
-        msg.chan17_raw = data.chan17_raw
-        msg.chan18_raw = data.chan18_raw
         return msg
 
     # This method creates a ros2 message
@@ -90,14 +80,6 @@ class MsgCreate:
         msg.servo6_raw = data.servo6_raw
         msg.servo7_raw = data.servo7_raw
         msg.servo8_raw = data.servo8_raw
-        msg.servo9_raw = data.servo9_raw
-        msg.servo10_raw = data.servo10_raw
-        msg.servo11_raw = data.servo11_raw
-        msg.servo12_raw = data.servo12_raw
-        msg.servo13_raw = data.servo13_raw
-        msg.servo14_raw = data.servo14_raw
-        msg.servo15_raw = data.servo15_raw
-        msg.servo16_raw = data.servo16_raw
         return msg
 
     def getAttitudeMsg(data):

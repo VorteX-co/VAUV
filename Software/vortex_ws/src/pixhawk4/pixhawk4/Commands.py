@@ -22,7 +22,7 @@ from pymavlink import mavutil
 # movements, flight modes and arm disarm commands
 
 
-class Setinfo:
+class Commands:
 
     def __init__(self, master):
         self.master = master
@@ -109,7 +109,7 @@ class Setinfo:
             print('Channel does not exist.')
             return
 
-        rc_channel_values = [65535 for _ in range(18)]
+        rc_channel_values = [65535 for _ in range(9)]
         rc_channel_values[channel_id - 1] = pwm
         self.master.mav.rc_channels_override_send(
             self.master.target_system,

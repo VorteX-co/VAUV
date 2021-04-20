@@ -1,4 +1,4 @@
-# Vision
+# Pixhawk4
 
 
 ## Description
@@ -52,7 +52,7 @@ px4 is the node responsible for establishing connections with pixhawk4 and retre
 **'/Nav_controller data'** ([custom_ros_interfaces/Msg/Nav_controller])
 **'/Attitude data'** ([custom_ros_interfaces/Msg/Attitude])
 **'/Rc_channel data'** ([custom_ros_interfaces/Msg/Rc_channel])
-**'/Scaled_IMU data'** ([custom_ros_interfaces/Msg/Scaled_IMU])
+**'/Scaled_IMU data'** ([custom_ros_interfaces/Msg/RAW_IMU])
 **'/Servo_raw data'** ([custom_ros_interfaces/Msg/Servo_raw])
 
 ## Hardware 
