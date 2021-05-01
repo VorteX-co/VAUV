@@ -34,20 +34,16 @@ void Log(const std::string & msg)
   boost::mutex::scoped_lock lock(cout_lock);
   std::cout << "[" << boost::this_thread::get_id() << "] " << msg << std::endl;
 }
+/* --------------------------------------------*/
 int main(int argc, char ** argv)
 {
   std::string port_name;
   int64_t baud_rate;
   rclcpp::init(argc, argv);
-  // We create a SerialNode object as a shared pointer
-  // to ensure that it exists for the life of the Asynchronous execution,
-  // using Boost::shared_ptr instead of std::shared_ptr gives the object
-  // other boost capabilities like boost::bind with arguments during invoking
-  // the callbacks.
   const boost::shared_ptr<VDVL::SerialNode> node(new VDVL::SerialNode());
   node->get_parameter("portName", port_name);
   node->get_parameter("baudRare", baud_rate);
-  // Initializing an Executor for launching thread pool of workers
+  // Initializing an Executor for launching thread pool of worker threads.
   VDVL::Executor exe;
   // Setting the OnError callback for error handling during execution
   exe.OnError = [](boost::asio::io_service &, boost::system::error_code ec) {
@@ -55,7 +51,7 @@ int main(int argc, char ** argv)
        * Error handling callback as lambda expression
        *
        * ******************************** */
-      Log(std::string("SerialParser error (asio): ") +
+      Log(std::string("SerialNode error (asio): ") +
         boost::lexical_cast<std::string>(ec));
       rclcpp::shutdown();
       exit(-1);
@@ -66,15 +62,13 @@ int main(int argc, char ** argv)
        * Exception handling callback as lambda expression
        *
        * ******************************** */
-      Log(std::string("SerialParser exception (asio): ") + ex.what());
+      Log(std::string("SerialNode exception (asio): ") + ex.what());
     };
   // Setting the OnRun callback of the executor to Create method of the
-  // SerialNde Class to Start the serial port connection.
+  // SerialNode Class to Start the serial port connection.
   exe.OnRun =
     boost::bind(&VDVL::SerialNode::Create, node, boost::ref(exe.GetIO()));
-  // Calling I/O service .run() from 4 threads within the thread pool
-  // the more threads that call .run() method the more workers are avaibale
-  // for I/O tasks or whatever task supplied by the boost::io_serivce.
-  exe.Run(4);
+  // Joining <N> worker threads.
+  exe.Run(2);
   exit(0);
 }

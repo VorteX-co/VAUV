@@ -52,7 +52,6 @@ class SerialPort : private boost::noncopyable,
   boost::system::error_code _errorCode;
   boost::mutex _errorCodeMutex;
   boost::asio::streambuf _readBuffer;
-  std::string _rawData;
   // _onRead variable used to hold external callback function supplied
   // by the user of the SerialPort class [when using an object from this
   // class we can supply
@@ -70,8 +69,7 @@ class SerialPort : private boost::noncopyable,
     size_t bytesTransferred);
 
 public:
-  SerialPort(
-    boost::asio::io_service & ioService, const std::string & portName);
+  SerialPort(boost::asio::io_service & ioService, const std::string & portName);
   ~SerialPort();
 
   void Open(
