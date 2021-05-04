@@ -21,7 +21,7 @@
  * for the Asynchronous I/O operations.
  * 1- Own io_service object
  * 2- Launches a threads pool to run the service functions
- * 3- Providing calback functions that will be ...
+ * 3- Providing callback functions that will be ...
  *  will be invoked at interesting points of the execution.
  * ******************************** */
 namespace VDVL

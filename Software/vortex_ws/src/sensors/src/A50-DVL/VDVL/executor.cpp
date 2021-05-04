@@ -53,7 +53,8 @@ void VDVL::Executor::Run(unsigned int numThreads)
    * ************************************************ */
   boost::thread_group workers;
   numThreads == static_cast<unsigned int>(-1) ?
-  boost::thread::hardware_concurrency() : numThreads;
+  boost::thread::hardware_concurrency() :
+  numThreads;
   for (unsigned int i = 0; i < numThreads; ++i) {
     // boost::bind() used to attach a function with it's arguments
     // to each created thread to be executed later.
