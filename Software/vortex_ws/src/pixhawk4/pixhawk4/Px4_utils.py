@@ -90,6 +90,8 @@ class Px4_utils:
             Px4_utils.publish_nav(node)
             Px4_utils.publish_rc(node)
             Px4_utils.publish_servo(node)
+            Px4_utils.publish_attitude(node)
+            Px4_utils.publish_depth(node)
             time.sleep(0.5)
 
 # Following functions uses publisher objects
@@ -124,3 +126,17 @@ class Px4_utils:
         data = Getinfo.getAttitude(self.info_px4)
         message = MsgCreate.getAttitudeMsg(data)
         self.attitude_publisher.publish(message)
+
+    def publish_depth(self):
+        data = Getinfo.get_depth(self.info_px4)
+        message = MsgCreate.getDepthMsg(data)
+        self.depth_publisher.publish(message)
+
+    def set_thrusters(self, message):
+        self.control.set_roll(message.roll)
+        self.control.set_pitch(message.pitch)
+        self.control.set_yaw(message.yaw)
+        self.control.set_throttle(message.throttle)
+        self.control.set_forward(message.forward)
+        self.control.set_set_lateral(message.lateral)
+        return True

@@ -15,7 +15,7 @@
 # limitations under the License.
 
 
-from custom_ros_interfaces.msg import (Attitude, NavController, RcMsg,
+from custom_ros_interfaces.msg import (Attitude, Depth, NavController, RcMsg,
                                        SensorStatus, ServoMsg)
 
 # This module is used to create messages that will be published by pixhawk
@@ -90,3 +90,9 @@ class MsgCreate:
         msg.pitchspeed = data.pitchspeed  # radians/s
         msg.yaw = data.yaw  # radians
         msg.yawspeed = data.yawspeed  # radians/s
+        return msg
+
+    def getDepthMsg(data):
+        msg = Depth()
+        msg.depth = data.alt  # meters
+        return msg

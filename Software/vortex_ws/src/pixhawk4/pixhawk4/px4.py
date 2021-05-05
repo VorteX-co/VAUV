@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3!
 
 # Copyright 2020-2021 Vortex-co.
 #
@@ -17,8 +17,8 @@
 
 import threading
 
-from custom_ros_interfaces.msg import (Attitude, NavController, RcMsg,
-                                       SensorStatus, ServoMsg)
+from custom_ros_interfaces.msg import (Attitude, Depth, NavController, RcMsg,
+                                       SensorStatus, ServoMsg, SetThrustChannels)
 from custom_ros_interfaces.srv import Arm, Heartbeat, PublishData, SetMode
 
 from pixhawk4.Commands import Commands
@@ -37,7 +37,7 @@ class px4_node(Node):
 
         self.master = Px4_utils.init_px4()
 
-        self.heartbeat = threading.Thread(
+        self.heart_heat = threading.Thread(
             target=Px4_utils.heart_beats, args=(self,))
         self.publish_data = threading.Thread(
             target=Px4_utils.publish_data, args=(self,))
@@ -56,6 +56,12 @@ class px4_node(Node):
         self.attitude_publisher = self.create_publisher(
             Attitude, 'Attitude', 10)
 
+        self.depth_publisher = self.create_publisher(Depth, 'Depth', 10)
+
+    #    Thrusters subscriber object
+        self.setThusters = self.create_subscription(
+            SetThrustChannels, 'SetThrusters', self.callback_SetThrusters, 10)
+
     # create px4 node services
         self.arm_service = self.create_service(Arm, 'Arm', self.callback_arm)
         self.setmode_service = self.create_service(
@@ -69,32 +75,54 @@ class px4_node(Node):
 
         self.info_px4 = Getinfo(self.master)
         self.control = Commands(self.master)
-
+        self.control.init_channels()
     # Callback functions of services
+
     def callback_arm(self, request, response):
         isArm = request.arm
         if isArm:
+            self.get_logger().info('Armed')
             response.ack = self.control.arm()
         else:
+            self.get_logger().info('Disarmed')
             response.ack = self.control.disarm()
         return response
 
     def callback_setFlightMode(self, request, response):
         response.ack = self.control.setFlight_mode(request.mode)
+        if response.ack:
+            self.get_logger().info(
+                'Command is valid (is supported and has valid parameters), and was executed.')
+        else:
+            self.get_logger().info(
+                'Try:' + 'STABILIZE' + 'POSHOLD' + 'AUTO' + 'GUIDED' +
+                'MANUAL' + 'SURFACE' + 'ALT_HOLD' + 'CIRCLE' + 'ACRO')
         return response
 
     def callback_heartbeat(self, request, response):
         if request.start:
-            self.heartbeat.start()
+            self.get_logger().info('HEARTBEAT initialized')
+            self.heart_beat.start()
             response.ack = True
         return response
 
     def callback_publishdata(self, request, response):
         if request.start:
+            self.get_logger().info('Data Publishing initialized')
             self.publish_data.start()
             response.ack = True
         return response
 
+    # Call back function for thrust control subscriber
+
+    def callback_SetThrusters(self, msg):
+        if msg.frameno is not self.frameno:
+            ack = Px4_utils.set_thrusters(self, msg)
+        if ack:
+            self.frameno = msg.frameno
+            self.get_logger().info('Actuators set')
+        else:
+            self.get_logger().info('Actuators not set')
 # main function that starts px4 node
 
 

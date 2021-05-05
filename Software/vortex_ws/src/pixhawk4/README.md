@@ -52,9 +52,14 @@ px4 is the node responsible for establishing connections with pixhawk4 and retre
 **'/Nav_controller data'** ([custom_ros_interfaces/Msg/Nav_controller])
 **'/Attitude data'** ([custom_ros_interfaces/Msg/Attitude])
 **'/Rc_channel data'** ([custom_ros_interfaces/Msg/Rc_channel])
-**'/Scaled_IMU data'** ([custom_ros_interfaces/Msg/RAW_IMU])
+**'/RAW_IMU data'** ([custom_ros_interfaces/Msg/RAW_IMU])
 **'/Servo_raw data'** ([custom_ros_interfaces/Msg/Servo_raw])
-
+**'/Depth data'**([custom_ros_interfaces/Msg/Depth])
+#### Services Node uses
+**'Arm'** ([custom_ros_interfaces/srv/Arm])
+**'StartPublishData'** ([custom_ros_interfaces/srv/Heartbeat])
+**'/StartHeartBeat'** ([custom_ros_interfaces/srv/PublishData])
+**'/SetFlightMode'** ([custom_ros_interfaces/srv/SetMode])
 ## Hardware 
 Pixhawk4 packages accesses the following hardware:
 * Pixhawk 4
