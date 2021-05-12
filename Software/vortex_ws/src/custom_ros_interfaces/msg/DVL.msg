@@ -1,21 +1,29 @@
 
-#Time
-float64 time
+#ROS publishing time 
+float64  stamp
+
+# difference in time between current & previous measurments.
+float64 dt
 
 #Measured velocity [m/s]
-float64 vx
-float64 vy
-float64 vz
+geometry_msgs/Twist  twist
 
-#Figure of Merit
-float64 fom
+# Velocity variance
+float64  variance
+
+#Dead reckoning from velocity [In DVL Frame]
+geometry_msgs/Point translation
 
 #Altitude of the sensor
 float64 altitude
 
-#Validity of velocity
-bool valid
+#Generalized confidence of measurments
+float64 confidence
 
-#Temprature status
+#Temprature warning status
 bool status
+
+# Count of measurments
+float64 count
+
 

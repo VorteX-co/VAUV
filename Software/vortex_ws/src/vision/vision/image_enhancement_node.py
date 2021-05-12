@@ -71,8 +71,8 @@ class color_correction:
 
 
 class auto_contrast:
-    def __init__(self, imag):
-        self.image = imag
+    def __init__(self, img):
+        self.image = img
 
     def power_transformation(self):
         # Get the information of the incoming image type.
@@ -121,13 +121,15 @@ class MinimalPublisher_Subscriber(Node):
     def timer_callback_Z(self):
         self.publisher1_.publish(
             self.bridge.cv2_to_imgmsg(np.array(self.enhanced_frame_Z), "bgr8"))
-        self.get_logger().info('Publishing ZED camera frame: {}'.format(self.ZEDpub))
+        self.get_logger().info(
+            'Publishing ZED camera frame: {}'.format(self.ZEDpub))
         self.ZEDpub += 1
 
     def timer_callback_L(self):
         self.publisher2_.publish(
             self.bridge.cv2_to_imgmsg(np.array(self.enhanced_frame_L), "bgr8"))
-        self.get_logger().info('Publishing low light camera frame: {}'.format(self.LLpub))
+        self.get_logger().info(
+            'Publishing low light camera frame: {}'.format(self.LLpub))
         self.LLpub += 1
 
     def enhance(self, cv_img):
@@ -176,4 +178,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-

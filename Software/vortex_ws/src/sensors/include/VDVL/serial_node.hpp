@@ -29,20 +29,17 @@
 namespace VDVL
 {
 class SerialNode : private boost::noncopyable,
-  public boost::enable_shared_from_this<SerialNode>, public rclcpp::Node
+  public boost::enable_shared_from_this<SerialNode>,
+  public rclcpp::Node
 {
   boost::shared_ptr<VDVL::SerialPort> _serial;
   std::string _portName;
   unsigned int _baudRate;
   boost::posix_time::ptime _lastRead;
-  std::string _rawData;
-  boost::mutex _rawDataMutex;
   rclcpp::Publisher<custom_ros_interfaces::msg::DVL>::SharedPtr _publisher;
-  std::vector<float> _numerics;
-  bool _valid;
-  bool _status;
-  void OnParse();
-  void OnPublish();
+  unsigned int count_{0};
+  void OnPublish(std::string buffer);
+  rclcpp::Time _pub_time;
 
 public:
   SerialNode();

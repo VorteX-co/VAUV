@@ -13,9 +13,11 @@
 // limitations under the License.
 #include "../../../include/VDVL/serial_port.hpp"
 #include <boost/bind.hpp>
+#include <boost/chrono.hpp>
 #include <boost/lexical_cast.hpp>
-#include <string>
+#include <boost/thread/thread.hpp>
 #include <iostream>
+#include <string>
 #include <vector>
 boost::system::error_code VDVL::SerialPort::Flush()
 {
@@ -24,8 +26,11 @@ boost::system::error_code VDVL::SerialPort::Flush()
    *  especially when communication is first begun or upon an error condition.
    * *************************************************** */
   boost::system::error_code ec;
-  const bool isFlushed = !::tcflush(_serialPort.native(), TCIOFLUSH);
-  if (!isFlushed) {
+  const bool isFlushed =
+    !::tcflush(_serialPort.lowest_layer().native_handle(), TCIFLUSH);
+  if (isFlushed) {
+    ec = boost::system::error_code();
+  } else {
     ec = boost::system::error_code(errno,
         boost::asio::error::get_system_category());
   }
@@ -64,7 +69,7 @@ void VDVL::SerialPort::ReadComplete(
   /* ***************************************************************
    * ReadComplete callback is a data reading compeletion handler.
    * *************************************************************** */
-  if (!ec) {  // No system error
+  if (!ec) {
     // copying the buffer to a local vector<unsigned char> for processing
     std::vector<unsigned char> tmpBuff(_readBuffer.size());
     buffer_copy(boost::asio::buffer(tmpBuff), _readBuffer.data());
@@ -75,58 +80,60 @@ void VDVL::SerialPort::ReadComplete(
     }
     // clearing the buffer for another read.
     _readBuffer.consume(bytesTransferred);
+    bytesTransferred = 0;
+    boost::this_thread::sleep(boost::posix_time::milliseconds(50));
     // queue another read.
     ReadBegin();
   } else {
     // boost::lexical_cast converting boost erros to string for displaying
+    std::cout << " errors  found " << std::endl;
     std::cout << boost::lexical_cast<std::string>(ec) << std::endl;
     // CLoseing the serial_port I/O object
     Close();
     SetErrorCode(ec);
   }
 }
+
+// Constructor
 VDVL::SerialPort::SerialPort(
   boost::asio::io_service & ioService,
   const std::string & portName)
 : _serialPort(ioService, portName), _isOpen(false) {}
+
+/* ***************************************************************
+ * Open method sets the serial port cofiguration
+ * also sets the user supplied Onread callback function
+ * ***************************************************************/
 void VDVL::SerialPort::Open(
   const boost::function<void(std::vector<unsigned char> &, size_t)> & onRead,
   unsigned int baudRate, VDVL::SerialParams serialParams,
   boost::asio::serial_port_base::flow_control flowControl)
 {
-  /* ***************************************************************
-   * Open method sets the serial port cofiguration
-   * also sets the user supplied Onread callback function
-   * ***************************************************************/
   _onRead = onRead;
   _serialPort.set_option(boost::asio::serial_port_base::baud_rate(baudRate));
   _serialPort.set_option(serialParams.get<0>());
   _serialPort.set_option(serialParams.get<1>());
   _serialPort.set_option(serialParams.get<2>());
   _serialPort.set_option(flowControl);
-  /*
-  const boost::system::error_code ec = Flush();
-  if (ec) {
-    SetErrorCode(ec);
-  } */
+
+  // const boost::system::error_code ec = Flush();
+  // if (ec) {
+  // SetErrorCode(ec);
+  // }
   _isOpen = true;
   if (_onRead) {
-    // don't start the async reader unless a read callback has been provided
-    // be sure shared_from_this() is only called after object is already managed
-    // in a shared_ptr, so need to fully construct, then call Open() on the ptr
-    _serialPort.get_io_service().post(boost::bind(
-        &SerialPort::ReadBegin,
-        shared_from_this()));  // want read to start from a thread in io_service
+    _serialPort.get_io_service().post(
+      boost::bind(&SerialPort::ReadBegin, shared_from_this()));
   }
 }
 VDVL::SerialPort::~SerialPort() {Close();}
+
 void VDVL::SerialPort::Close()
 {
   if (_isOpen) {
     _isOpen = false;
     boost::system::error_code ec;
     _serialPort.cancel(ec);
-    ec = Flush();
     SetErrorCode(ec);
     _serialPort.close(ec);
     SetErrorCode(ec);
