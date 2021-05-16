@@ -133,6 +133,6 @@ class Commands:
         self.set_roll(1500)
         self.set_pitch(1500)
         self.set_yaw(1500)
-        self.set_Forward(1500)
+        self.set_forward(1500)
         self.set_throttle(1500)
         self.set_lateral(1500)

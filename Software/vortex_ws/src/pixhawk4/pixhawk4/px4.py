@@ -34,9 +34,10 @@ class px4_node(Node):
     # initializing node
     def __init__(self):
         super().__init__('px4')
-
+        self.frameno=0
         self.master = Px4_utils.init_px4()
-
+        if self.master is None:
+            return
         self.heart_heat = threading.Thread(
             target=Px4_utils.heart_beats, args=(self,))
         self.publish_data = threading.Thread(
@@ -116,6 +117,7 @@ class px4_node(Node):
     # Call back function for thrust control subscriber
 
     def callback_SetThrusters(self, msg):
+        ack=0
         if msg.frameno is not self.frameno:
             ack = Px4_utils.set_thrusters(self, msg)
         if ack:

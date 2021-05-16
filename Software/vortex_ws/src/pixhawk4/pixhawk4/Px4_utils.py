@@ -138,5 +138,5 @@ class Px4_utils:
         self.control.set_yaw(message.yaw)
         self.control.set_throttle(message.throttle)
         self.control.set_forward(message.forward)
-        self.control.set_set_lateral(message.lateral)
+        self.control.set_lateral(message.lateral)
         return True
