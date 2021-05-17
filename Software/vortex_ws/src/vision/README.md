@@ -51,11 +51,14 @@ The Vision package has been tested under [ROS2](https://index.ros.org/doc/ros2/I
 ### image_enhancement
 The image enhancement node is responsible for improving the quality of the raw images before processing. By  applying many filters for histogram equalization, Noise removal, and so on.
 #### Subscribed Topics
-* **`/raw frame`** ([sensor_msgs/Frame])
-  The raw frames from sensor package.
+* **`/~/left_raw/image_rect_color `** ([sensor_msgs/Frame])
+  raw frames from ZED camera.
+* **`/lowlight_camera`** ([sensor_msgs/Frame])
+  raw frames from low light camera.  
 #### Published Topics
-* **`/enhanced frame`** ([sensor_msgs/Frame])
-  The enhanced frames after removing noise and manipulate contrast, darkness, and so on.
+* **`/enhanced frame_l`** ([sensor_msgs/Frame])
+* **`/enhanced frame_z`** ([sensor_msgs/Frame])
+  The enhanced frames after manipulating contrast and correcting the image color 
   
 ### object_detection 
 Contains deep learning models that take the enhanced frame to get the image details.
