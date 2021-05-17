@@ -1,1 +1,0 @@
-Custom ROS interfaces package

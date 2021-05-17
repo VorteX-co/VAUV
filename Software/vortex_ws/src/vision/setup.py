@@ -1,3 +1,4 @@
+"""This is the image enhancement publisher_subscriber setup."""
 from setuptools import setup
 
 package_name = 'vision'
@@ -21,7 +22,7 @@ setup(
 
     entry_points={
         'console_scripts': [
-            'pubsub =vision.image_enhancement_node:main',
+            'Enhancer = vision.image_enhancement_node:main',
         ],
     },
 )

@@ -1,1 +1,0 @@
-Generic interfaces package
