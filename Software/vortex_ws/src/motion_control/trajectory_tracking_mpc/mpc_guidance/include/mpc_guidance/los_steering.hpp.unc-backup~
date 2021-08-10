@@ -1,0 +1,51 @@
+#include <Eigen/Core>
+#include <vector>
+
+/**
+ * @brief The LOS class is an implementation of lookahead-based steering law
+ *  Reference: Handbook of Marine Craft Hydrodynamics and Motion Control, Thor
+ * I. Fossen.
+ */
+class LOS {
+ public:
+  /**
+   * @brief set sets the current target position
+   * @param wp  2D-waypoint
+   */
+  void setpoint(const Eigen::Vector2d &wp);
+  /**
+   * @brief update the local state variables
+   * @param pose [x y yaw]
+   * @param vel [u v r]
+   */
+  void update_state(const Eigen::Vector3d &pose, const Eigen::Vector3d &vel);
+  /**
+   * @brief steering-law calculation
+   */
+  void calculate_reference();
+  /**
+   * @brief  calculating a feasible reference
+   */
+  void smooth_reference();
+  double rd{0.0};
+  double rdd{0.0};
+  double yaw_des{0.0};
+  bool inCircle{false};
+
+ private:
+  double dt{0.055};   // sampling time
+  double R{0.2};      // Radius of the sphere of acceptance
+  double delta{4.0};  // lookahead distance = [1.5:2.5] * vehicle length
+  Eigen::Vector3d pose_state{0.0, 0.0, 0.0};  // x y yaw
+  Eigen::Vector3d vel_state{0.0, 0.0, 0.0};   // u v r
+  Eigen::Vector2d goal{0.0, 0.0};
+  Eigen::Vector2d prev_goal{0.0, 0.0};
+  double yaw_ref{0.0};
+  double yaw_ref_prev{0.0};
+  double yaw_ref_prev_prev{0.0};
+  double rd_prev{0.0};
+  double r_ref{0.0};
+  double yaw_des_prev{0.0};
+  double yaw_des_prev_prev{0.0};
+  void InCircle();
+};
