@@ -1,0 +1,27 @@
+### Paramteres used by the guidance node ###
+mpc_guidance:
+  ros__parameters:
+# Constraints for trajectory generation
+    max_xy: 100.0
+    max_z:  10.0
+    max_align_inclination: 1.2
+    max_x_vel: 0.6
+    max_y_vel: 0.3
+    max_z_vel: 0.45
+    max_rot_vel: 0.35
+    max_x_acc: 0.35
+    max_y_acc: 0.15
+    max_z_acc: 0.2
+    max_rot_acc: 0.15
+    max_trans_jerk: 0.1
+    max_rot_jerk: 0.075
+# LOS paramteres
+    delta: 4.0  # Lookahead distance ~= 1.5 to 2.5 * AUV length
+    dt: 0.1     # Sampling time for yaw angular velocity calculation
+    kp_rd: 0.1  # Proptional gain for the yaw angular velocity control law
+    T: 0.35     # Low-pass filter sampling time
+    
+    
+    
+
+    
