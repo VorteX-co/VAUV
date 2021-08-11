@@ -19,11 +19,11 @@ and publish the result.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import cv2
+import numpy as np
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
-import cv2
-import numpy as np
 
 
 class color_correction:
@@ -49,16 +49,17 @@ class color_correction:
 
     """
 
-    def __init__(self, imag):
+    def __init__(self, input_image):
         """
         Construct all the necessary attributes for the color correction object.
 
         Parameters
         ----------
-            imag : 3D array
+        input_image : 3D array
+            RGB Image
 
         """
-        self.image = imag
+        self.image = input_image
 
     def stretch_Histogram(self, channel, clip_hist_percent=1.5):
         """
@@ -167,7 +168,8 @@ class auto_contrast:
 
         Parameters
         ----------
-            imag : 3D array
+        img : 3D array
+            RGB Image
 
         """
         self.image = img
@@ -299,6 +301,7 @@ class MinimalPublisher_Subscriber(Node):
         Parameters
         ----------
         image : 3D array
+            RGB image
 
         Returns
         -------
@@ -388,7 +391,7 @@ class MinimalPublisher_Subscriber(Node):
 
         Parameters
         ----------
-        data :  1D array
+        msg : 1D array
             Image ros message
 
         Returns
@@ -413,7 +416,7 @@ class MinimalPublisher_Subscriber(Node):
 
         Parameters
         ----------
-        data :  1D array
+        msg : 1D array
             Image ros message
 
         Returns
@@ -458,7 +461,8 @@ def main(args=None):
 
     Parameters
     ----------
-    None
+    args : None
+        None arguments
 
     Returns
     -------

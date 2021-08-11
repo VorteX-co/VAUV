@@ -1,0 +1,1 @@
+This is the base directory of the ROS workspace.
