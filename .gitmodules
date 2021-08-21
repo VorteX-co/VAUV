@@ -1,7 +1,3 @@
 [submodule "Software/vortex_ws/src/zed-ros2-wrapper"]
 	path = Software/vortex_ws/src/zed-ros2-wrapper
 	url = https://github.com/VorteX-co/zed-ros2-wrapper.git
-[submodule "Software/vortex_ws/src/vision_opencv"]
-	path = Software/vortex_ws/src/vision_opencv
-	url = git@github.com:ros-perception/vision_opencv.git
-	branch = ros2
