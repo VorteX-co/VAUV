@@ -23,7 +23,7 @@ jobs:
       uses: ros-tooling/action-ros-ci@0.1.0
       with:
         target-ros2-distro: eloquent
-        package-name: battery_management_unit custom_ros_interfaces generic_interfaces health_monitor localization mission_planning motion_planning sensors pixhawk4 vision
+        package-name: battery_management_unit custom_ros_interfaces generic_interfaces health_monitor localization mission_planning motion_planning sensors pixhawk4 vision trajectory_tracking_mpc
         vcs-repo-file-url: ""
 
     - name: Upload Logs
