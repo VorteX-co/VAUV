@@ -32,10 +32,10 @@ class LeakageSensor:
     def takeValues(self):
         value = GPIO.input(Leak_pin)
         if value == GPIO.HIGH:
-                value_str = "HIGH"
+                value_str = True
         else:
-                value_str = "LOW"
-        print("Value read from pin is {}".format(value_str))
+                value_str = False
+                
         return value_str
     
     def cleanUP(self):

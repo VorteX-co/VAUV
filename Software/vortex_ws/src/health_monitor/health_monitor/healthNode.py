@@ -2,11 +2,16 @@
 import rclpy
 from rclpy.node import Node
 
-import LeakageSensor
+from health_monitor.LeakageSensor import LeakageSensor
 
 class HealthNode(Node):
     def __init__(self):
         super().__init__("HealthNode")
+        leakage_Sensor = LeakageSensor()
+        
+        #leakage_Sensor.takeValues()
+
+        #leakage_Sensor.cleanUP()
         
 
 
