@@ -33,6 +33,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "srv/SetMode.srv"
 "srv/Heartbeat.srv"
 "srv/PublishData.srv"
+"msg/SetLed.msg"
 )
 
 ament_package()

@@ -106,31 +106,37 @@ class Px4_utils:
         data = Getinfo.getIMU(self.info_px4)
         message = MsgCreate.getIMUMsg(data)
         self.imu_publisher.publish(message)
+        return
 
     def publish_nav(self):
         data = Getinfo.getNav(self.info_px4)
         message = MsgCreate.getNavMsg(data)
         self.nav_publisher.publish(message)
+        return
 
     def publish_rc(self):
         data = Getinfo.getRc_channel(self.info_px4)
         message = MsgCreate.getRcMsg(data)
         self.rc_publisher.publish(message)
+        return
 
     def publish_servo(self):
         data = Getinfo.getServoStatus(self.info_px4)
         message = MsgCreate.getServoMsg(data)
         self.servo_publisher.publish(message)
+        return
 
     def publish_attitude(self):
         data = Getinfo.getAttitude(self.info_px4)
         message = MsgCreate.getAttitudeMsg(data)
         self.attitude_publisher.publish(message)
+        return
 
     def publish_depth(self):
         data = Getinfo.get_depth(self.info_px4)
         message = MsgCreate.getDepthMsg(data)
         self.depth_publisher.publish(message)
+        return
 
     def set_thrusters(self, message):
         self.control.set_roll(message.roll)
@@ -139,4 +145,12 @@ class Px4_utils:
         self.control.set_throttle(message.throttle)
         self.control.set_forward(message.forward)
         self.control.set_lateral(message.lateral)
+        return True
+
+    def set_LedLights(self, message):
+        if message.servo > 8 or message.servo < 1:
+            return False
+        if message.pwm > 1900 or message.pwm < 1100:
+            return False
+        self.control.set_servo_pwm(message.servo_n, message.pwm)
         return True

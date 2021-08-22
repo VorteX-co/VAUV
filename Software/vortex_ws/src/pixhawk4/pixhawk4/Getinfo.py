@@ -91,13 +91,13 @@ class Getinfo:
     def get_depth(self):
         self.master.mav.request_data_stream_send(
             self.master.target_system, self.master.target_component,
-            mavutil.mavlink.MAV_DATA_STREAM_EXTENDED_STATUS,
+            mavutil.mavlink.MAV_DATA_STREAM_ALL,
             1, 1)
         while True:
             messageDepth = self.master.recv_match(
-                type='VFR_HUD', blocking=True)
+                type='SCALED_PRESSURE', blocking=True)
             time.sleep(0.1)
-            if messageDepth.get_type() == 'VFR_HUD':
+            if messageDepth.get_type() == 'SCALED_PRESSURE':
                 return messageDepth
 
     # Method used to get Rc_channel object message

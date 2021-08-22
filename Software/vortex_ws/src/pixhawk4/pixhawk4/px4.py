@@ -18,7 +18,7 @@
 import threading
 
 from custom_ros_interfaces.msg import (Attitude, Depth, NavController, RcMsg,
-                                       SensorStatus, ServoMsg, SetThrustChannels)
+                                       SensorStatus, ServoMsg, SetLed, SetThrustChannels)
 from custom_ros_interfaces.srv import Arm, Heartbeat, PublishData, SetMode
 
 from pixhawk4.Commands import Commands
@@ -34,11 +34,13 @@ class px4_node(Node):
     # initializing node
     def __init__(self):
         super().__init__('px4')
-        self.frameno=0
+        self.frameno = 0
         self.master = Px4_utils.init_px4()
         if self.master is None:
             return
-        self.heart_heat = threading.Thread(
+        self.get_logger().info(
+                'Pixhawk initialized')
+        self.heart_beat = threading.Thread(
             target=Px4_utils.heart_beats, args=(self,))
         self.publish_data = threading.Thread(
             target=Px4_utils.publish_data, args=(self,))
@@ -53,7 +55,6 @@ class px4_node(Node):
             RcMsg, 'Rc_channel', 10)
         self.servo_publisher = self.create_publisher(
             ServoMsg, 'Servo_raw', 10)
-
         self.attitude_publisher = self.create_publisher(
             Attitude, 'Attitude', 10)
 
@@ -62,6 +63,9 @@ class px4_node(Node):
     #    Thrusters subscriber object
         self.setThusters = self.create_subscription(
             SetThrustChannels, 'SetThrusters', self.callback_SetThrusters, 10)
+
+        self.setLedLights = self.create_subscription(
+            SetLed, 'SetLedLights', self.callback_setFlightMode, 10)
 
     # create px4 node services
         self.arm_service = self.create_service(Arm, 'Arm', self.callback_arm)
@@ -115,9 +119,18 @@ class px4_node(Node):
         return response
 
     # Call back function for thrust control subscriber
+    def callback_SetLedLights(self, msg):
+        ack = 0
+        if msg.frameno is not self.frameno:
+            ack = Px4_utils.set_LedLights(self, msg)
+        if ack:
+            self.frameno = msg.frameno
+            self.get_logger().info('LedLights set')
+        else:
+            self.get_logger().info('LedLights not set')
 
     def callback_SetThrusters(self, msg):
-        ack=0
+        ack = 0
         if msg.frameno is not self.frameno:
             ack = Px4_utils.set_thrusters(self, msg)
         if ack:
