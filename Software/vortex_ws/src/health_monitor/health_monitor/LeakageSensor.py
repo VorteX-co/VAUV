@@ -40,6 +40,17 @@ class LeakageSensor:
     
     def cleanUP(self):
         GPIO.cleanUP(self.leak_pin)
+
+    def take_data(self):
+        return takeValues(self)
+            
+    def publish_leakage(self):
+        while True:
+            data =take_data(self.leakage_Sensor)
+            self.publisher.publish(data)
+            time.sleep(0.5)
+            self.leakage_Sensor.cleanUP()
+        return data
     
 # def main():
 #     leakage_Sensor = LeakageSensor()
