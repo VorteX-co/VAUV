@@ -3,15 +3,17 @@ import rclpy
 from rclpy.node import Node
 
 from health_monitor.LeakageSensor import LeakageSensor
+import threading
 
 class HealthNode(Node):
     def __init__(self):
         super().__init__("HealthNode")
         leakage_Sensor = LeakageSensor()
-        
-        #leakage_Sensor.takeValues()
-
-        #leakage_Sensor.cleanUP()
+        self.dataThread = threading.Thread(
+            target=leakage_Sensor.publish_leakage, args=(self,))
+        self.publisher = self.create_publisher(#leakage sensor message,
+        int,"HealthNode",10
+        )
         
 
 
@@ -21,6 +23,7 @@ class HealthNode(Node):
 def main (args=None):
     rclpy.init(args=args)
     healthNode=Node("HealthNode")
+    healthNode.dataThread.start()
     rclpy.spin(healthNode)
     rclpy.shutdown()
 
