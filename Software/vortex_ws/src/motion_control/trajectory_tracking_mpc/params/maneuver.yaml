@@ -1,0 +1,48 @@
+### Paramteres used by the maneuver_mpc node ###
+maneuver_node:
+  ros__parameters:
+    # Solver parameters
+    N:       10.0  # Prediction horizon
+    dt:       0.1 # Sampling time
+    # Cost function weights
+    # Error penalty
+    w_xe:     1e9
+    w_ye:     1e9
+    w_psie:   1e9
+    w_ue:     1e9
+    w_ve:     1e9
+    w_re:     1e9
+    # Actuation penalty
+    w_Fx:     25.0 
+    w_Fy:     25.0
+    w_Mz:     25.0
+    # Actuation rate penalty
+    w_Fx_dot: 5.0
+    w_Fy_dot: 5.0
+    w_Mz_dot: 5.0
+    # Hydrodynamics coefficients
+    Mx:       2641.9  # Total surge mass [rigid body mass + added mass] 
+    My:       3084.0  # Total sway mass [rigid body mass + added mass]
+    Mpsi:     915.5   # Total yaw inertia [rigid body inertia Izz + added inertia]
+    LDx:      74.82   # Linear damping in surge
+    LDy:      69.48   # Linear damping in sway
+    LDpsi:    105.0   # Linear damping in yaw
+    QDx:      748.22  # Quadratic damping in surge
+    QDy:      992.53  # Quadratic damping in sway
+    QDpsi:    523.27  # Quadratic damping in yaw
+    # State constraints
+    max_xy:   100.0
+    max_psi:  3.14059265359
+    max_u:    0.65
+    max_v:    0.4
+    max_r:    0.4
+    # Actuation constraints
+    max_Fx:   1100.0
+    max_Fy:   1100.0
+    max_Mz:   900.0
+
+
+
+   
+
+    
