@@ -71,4 +71,4 @@ $ ros2 run sensors  pub --ros-args -p  Port:="/dev/ttyUSB0"
   * altitude: Measured altitude to the bottom (m)
   * valid: if ture then the DVL has lock on the bottom and the altitude and velocities are valid (true/false)
   * status: if false  then the DVL in normal operation, true then there is a high temperature warning (true/false)
-  * count: count of  velocity reports from initializing the conection with the serial port
+  * count: count of  velocity reports from initializing the
