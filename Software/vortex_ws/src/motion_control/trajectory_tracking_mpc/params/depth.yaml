@@ -1,0 +1,41 @@
+### Paramteres used by the depth_mpc node ###
+depth_node:
+  ros__parameters:
+    # Solver parameters
+    N:        15.0  # Prediction horizon
+    dt:       0.1 # Sampling time
+    # Cost function weights
+    # Error penalty
+    w_ze:     1e10 
+    w_thetae: 1e10
+    w_we:     1e10
+    # Actuation penalty
+    w_Fz:     55.0 
+    w_My:     55.0
+    # Actuation rate penalty
+    w_Fz_dot: 100.0
+    w_My_dot: 100.0
+    # Hydrodynamics coefficients
+    Mz:       5459.9  # Total heave mass [rigid body mass + added mass] 
+    Mtheta:   224.32   # Total pitch inertia [rigid body inertia Iyy + added inertia]
+    LDz:      728.4   # Linear damping in heave
+    LDtheta:  105.0   # Linear damping in pitch
+    QDz:      1821.01  # Quadratic damping in heave
+    QDtheta:  523.27  # Quadratic damping in pitch
+    # State constraints
+    max_z:    100.0
+    max_theta: 1.56979632679
+    max_w:    0.4
+    maxq:     0.3
+    # Actuation constraints
+    max_Fz:   1200.0
+    max_My:   700.0
+    # Physical properties
+    weight:   18274.7547
+    buoyancy: 18538.2638568
+
+
+
+   
+
+    
