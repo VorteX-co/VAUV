@@ -43,7 +43,7 @@ class HealthNode(Node):
 
 def main (args=None):
     rclpy.init(args=args)
-    healthNode=Node("HealthNode")
+    healthNode=HealthNode()
     healthNode.dataThread.start()
     rclpy.spin(healthNode)
     rclpy.shutdown()
