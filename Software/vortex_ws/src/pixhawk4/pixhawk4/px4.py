@@ -81,6 +81,8 @@ class px4_node(Node):
         self.info_px4 = Getinfo(self.master)
         self.control = Commands(self.master)
         self.control.init_channels()
+        self.control.init_servos()
+
     # Callback functions of services
 
     def callback_arm(self, request, response):
@@ -117,8 +119,8 @@ class px4_node(Node):
             self.publish_data.start()
             response.ack = True
         return response
-   
-   # Call back function for LED control subscriber
+
+# Call back function for LED control subscriber
     def callback_SetLedLights(self, msg):
         ack = 0
         if msg.frameno is not self.frameno:
@@ -129,7 +131,7 @@ class px4_node(Node):
         else:
             self.get_logger().info('LedLights not set')
 
- # Call back function for thrust control subscriber
+# Call back function for thrust control subscriber
     def callback_SetThrusters(self, msg):
         ack = 0
         if msg.frameno is not self.frameno:

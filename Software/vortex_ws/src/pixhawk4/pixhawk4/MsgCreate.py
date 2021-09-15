@@ -94,5 +94,5 @@ class MsgCreate:
 
     def getDepthMsg(data):
         msg = Depth()
-        msg.depth = data.press_abs# meters
+        msg.depth = data.press_abs  # meters
         return msg

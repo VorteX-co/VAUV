@@ -136,19 +136,16 @@ class Commands:
         self.set_forward(1500)
         self.set_throttle(1500)
         self.set_lateral(1500)
-    
-    def init_channels(self):
-        self.set_servo_pwm(1,1500)
-        self.set_servo_pwm(2,1500)
-        self.set_servo_pwm(3,1500)
-        self.set_servo_pwm(4,1500)
-        self.set_servo_pwm(5,1500)
-        self.set_servo_pwm(6,1500)
-        self.set_servo_pwm(7,1500)
-        self.set_servo_pwm(8,1500)
 
-
-    
+    def init_servos(self):
+        self.set_servo_pwm(1, 1500)
+        self.set_servo_pwm(2, 1500)
+        self.set_servo_pwm(3, 1500)
+        self.set_servo_pwm(4, 1500)
+        self.set_servo_pwm(5, 1500)
+        self.set_servo_pwm(6, 1500)
+        self.set_servo_pwm(7, 1500)
+        self.set_servo_pwm(8, 1500)
 
     def set_servo_pwm(self, servo_n, microseconds):
         """
