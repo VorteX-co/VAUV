@@ -63,7 +63,9 @@ void VDVL::SerialNode::OnPublish(std::string buffer)
   if (n == 9 && parts[0] == "wrx") {
     auto msg = custom_ros_interfaces::msg::DVL();
     // rclcpp clock
-    msg.stamp = this->get_clock()->now().nanoseconds() * 1e9f;
+    msg.header.stamp = this->get_clock()->now();
+    // Frame ID for later data transformation
+    msg.header.frame_id = "swift/dvl_link";
     // time passed since last velocity report (ms) / 1000
     msg.dt = ::atof(parts[1].c_str()) / 1000;
     // the velocity report

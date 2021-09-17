@@ -63,7 +63,8 @@ $ ros2 run sensors  pub --ros-args -p  Port:="/dev/ttyUSB0"
   * Message name = "DVL.msg"
 
   Where DVL.msg is a custom msg has the following components:
-  * stamp: current rclcpp::clock stamp (s)
+  * header/stamp: current rclcpp::clock stamp (s)
+  * header/frame_id: frame name associated with the DVL data
   * dt: time passed since last velocity report (s)
   * twist: vector of Measured velocity in [x,y,z] directions (m/s)
   * variance: estimated value based on measured figure of merit (m/s)^2
