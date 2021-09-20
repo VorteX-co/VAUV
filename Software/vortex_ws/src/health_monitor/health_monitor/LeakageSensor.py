@@ -21,25 +21,21 @@
 
 
 import Jetson.GPIO as GPIO
-import time
+
 
 class LeakageSensor:
     def __init__(self):
-        self.leak_pin = 22   #Board pin
-        GPIO.setmode(GPIO.BOARD)  
+        self.leak_pin = 22   # Board pin
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.leak_pin, GPIO.IN)  # set pin as an input pin
-        
+
     def takeValues(self):
         value = GPIO.input(self.leak_pin)
         if value == GPIO.HIGH:
-                value_str = True
+            value_str = True
         else:
-                value_str = False
-                
+            value_str = False
         return value_str
-    
+
     def cleanUP(self):
         GPIO.cleanup(self.leak_pin)
-            
-    
-    
