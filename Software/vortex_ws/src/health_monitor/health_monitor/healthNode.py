@@ -22,19 +22,28 @@
 
 import rclpy
 from rclpy.node import Node
-
+from custom_ros_interfaces.msg import Health
 from health_monitor.LeakageSensor import LeakageSensor
 import threading
+import time
 
 class HealthNode(Node):
     def __init__(self):
         super().__init__("HealthNode")
-        leakage_Sensor = LeakageSensor()
+        self.leakage_Sensor = LeakageSensor()
         self.dataThread = threading.Thread(
-            target=leakage_Sensor.publish_leakage, args=(self,))
-        self.publisher = self.create_publisher(#leakage sensor message,
-        int,"HealthNode",10
-        )
+            target=self.dataThread_callback, args=(self,))
+        self.publisher = self.create_publisher(Health,"HealthNode",10)
+    
+    def dataThread_callback(self):
+        msg = Health()
+        while True:
+            msg.leakage = self.leakage_Sensor.takeValues()
+            self.publisher.publish(msg)
+            time.sleep(1)            
+
+        
+
         
 
 
