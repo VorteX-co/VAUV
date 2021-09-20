@@ -30,7 +30,7 @@ class LeakageSensor:
         GPIO.setup(self.leak_pin, GPIO.IN)  # set pin as an input pin
         
     def takeValues(self):
-        value = GPIO.input(Leak_pin)
+        value = GPIO.input(self.leak_pin)
         if value == GPIO.HIGH:
                 value_str = True
         else:
@@ -39,26 +39,7 @@ class LeakageSensor:
         return value_str
     
     def cleanUP(self):
-        GPIO.cleanUP(self.leak_pin)
-
-    def take_data(self):
-        return takeValues(self)
+        GPIO.cleanup(self.leak_pin)
             
-    def publish_leakage(self):
-        while True:
-            data =take_data(self.leakage_Sensor)
-            self.publisher.publish(data)
-            time.sleep(0.5)
-            self.leakage_Sensor.cleanUP()
-        return data
-    
-# def main():
-#     leakage_Sensor = LeakageSensor()
-#     leakage_Sensor.takeValues()
-#     leakage_Sensor.cleanUP()
-    
-# if __name__== '__main__':
-#     main()
-    
     
     
