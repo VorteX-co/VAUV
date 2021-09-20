@@ -24,6 +24,7 @@ import Jetson.GPIO as GPIO
 
 
 class LeakageSensor:
+
     def __init__(self):
         self.leak_pin = 22   # Board pin
         GPIO.setmode(GPIO.BOARD)
