@@ -19,6 +19,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
+<<<<<<< HEAD
 rosidl_generate_interfaces(${PROJECT_NAME}
 "msg/DVL.msg"
 "msg/MMPC.msg"
@@ -36,6 +37,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "srv/PublishData.srv"
 "msg/SetLed.msg"
 DEPENDENCIES builtin_interfaces geometry_msgs)
+=======
+rosidl_generate_interfaces(${PROJECT_NAME} "msg/DVL.msg" "msg/MMPC.msg" "msg/DMPC.msg" "msg/Health.msg" DEPENDENCIES builtin_interfaces geometry_msgs)
+>>>>>>> Adding Health Monitor interface
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
