@@ -27,36 +27,30 @@ from health_monitor.LeakageSensor import LeakageSensor
 import threading
 import time
 
+
 class HealthNode(Node):
     def __init__(self):
         super().__init__("HealthNode")
         self.leakage_Sensor = LeakageSensor()
         self.dataThread = threading.Thread(
-            target=self.dataThread_callback, args=(self,))
-        self.publisher = self.create_publisher(Health,"HealthNode",10)
-    
+            target=self.dataThread_callback, args=(self, ))
+        self.publisher = self.create_publisher(Health, "HealthNode", 10)
+
     def dataThread_callback(self):
         msg = Health()
         while True:
             msg.leakage = self.leakage_Sensor.takeValues()
             self.publisher.publish(msg)
-            time.sleep(1)            
-
-        
-
-        
+            time.sleep(1)
 
 
-
-
-
-def main (args=None):
+def main(args=None):
     rclpy.init(args=args)
-    healthNode=HealthNode()
+    healthNode = HealthNode()
     healthNode.dataThread.start()
     rclpy.spin(healthNode)
     rclpy.shutdown()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
