@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'Bar30=bar30_py.Bar30_node:main'
         ],
     },
 )
