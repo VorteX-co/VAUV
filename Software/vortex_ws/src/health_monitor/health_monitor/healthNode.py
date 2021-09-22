@@ -23,7 +23,7 @@ import threading
 
 import time
 
-from custom_ros_interfaces.msg import Health
+from custom_ros_interfaces.msg import Leak
 
 from health_monitor.LeakageSensor import LeakageSensor
 
@@ -37,11 +37,11 @@ class HealthNode(Node):
         super().__init__('HealthNode')
         self.leakage_Sensor = LeakageSensor()
         self.dataThread = threading.Thread(
-            target=self.dataThread_callback, args=(self, ))
-        self.publisher = self.create_publisher(Health, 'HealthNode', 10)
+            target=self.dataThread_callback, args=())
+        self.publisher = self.create_publisher(Leak, 'HealthNode', 10)
 
     def dataThread_callback(self):
-        msg = Health()
+        msg = Leak()
         while True:
             msg.leakage = self.leakage_Sensor.takeValues()
             self.publisher.publish(msg)
