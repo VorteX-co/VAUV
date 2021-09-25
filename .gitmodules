@@ -5,3 +5,7 @@
 	path = Software/vortex_ws/src/vision_opencv
 	url = https://github.com/VorteX-co/vision_opencv.git
 	branch = eloquent
+[submodule "Software/vortex_ws/src/robot_localization"]
+	path = Software/vortex_ws/src/robot_localization
+	url = https://github.com/VorteX-co/robot_localization.git
+	branch = eloquent-devel
