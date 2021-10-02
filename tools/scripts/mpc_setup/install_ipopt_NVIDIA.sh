@@ -44,6 +44,9 @@ cd $srcdir//ThirdParty/ASL
 # MUMPS
 cd $srcdir/ThirdParty/Mumps
 ./get.Mumps
+mkdir -p build && cd build
+../configure --prefix=$prefix --disable-shared --with-pic
+make install
 
 # build everything
 cd $srcdir
