@@ -1,6 +1,6 @@
 float32 pressure
 
-float32 tempurature
+float32 temperature
 
 float32 depth
 
