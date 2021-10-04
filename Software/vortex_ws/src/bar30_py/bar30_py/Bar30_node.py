@@ -1,14 +1,14 @@
 #!/usr/bin env python3
 import rclpy 
 from rclpy.node import Node
-from bar30_py.ms5837 import MS5837
+from bar30_py import ms5837
 import threading
 from custom_ros_interfaces.msg import Bar30
 import time
 class Bar30Node(Node):
     def __init__(self):
         super().__init__('Bar30')
-        self.bar30= MS5837()
+        self.bar30= ms5837.MS5837_30BA(8)
         if(not self.bar30.init()):
             self.get_logger().info('Bar30 Failed to initialize')
             return
@@ -32,6 +32,7 @@ class Bar30Node(Node):
 def main(args=None):
     rclpy.init(args=args)
     Bar30= Bar30Node()
+    Bar30.dataThread.start()
     rclpy.spin(Bar30)
     rclpy.shutdown()
 
