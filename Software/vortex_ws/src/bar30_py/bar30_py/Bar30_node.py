@@ -23,7 +23,7 @@ class Bar30Node(Node):
             msg.pressure=self.bar30.pressure()
             msg.temperature=self.bar30.temperature()
             msg.depth=self.bar30.depth()
-            msg.altitude=self.altitude()
+            msg.altitude=self.bar30.altitude()
             self.bar30_publisher.publish(msg)
             time.sleep(1)
             
