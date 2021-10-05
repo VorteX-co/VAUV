@@ -19,7 +19,8 @@ import threading
 
 from custom_ros_interfaces.msg import (Attitude, Depth, NavController, RcMsg,
                                        SensorStatus, ServoMsg, SetLed, SetThrustChannels)
-from custom_ros_interfaces.srv import Arm, Heartbeat, PublishData, SetMode
+from custom_ros_interfaces.srv import Arm, Heartbeat, PublishData, SetMode, SetThruster
+from sensor_msgs.msg import Imu
 
 from pixhawk4.Commands import Commands
 from pixhawk4.Getinfo import Getinfo
@@ -44,11 +45,11 @@ class px4_node(Node):
             target=Px4_utils.heart_beats, args=(self,))
         self.publish_data = threading.Thread(
             target=Px4_utils.publish_data, args=(self,))
-
+        self.stamp=self.get_clock()
     # create publishing objects
 
         self.imu_publisher = self.create_publisher(
-            SensorStatus, 'Raw_IMU', 10)
+            Imu, '/swift/imu', 500)
         self.nav_publisher = self.create_publisher(
             NavController, 'Nav_Controller', 10)
         self.rc_publisher = self.create_publisher(
@@ -75,6 +76,8 @@ class px4_node(Node):
             Heartbeat, 'StartHeartBeat', self.callback_heartbeat)
         self.data_stream_service = self.create_service(
             PublishData, 'StartPublishData', self.callback_publishdata)
+        self.Thruster_service = self.create_service(
+           SetThruster , 'SetThrusters', self.callback_Thrusters)
 
     # creating information and control pixhawk objects
 
@@ -83,6 +86,9 @@ class px4_node(Node):
         self.control.init_channels()
         self.control.init_servos()
 
+    # Begining initializations
+        self.heart_beat.start()
+        self.control.setFlight_mode('MANUAL')
     # Callback functions of services
 
     def callback_arm(self, request, response):
@@ -120,6 +126,19 @@ class px4_node(Node):
             response.ack = True
         return response
 
+    def callback_Thrusters(self, request, response):
+        ack = 0
+        if request.frameno is not self.frameno:
+            ack = Px4_utils.set_thrusters(self, request)
+            response.ack = ack
+        if ack:
+            self.frameno = request.frameno
+            self.get_logger().info('Actuators set')
+        else:
+            self.get_logger().info('Actuators not set')
+        return response
+            
+
 # Call back function for LED control subscriber
     def callback_SetLedLights(self, msg):
         ack = 0
@@ -147,7 +166,6 @@ class px4_node(Node):
 def main(args=None):
     rclpy.init(args=args)
     px4 = px4_node()
-
     rclpy.spin(px4)
     rclpy.shutdown()
 

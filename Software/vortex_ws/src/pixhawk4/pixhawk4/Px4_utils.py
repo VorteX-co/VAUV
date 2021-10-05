@@ -92,7 +92,7 @@ class Px4_utils:
             Px4_utils.publish_servo(node)
             Px4_utils.publish_attitude(node)
             Px4_utils.publish_depth(node)
-            time.sleep(0.5)
+            
 
 # Following functions uses publisher objects
 # created in px4 node to publish data streams from Pixhawk
@@ -102,40 +102,41 @@ class Px4_utils:
 # and uses MsgCreate class to get custom message object using fetched data
 # then gets publisher instance from px4 node to publish message
 
-    def publish_imu(self):
-        data = Getinfo.getIMU(self.info_px4)
+    def publish_imu(node):
+        data = Getinfo.getIMU(node.info_px4)
         message = MsgCreate.getIMUMsg(data)
-        self.imu_publisher.publish(message)
+        message.header.stamp=node.stamp.now().to_msg()
+        node.imu_publisher.publish(message)
         return
 
-    def publish_nav(self):
-        data = Getinfo.getNav(self.info_px4)
+    def publish_nav(node):
+        data = Getinfo.getNav(node.info_px4)
         message = MsgCreate.getNavMsg(data)
-        self.nav_publisher.publish(message)
+        node.nav_publisher.publish(message)
         return
 
-    def publish_rc(self):
-        data = Getinfo.getRc_channel(self.info_px4)
+    def publish_rc(node):
+        data = Getinfo.getRc_channel(node.info_px4)
         message = MsgCreate.getRcMsg(data)
-        self.rc_publisher.publish(message)
+        node.rc_publisher.publish(message)
         return
 
-    def publish_servo(self):
-        data = Getinfo.getServoStatus(self.info_px4)
+    def publish_servo(node):
+        data = Getinfo.getServoStatus(node.info_px4)
         message = MsgCreate.getServoMsg(data)
-        self.servo_publisher.publish(message)
+        node.servo_publisher.publish(message)
         return
 
-    def publish_attitude(self):
-        data = Getinfo.getAttitude(self.info_px4)
+    def publish_attitude(node):
+        data = Getinfo.getAttitude(node.info_px4)
         message = MsgCreate.getAttitudeMsg(data)
-        self.attitude_publisher.publish(message)
+        node.attitude_publisher.publish(message)
         return
 
-    def publish_depth(self):
-        data = Getinfo.get_depth(self.info_px4)
+    def publish_depth(node):
+        data = Getinfo.get_depth(node.info_px4)
         message = MsgCreate.getDepthMsg(data)
-        self.depth_publisher.publish(message)
+        node.depth_publisher.publish(message)
         return
 
     def set_thrusters(self, message):
