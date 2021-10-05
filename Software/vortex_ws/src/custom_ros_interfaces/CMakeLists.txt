@@ -19,7 +19,24 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(geometry_msgs REQUIRED)
-rosidl_generate_interfaces(${PROJECT_NAME} "msg/DVL.msg" "msg/MMPC.msg" "msg/DMPC.msg" "msg/Leak.msg" DEPENDENCIES builtin_interfaces geometry_msgs)
+rosidl_generate_interfaces(${PROJECT_NAME}
+"msg/DVL.msg"
+"msg/MMPC.msg"
+"msg/DMPC.msg"
+"msg/SensorStatus.msg"
+"msg/NavController.msg"
+"msg/ServoMsg.msg"
+"msg/RcMsg.msg"
+"msg/Attitude.msg"
+"msg/Depth.msg"
+"msg/SetThrustChannels.msg"
+"srv/Arm.srv"
+"srv/SetMode.srv"
+"srv/Heartbeat.srv"
+"srv/PublishData.srv"
+"msg/SetLed.msg"
+DEPENDENCIES builtin_interfaces geometry_msgs)
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
