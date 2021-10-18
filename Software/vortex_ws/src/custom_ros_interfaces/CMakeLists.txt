@@ -35,6 +35,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "srv/Heartbeat.srv"
 "srv/PublishData.srv"
 "msg/SetLed.msg"
+"msg/Leak.msg"
 DEPENDENCIES builtin_interfaces geometry_msgs)
 # uncomment the following section in order to fill in
 # further dependencies manually.
