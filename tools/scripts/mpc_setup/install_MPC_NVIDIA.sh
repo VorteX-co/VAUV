@@ -12,8 +12,6 @@ sudo apt-get install unzip
 # Ipopt: get, install, unzip
 wget https://www.coin-or.org/download/source/Ipopt/Ipopt-3.12.11.zip && unzip Ipopt-3.12.11.zip && rm Ipopt-3.12.11.zip
 ./install_ipopt_NVIDIA.sh ./Ipopt-3.12.11
-cp libcoinmumps.so /usr/local/lib
-cp libcoinmumps.so.1 /usr/local/lib
 echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib' >> ~/.bashrc 
 
 # CppAD
