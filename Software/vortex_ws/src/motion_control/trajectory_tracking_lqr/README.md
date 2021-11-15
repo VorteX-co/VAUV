@@ -28,6 +28,7 @@ Dependencies
 * [ruckig](https://github.com/pantor/ruckig)
 * Eigen3
 * [lin_alg_tools](https://github.com/jerelbn/lin_alg_tools)
+* [LAPACK](https://github.com/Reference-LAPACK/lapack)
 * custom_ros_interfaces package
 
 --------
@@ -39,6 +40,7 @@ Nodes
 - Subscribed topics:
   - **`/odometry/filtered`** of type `nav_msgs/msg/Odometry`. The current state of the vehicle [pose η, velocity ν].
   - **`/LQR/cmd_waypoint`** of type `geometry_msgs/msg/Point`. A desired 3D waypoint.
+   - **`/LQR/cmd_attitude`** of type `geometry_msgs/msg/Point`. A desired 3D attitude [rpy].
   - **`/LQR/cmd_roll`** of type `std_msgs/msg/Float32`. A desired roll-angle.
   - **`/LQR/cmd_pitch`** of type `std_msgs/msg/Float32`. A desired pitch-angle.
   - **`/LQR/cmd_yaw`** of type `std_msgs/msg/Float32`. A desired yaw-angle.
@@ -88,8 +90,38 @@ Usage
 Documentation
 ------
 
-The LQR computes a control law for a given system such that a certain optimality criterion is achieved. This is usually a cost function that depends on the state and control variables. Consider the linear state space model `ẋ = Ax + Bu` The feedback control law for the system is
-is computed as `τ = -K (x-xd)` where K is the optimal control gain founded by solving the Algebraic Riccati equation, for this purpose we are using the [lin_alg_tools](https://github.com/jerelbn/lin_alg_tools) library which contains an efficient solution to the (ARE).
+### Notations
+
+The motion of a marine craft in 6DOF is represented by the pose `η = [x y z φ θ ψ] ` and velocity `ν = [u v w p q r]` vectors according to the SNAME notation
+
+![SNAME](./imgs/SNAME.png)
+
+### AUV state space model
+
+For the autonomous underwater vehicle system the the 6 DOF nonlinear equations of motion can be written as:
+
+![6dof](./imgs/6dof.png)
+
+Constructing the linear parameter varying state space `ẋ = A(t)x + B(t)u`  where  the state vector x is column vector [η ν] and `u` is the control input to the system. The kinematics equation from the previous nonlinear equations of motion is already in this format but the kinetics equations requires a little manipulation
+
+![lpv](./imgs/lpv.png)
+
+The system matrix `A` and control matrix `B` can be written as
+
+![ab](./imgs/ab.png)
+
+### LQR Design for Trajectory Tracking
+
+The LQR computes a control law for a given system linear system such that a certain optimality criterion is achieved. This is usually a quadratic cost function that depends on the state and control variables. For the trajectory tracking problem the LQR is designed to track a time-varying reference trajectory `xd =[ηd νd]` for this purpose we augment the state space model to the form `ė = Ae + Bu` where  `e = x-xd` is the tracking error. The optimal feedback control law is computed as `u = -Ke` where K is the optimal control gain founded by minimizing the quadratic performance index
+
+![cost](./imgs/cost.png)
+
+### Impelementation
+
+* `Trajectory` Class wrappes the methods provided by [ruckig](https://github.com/pantor/ruckig) library for the generation of smooth time-varying trajectory.
+* `LOS` Class impelements the line-of-sight guidance for automatic steering of the AUV by calculating an appropriate reference yaw-angle `ψd`
+* `LQR` Class contains a method for solving the LQR problem and some methods for kinematics and kinetics calculation.
+* `Controller` Class wrappes the ROS interfacing methods.
 
 
  --------

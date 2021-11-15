@@ -23,48 +23,51 @@ typedef Eigen::Matrix<double, 3, 1> Vector3d;
 typedef Eigen::Matrix<double, 6, 1> Vector6d;
 typedef Eigen::Matrix<double, 9, 1> Vector9d;
 
+enum trajectory_types { translation = 0, rotation = 1 };
 class TrajectoryGenerator
 {
 public:
   TrajectoryGenerator();
   /*
-   * @brief Generate a 3D translation trajectory
-   * @param x_ref reference [xd,yd,zd,ud,vd,wd] x state [x,y,z,u,v,w]
+   * @brief Generate a 3DOF  trajectory with velocity and acceleration profiles
+   * @param x_ref: reference [x1_ref,x2_ref,x3_ref,v1_ref,v2_ref,v3_ref]
+   *                x: state [x1,x2,x3,v1,v2,v3]
    */
-  void generate(Vector6d x_ref, Vector6d x);
+  void generate(Vector6d & x_ref, Vector6d & x, int trajectory_type);
   /*
-   * @brief Generate a 1D rotation trajectory for any attitude angle
-   * @param x_ref reference [desired angular position, velocity] x state
-   * [current angular position, velocity]
+   * @brief Generate a 1D  trajectory
+   * @param x_ref [reference position, reference velocity]
+   *                x state [current position, current velocity]
    */
-  void generate(Vector2d x_ref, Vector2d x);
+  void generate(Vector2d & x_ref, Vector2d & x, int trajectory_type);
   /*
    * @brief Evaluate the generated trajectory at current time
    * @param t  time in seconds
    */
-  Vector9d get_translation_trajectory(double t);
-  Vector3d get_rotation_trajectory(double t);
+  Vector9d get_translation3D_trajectory(double & t);
+  Vector9d get_rotation3D_trajectory(double & t);
+  Vector3d get_translation1D_trajectory(double & t);
+  Vector3d get_rotation1D_trajectory(double & t);
   // Duration in seconds of the generated translation trajectory
-  double translation_duration{0.0};
+  double translation3D_duration{0.0};
+  double translation1D_duration{0.0};
   // Duration in seconds of the generated rotation trajectory
-  double rotation_duration{0.0};
+  double rotation3D_duration{0.0};
+  double rotation1D_duration{0.0};
 
 private:
-  // Create 3D translation input parameters, solver and output trajectory
-  ruckig::InputParameter<3> translation_input;
-  ruckig::Ruckig<3> translation_otg;
-  ruckig::Trajectory<3> translation_trajectory;
-  // Create 1D rotation input parameters, solver and output trajectory
-  ruckig::InputParameter<1> rotation_input;
-  ruckig::Ruckig<1> rotation_otg;
-  ruckig::Trajectory<1> rotation_trajectory;
-  // Set different constraints
-  double max_translation_vel{0.6};
-  double max_rotation_vel{0.45};
-  double max_translation_acc{0.20};
-  double max_rotation_acc{0.175};
-  double max_translation_jerk{0.0002};
-  double max_rotation_jerk{0.0001};
+  // The generated trajectories
+  ruckig::Trajectory<3> translation3D_trajectory_;
+  ruckig::Trajectory<3> rotation3D_trajectory_;
+  ruckig::Trajectory<1> translation1D_trajectory_;
+  ruckig::Trajectory<1> rotation1D_trajectory_;
+  // Different constraints
+  double max_translation_vel_{0.55};
+  double max_rotation_vel_{0.4};
+  double max_translation_acc_{0.3};
+  double max_rotation_acc_{0.2};
+  double max_translation_jerk_{0.0002};
+  double max_rotation_jerk_{0.0001};
 };
 
 #endif  // TRAJECTORY_TRACKING_LQR__TRAJECTORY_HPP_

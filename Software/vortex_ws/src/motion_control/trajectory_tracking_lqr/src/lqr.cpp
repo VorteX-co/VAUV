@@ -22,130 +22,123 @@
 LQR::LQR()
 {
   /* Paramteres initilization for SWIFT AUV
-   * rb -> vector from center of volume to the origin
-   * rg -> vector from center of gravity to the origin
-   * Ib -> Inertia matrix
-   * Mr -> Rigid body mass matrix
-   * Ma -> Added mass matrix
-   * DL -> Linear damping coefficients vector
-   * DNL -> Quadratic damping coefficients vector
-   * Q -> the state weighting matrix for the optimization problem
-   * R -> the control forces weighting matrix the optimization problem
+   * rb_ -> vector from center of volume to the origin
+   * rg_ -> vector from center of gravity to the origin
+   * Ib_ -> Inertia matrix
+   * Mr_ -> Rigid body mass matrix
+   * Ma_ -> Added mass matrix
+   * DL_ -> Linear damping coefficients vector
+   * DNL_ -> Quadratic damping coefficients vector
+   * Q_ -> the state weighting matrix for the optimization problem
+   * R_ -> the control forces weighting matrix the optimization problem
    */
-  rb(0, 0) = 0.0;
-  rb(1, 0) = 0.0;
-  rb(2, 0) = -0.12489;
-  rg(0, 0) = 0.0;
-  rg(1, 0) = 0.0;
-  rg(2, 0) = 0.0;
-  mass = 35.5;
-  volume = 0.0364;
-  Ib(0, 0) = 0.8061;
-  Ib(0, 1) = -0.0059;
-  Ib(0, 2) = 0.0005;
-  Ib(1, 0) = -0.0059;
-  Ib(1, 1) = 0.8;
-  Ib(1, 2) = -0.0113;
-  Ib(2, 0) = 0.0005;
-  Ib(2, 1) = -0.0113;
-  Ib(2, 2) = 1.5599;
-  Mr.block<3, 3>(0, 0) = mass * Matrix3d::Identity();
-  Mr.block<3, 3>(3, 3) = Ib;
-  Mr.block<3, 3>(0, 3) = -mass * skew(rg);
-  Mr.block<3, 3>(3, 0) = mass * skew(rg);
-  Ma(0, 0) = 13;
-  Ma(1, 1) = 20;
-  Ma(2, 2) = 35;
-  Ma(3, 3) = 12.2;
-  Ma(4, 4) = 12.37;
-  Ma(5, 5) = 7.3;
-  M = Mr + Ma;
-  DL(0, 0) = -22.8;
-  DL(1, 1) = -30.95;
-  DL(2, 2) = -50.26;
-  DL(3, 3) = -16.05;
-  DL(4, 4) = -16.73;
-  DL(5, 5) = -5.13;
-  DNL(0, 0) = -28.43;
-  DNL(1, 1) = -55.98;
-  DNL(2, 2) = -137.5;
-  DNL(3, 3) = 0.0;
-  DNL(4, 4) = 0.0;
-  DNL(5, 5) = 0.0;
-  Q = Matrix12d::Identity();
-  Q(0, 0) = 5;
-  Q(1, 1) = 5;
-  Q(2, 2) = 5;
-  Q(5, 5) = 5;
-  R = 0.01 * Matrix6d::Identity();
+  rb_(0, 0) = 0.0;
+  rb_(1, 0) = 0.0;
+  rb_(2, 0) = -0.12489;
+  rg_(0, 0) = 0.0;
+  rg_(1, 0) = 0.0;
+  rg_(2, 0) = 0.0;
+  mass_ = 35.5;
+  volume_ = 0.0364;
+  Ib_(0, 0) = 0.8061;
+  Ib_(0, 1) = -0.0059;
+  Ib_(0, 2) = 0.0005;
+  Ib_(1, 0) = -0.0059;
+  Ib_(1, 1) = 0.8;
+  Ib_(1, 2) = -0.0113;
+  Ib_(2, 0) = 0.0005;
+  Ib_(2, 1) = -0.0113;
+  Ib_(2, 2) = 1.5599;
+  Mr_.block<3, 3>(0, 0) = mass_ * Matrix3d::Identity();
+  Mr_.block<3, 3>(3, 3) = Ib_;
+  Mr_.block<3, 3>(0, 3) = -mass_ * skew(rg_);
+  Mr_.block<3, 3>(3, 0) = mass_ * skew(rg_);
+  Ma_(0, 0) = 13;
+  Ma_(1, 1) = 20;
+  Ma_(2, 2) = 25;
+  Ma_(3, 3) = 12.2;
+  Ma_(4, 4) = 12.37;
+  Ma_(5, 5) = 7.3;
+  M_ = Mr_ + Ma_;
+  DL_(0, 0) = -22.8;
+  DL_(1, 1) = -30.95;
+  DL_(2, 2) = -50.26;
+  DL_(3, 3) = -16.05;
+  DL_(4, 4) = -16.73;
+  DL_(5, 5) = -5.13;
+  DNL_(0, 0) = -28.43;
+  DNL_(1, 1) = -55.98;
+  DNL_(2, 2) = -137.5;
+  DNL_(3, 3) = 0.0;
+  DNL_(4, 4) = 0.0;
+  DNL_(5, 5) = 0.0;
+  Q_ = Matrix12d::Identity();
+  Q_(0, 0) = 2.5;
+  Q_(1, 1) = 2.5;
+  Q_(2, 2) = 2.5;
+  Q_(5, 5) = 2.5;
+  R_ = 0.01 * Matrix6d::Identity();
 }
-Matrix6d LQR::calculate_damping_matrix()
+Matrix6d LQR::calculate_damping_matrix(Vector6d & nu)
 {
   /* Calculating the total damping matrix D
    */
-  Eigen::Matrix<double, 6, 6> D = -DL;
-  D(0, 0) += -DNL(0, 0) * std::abs(nu(0));
-  D(1, 1) += -DNL(1, 1) * std::abs(nu(1));
-  D(2, 2) += -DNL(2, 2) * std::abs(nu(2));
-  D(3, 3) += -DNL(3, 3) * std::abs(nu(3));
-  D(4, 4) += -DNL(4, 4) * std::abs(nu(4));
-  D(5, 5) += -DNL(5, 5) * std::abs(nu(5));
+  Eigen::Matrix<double, 6, 6> D = -DL_;
+  D(0, 0) += -1 * DNL_(0, 0) * std::fabs(nu(0));
+  D(1, 1) += -1 * DNL_(1, 1) * std::fabs(nu(1));
+  D(2, 2) += -1 * DNL_(2, 2) * std::fabs(nu(2));
+  D(3, 3) += -1 * DNL_(3, 3) * std::fabs(nu(3));
+  D(4, 4) += -1 * DNL_(4, 4) * std::fabs(nu(4));
+  D(5, 5) += -1 * DNL_(5, 5) * std::fabs(nu(5));
   return D;
 }
-Matrix6d LQR::calculate_jacobian_matrix()
+Matrix6d LQR::calculate_jacobian_matrix(Vector3d & euler)
 {
   /* Jacobian 6x6 matrix for transformation of 6DOF velocity from Body to
-   * Inertial frame Reference: equation (2.40) Fossen 2011 J(η) =    |  R 0(3x3)
-   * | |  0(3x3)   T          |
+   * Inertial frame Reference: equation (2.40) Fossen 2011
+   *
    *
    */
   Matrix6d J = Matrix6d::Zero();
-  J.block<3, 3>(0, 0) = RBtoI(eta.tail<3>());
-  J.block<3, 3>(3, 3) = TBtoI(eta.tail<3>());
+  J.block<3, 3>(0, 0) = RBtoI(euler);
+  J.block<3, 3>(3, 3) = TBtoI(euler);
   return J;
 }
-Matrix6d LQR::calculate_coriolis_matrix()
+Matrix6d LQR::calculate_coriolis_matrix(Vector6d & nu)
 {
   /* Coriolis–Centripetal Matrix from System Inertia Matrix M
    *  Reference: equation (3.46) Fossen 2011
    *  skew is a function from geometry library for the cross-product operator
-   *
-   * C(ν) =  |    0(3×3)                          −S(M11 ν1 + M12 ν2 )      |
-   *             |  −S(M11 ν1 + M12 ν2)    −S(M 21 ν 1 + M22 ν2 )    |
-   *
-   * ν1 := [u, v, w]
-   * ν2 := [p, q, r]
-   *
    */
   Matrix6d C = Matrix6d::Zero();
-  C.block<3, 3>(0, 3) = -skew(M.block<3, 3>(0, 0) * nu.head<3>() +
-      M.block<3, 3>(0, 3) * nu.tail<3>());
-  C.block<3, 3>(3, 0) = -skew(M.block<3, 3>(0, 0) * nu.head<3>() +
-      M.block<3, 3>(0, 3) * nu.tail<3>());
-  C.block<3, 3>(3, 3) = -skew(M.block<3, 3>(3, 0) * nu.head<3>() +
-      M.block<3, 3>(3, 3) * nu.tail<3>());
+  C.block<3, 3>(0, 3) = -skew(M_.block<3, 3>(0, 0) * nu.head<3>() +
+      M_.block<3, 3>(0, 3) * nu.tail<3>());
+  C.block<3, 3>(3, 0) = -skew(M_.block<3, 3>(0, 0) * nu.head<3>() +
+      M_.block<3, 3>(0, 3) * nu.tail<3>());
+  C.block<3, 3>(3, 3) = -skew(M_.block<3, 3>(3, 0) * nu.head<3>() +
+      M_.block<3, 3>(3, 3) * nu.tail<3>());
   return C;
 }
-Vector6d LQR::calculate_restoring_forces()
+Vector6d LQR::calculate_restoring_forces(Vector3d & euler)
 {
-  /* Restoring forces and moments in NED frame
+  /* Restoring forces and moments
    * Reference: equation (4.6) Fossen 2011
    */
-  double W = mass * 9.81;
-  double B = volume * 1028 * 9.81;
+  double W = mass_ * 9.81;
+  double B = volume_ * 1028 * 9.81;
   Vector6d g;
-  g(0, 0) = (W - B) * sin(eta(4));
-  g(1, 0) = -(W - B) * cos(eta(4)) * sin(eta(3));
-  g(2, 0) = -(W - B) * cos(eta(4)) * cos(eta(3));
-  g(3, 0) = -(rg(1, 0) * W - rb(1, 0) * B) * cos(eta(4)) * cos(eta(3)) +
-    (rg(2, 0) * W - rb(2, 0) * B) * cos(eta(4)) * sin(eta(3));
-  g(4, 0) = (rg(2, 0) * W - rb(2, 0) * B) * sin(eta(4)) +
-    (rg(0, 0) * W - rb(0, 0) * B) * cos(eta(4)) * cos(eta(3));
-  g(5, 0) = -(rg(0, 0) * W - rb(0, 0) * B) * cos(eta(4)) * sin(eta(3)) -
-    (rg(1, 0) * W - rb(1, 0) * B) * sin(eta(4));
+  g(0, 0) = (W - B) * sin(euler(2));
+  g(1, 0) = -(W - B) * cos(euler(2)) * sin(euler(0));
+  g(2, 0) = -(W - B) * cos(euler(2)) * cos(euler(0));
+  g(3, 0) = -(rg_(1, 0) * W - rb_(1, 0) * B) * cos(euler(2)) * cos(euler(0)) +
+    (rg_(2, 0) * W - rb_(2, 0) * B) * cos(euler(2)) * sin(euler(0));
+  g(4, 0) = (rg_(2, 0) * W - rb_(2, 0) * B) * sin(euler(2)) +
+    (rg_(0, 0) * W - rb_(0, 0) * B) * cos(euler(2)) * cos(euler(0));
+  g(5, 0) = -(rg_(0, 0) * W - rb_(0, 0) * B) * cos(euler(2)) * sin(euler(0)) -
+    (rg_(1, 0) * W - rb_(1, 0) * B) * sin(euler(2));
   return g;
 }
-Vector6d LQR::saturate_control(Vector6d tau)
+void LQR::saturate_control(Vector6d & tau)
 {
   /* Saturating the control forces and moments at ± 40 [N, N.m]
    */
@@ -156,34 +149,38 @@ Vector6d LQR::saturate_control(Vector6d tau)
       tau(i) = -40;
     }
   }
-  return tau;
 }
-Vector12d LQR::saturate_error(Vector12d delta)
+void LQR::saturate_error(Vector12d & delta)
 {
   /* Saturating the state errors ± 0.8 for avoiding agressive control actions
    */
-  for (int i = 0; i <= 5; i++) {
+  for (int i = 0; i <= 11; i++) {
     if (delta(i) > 0.8) {
       delta(i) = 0.8;
     } else if (delta(i) < -0.8) {
       delta(i) = -0.8;
     }
   }
-  return delta;
 }
-void LQR::to_SNAME(Vector6d & x)
+void LQR::to_SNAME(Vector12d & x)
 {
-  /* from ENU to NED for the calculation in LQR class
+  /* from ENU to NED, since all the equations in the LQR class are derived in
+   * inertial NED frame
    */
   x(1) *= -1;
   x(2) *= -1;
   x(4) *= -1;
   x(5) *= -1;
+  x(7) *= -1;
+  x(8) *= -1;
+  x(10) *= -1;
+  x(11) *= -1;
 }
-Matrix3d LQR::RBtoI(Vector3d euler)
+Matrix3d LQR::RBtoI(Vector3d & euler)
 {
   /* Rotation matrix from Body frame to Inertial frame
    * Reference: equation (2.18) Fossen 2011
+   * euler -> rpy w.r.t  inertial NED
    */
   Matrix3d R;
   R(0, 0) = cos(euler(2)) * cos(euler(1));
@@ -201,7 +198,7 @@ Matrix3d LQR::RBtoI(Vector3d euler)
   R(2, 2) = cos(euler(1)) * cos(euler(0));
   return R;
 }
-Matrix3d LQR::TBtoI(Vector3d euler)
+Matrix3d LQR::TBtoI(Vector3d & euler)
 {
   /* Translation matrix from Body frame to Inertial frame
    * Reference: equation (2.28.b) Fossen 2011
@@ -214,7 +211,7 @@ Matrix3d LQR::TBtoI(Vector3d euler)
   T *= 1 / cp;
   return T;
 }
-Matrix3d LQR::TItoB(Vector3d euler)
+Matrix3d LQR::TItoB(Vector3d & euler)
 {
   /* Translation matrix from Inertial frame to body frame
    * Reference: equation (2.28.a) Fossen 2011
@@ -224,24 +221,25 @@ Matrix3d LQR::TItoB(Vector3d euler)
     -sin(euler(0)), cos(euler(1)) * cos(euler(0));
   return T;
 }
-Vector6d LQR::action(Vector12d x, Vector12d xd, Vector6d ffacc)
+Vector6d LQR::action(Vector12d & x, Vector12d & xd, Vector6d & ffacc)
 {
   /* Calculating LQR Control action
    * The state vector and desired state vector are in ENU frame
-   * The function to_SNAME(Vector6d) converts ENU <> NED
+   * The function to_SNAME(Vector12d) converts ENU <> NED
    */
-  eta = x.head<6>();
-  to_SNAME(eta);
-  x.block<6, 1>(0, 0) = eta;
-  nu = x.tail<6>();
-  to_SNAME(nu);
+  to_SNAME(x);
+  to_SNAME(xd);
+  // Attitude
+  Vector3d euler = x.block<3, 1>(3, 0);
+  // Transformation from Inertial to Body frames
+  Matrix6d ItoB;
+  ItoB << this->RBtoI(euler).transpose(), Matrix3d::Zero(), Matrix3d::Zero(),
+    this->TItoB(euler);
+  // Body velocity
+  Vector6d nu = ItoB * x.tail<6>();
   x.block<6, 1>(6, 0) = nu;
-  Vector6d eta_des = xd.head<6>();
-  to_SNAME(eta_des);
-  xd.block<6, 1>(0, 0) = eta_des;
-  Vector6d nu_des = xd.tail<6>();
-  to_SNAME(nu_des);
-  xd.block<6, 1>(6, 0) = nu_des;
+  // Also transforming the desired velocities from inertial to body
+  xd.block<6, 1>(6, 0) = ItoB * xd.tail<6>();
   //
   /* Constructing the linear paramter varying (LPV) state space model
    *
@@ -251,17 +249,10 @@ Vector6d LQR::action(Vector12d x, Vector12d xd, Vector6d ffacc)
    * Nonlinear 6 DOF equations of motion  equations (7.185, 7.186) Fossen 2011:
    *
    *                          η̇ = J (η)∗ ν
-   *  M ∗ ν̇ + C ∗ ν +   + D ∗ ν + g(η)  = τ
+   *  M ∗ ν̇ + C ∗ ν + D ∗ ν + g(η)  = τ
    *
-   * In state  space form ẋ = Ax + Bu  , Augmenting the tracking error ė = Ae +
-   * Bu
-   *
-   * | η̇ - η̇d |      |          0(6x6)         J(η) |       | η - ηd | | ν̇ - ν̇d
-   * |   = |          0(6x6)       −(M^−1) ∗ [C(ν)ν + D(ν)ν]   |  ∗  | ν - νd  |
-   * +
-   *
-   *               |                             0(6x6) |       ∗    τ_lqr |
-   * (M^−1)                               |
+   * In state  space form ẋ = Ax + Bu, Augmenting the tracking error ė = Ae + Bu
+   * The rule of the LQR is to regulate the tracking error e via u = τ_lqr
    *
    *  A =    |    0(6x6)     J(η)                         |
    *            |    0(6X6)   -(M^−1)[C(ν)+D(ν)]  |
@@ -270,37 +261,41 @@ Vector6d LQR::action(Vector12d x, Vector12d xd, Vector6d ffacc)
    *            |   (M^−1)    |
    *
    * The restoring forces g(η) are compensated by adding a feedforward control
-   * low
+   * law
    *
    * τ = g(η) + τ_lqr
    */
   Matrix12d A = Matrix12d::Zero();
-  Matrix6d D = calculate_damping_matrix();
-  Matrix6d J = calculate_jacobian_matrix();
-  Matrix6d C = calculate_coriolis_matrix();
+  Matrix6d D = calculate_damping_matrix(nu);
+  Matrix6d J = calculate_jacobian_matrix(euler);
+  Matrix6d C = calculate_coriolis_matrix(nu);
 
   A.block<6, 6>(0, 6) = J;
-  A.block<6, 6>(6, 6) = -M.inverse() * (D + C);
+  A.block<6, 6>(6, 6) = M_.inverse() * (D + C);
   Eigen::Matrix<double, 12, 6> B;
   B.setZero();
-  B.block<6, 6>(6, 0) = M.inverse();
+  B.block<6, 6>(6, 0) = M_.inverse();
   // Solving the algebraic Riccati equation (ARE)
   Matrix12d P;
   P.setZero();
-  care_solver.solve(P, A, B, Q, R);
+  care_solver_.solve(P, A, B, Q_, R_);
   // Compute the optimal feedback gain matrix K, reference equation (13.8)
   // Fossen 2011
-  Eigen::Matrix<double, 6, 12> K = -R.inverse() * B.transpose() * P;
+  Eigen::Matrix<double, 6, 12> K = -R_.inverse() * B.transpose() * P;
   // Compute The optimal feedback control forces
-  Vector6d tau_lqr = K * saturate_error(x - xd);
+  Vector12d e = x - xd;
+  saturate_error(e);
+  Vector6d tau_lqr = K * e;
   // For linearization we put resetoring forces g(η) as feedforward control
-  // input
-  Vector6d tau_ff = calculate_restoring_forces();
+  Vector6d tau_ff = calculate_restoring_forces(euler);
+  // The total control signal
+  Vector6d u = tau_ff + tau_lqr;
+  saturate_control(u);
   // Logging the control state
   Eigen::Matrix<double, 12, 3> logMatrix;
   logMatrix << x, xd, x - xd;
   std::cout << " ******** Logging NED frame info *********" << std::endl;
   std::cout << " ****** x ********** xd ********** error *****" << std::endl;
   std::cout << logMatrix << std::endl;
-  return saturate_control(tau_lqr + tau_ff);
+  return u;
 }
