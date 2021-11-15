@@ -12,3 +12,9 @@
 [submodule "Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/lin_alg_tools"]
 	path = Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/lin_alg_tools
 	url = https://github.com/jerelbn/lin_alg_tools.git
+[submodule "Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/ruckig"]
+	path = Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/ruckig
+	url = https://github.com/pantor/ruckig
+[submodule "Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/geometry"]
+	path = Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/geometry
+	url = https://github.com/superjax/geometry.git
