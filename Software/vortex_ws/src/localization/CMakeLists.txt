@@ -20,6 +20,23 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_eigen REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+
+add_executable(sensors_transform src/sensors_transform.cpp)
+include_directories(SYSTEM ${Eigen_INCLUDE_DIRS})
+include_directories(
+  include/${PROJECT_NAME}
+  ${EIGEN3_INCLUDE_DIRS}
+)
+target_include_directories(sensors_transform PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME} ${EIGEN3_INCLUDE_DIRS})
+ament_target_dependencies(sensors_transform rclcpp sensor_msgs geometry_msgs tf2 tf2_ros tf2_eigen  nav_msgs  tf2_geometry_msgs Eigen3)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -31,5 +48,10 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
+install(TARGETS sensors_transform DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
+  USE_SOURCE_PERMISSIONS
+)
 ament_package()
