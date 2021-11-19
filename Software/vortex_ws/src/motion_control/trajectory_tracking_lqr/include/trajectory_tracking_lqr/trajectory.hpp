@@ -62,12 +62,12 @@ private:
   ruckig::Trajectory<1> translation1D_trajectory_;
   ruckig::Trajectory<1> rotation1D_trajectory_;
   // Different constraints
-  double max_translation_vel_{0.55};
+  double max_translation_vel_{0.6};
   double max_rotation_vel_{0.4};
   double max_translation_acc_{0.3};
   double max_rotation_acc_{0.2};
   double max_translation_jerk_{0.0002};
-  double max_rotation_jerk_{0.0001};
+  double max_rotation_jerk_{0.0005};
 };
 
 #endif  // TRAJECTORY_TRACKING_LQR__TRAJECTORY_HPP_

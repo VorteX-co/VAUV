@@ -303,12 +303,12 @@ void Controller::request_pwm_srv()
 {
   Vector6d control_pwm = this->thrust_to_pwm();
   auto request = std::make_shared<custom_ros_interfaces::srv::PWM::Request>();
-  request->x = control_pwm(0);
-  request->y = control_pwm(1);
-  request->z = control_pwm(2);
-  request->roll = control_pwm(3);
-  request->pitch = control_pwm(4);
-  request->yaw = control_pwm(5);
+  request->x = std::ceil(control_pwm(0));
+  request->y = std::ceil(control_pwm(1));
+  request->z = std::ceil(control_pwm(2));
+  request->roll = std::ceil(control_pwm(3));
+  request->pitch = std::ceil(control_pwm(4));
+  request->yaw = std::ceil(control_pwm(5));
   auto result = pwm_client_->async_send_request(request);
 }
 Vector6d Controller::thrust_to_pwm()
@@ -348,6 +348,7 @@ Vector6d Controller::thrust_to_pwm()
       control_pwm(i) = 1120;
     }
   }
+  return control_pwm;
 }
 
 int main(int argc, char ** argv)

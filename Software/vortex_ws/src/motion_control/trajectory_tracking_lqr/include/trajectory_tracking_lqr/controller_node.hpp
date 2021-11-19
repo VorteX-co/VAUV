@@ -14,7 +14,6 @@
 
 #ifndef TRAJECTORY_TRACKING_LQR__CONTROLLER_NODE_HPP_
 #define TRAJECTORY_TRACKING_LQR__CONTROLLER_NODE_HPP_
-#include <ruckig/ruckig.hpp>
 #include <memory>
 #include "custom_ros_interfaces/srv/pwm.hpp"
 #include "geometry_msgs/msg/wrench_stamped.hpp"
