@@ -25,16 +25,16 @@ def generate_launch_description():
             # frame_id = swift/base_link
             # child_frame_id = swift/dvl_link
             package='tf2_ros', node_executable='static_transform_publisher',
-            arguments=["0.06593", "-0.006", "-0.13673", "0", "1.57", "0",
-                       "swift/base_link", "swift/dvl_link"]),
+            arguments=['0.06593', '-0.006', '-0.13673', '0', '1.57', '0',
+                       'swift/base_link', 'swift/dvl_link']),
         launch_ros.actions.Node(
             # IMU
             package='tf2_ros', node_executable='static_transform_publisher',
-            arguments=["0.02407", "-0.16119", "0.05839", "0", "0.0", "0",
-                       "swift/base_link", "swift/imu_link"]),
+            arguments=['0.02407', '-0.16119', '0.05839', '0', '0.0', '0',
+                       'swift/base_link', 'swift/imu_link']),
         launch_ros.actions.Node(
             # Pressure sensor
             package='tf2_ros', node_executable='static_transform_publisher',
-            arguments=["-0.08048", "-0.01294", "0.06524	", "0", "0.0", "0",
-                       "swift/base_link", "swift/pressure_link"])
+            arguments=['-0.08048', '-0.01294', '0.06524', '0', '0.0', '0',
+                       'swift/base_link', 'swift/pressure_link'])
     ])
