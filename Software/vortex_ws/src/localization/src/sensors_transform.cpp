@@ -102,9 +102,9 @@ void Transformer::dvlCallback(
   body_linear_velocity_ += body_angular_velocity_.cross(dvl_translation_);
   // Publish the odometry msg to robot_localization node
   odom_.header.stamp = msg->header.stamp;
-   odom_.twist.twist.linear.x = body_linear_velocity_ (0);
-   odom_.twist.twist.linear.y = body_linear_velocity_ (1);
-   odom_.twist.twist.linear.z = body_linear_velocity_ (2);
+  odom_.twist.twist.linear.x = body_linear_velocity_(0);
+  odom_.twist.twist.linear.y = body_linear_velocity_(1);
+  odom_.twist.twist.linear.z = body_linear_velocity_(2);
   odom_.twist.covariance = msg->twist.covariance;
   odom_pub_->publish(odom_);
 }
