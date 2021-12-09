@@ -43,8 +43,8 @@ The reference waypoint is (5m, 5m, 5m) with heading angle (45 degree)
 ### Nonlinear MIMO PID using pole placement
 
 ![pid1](./imgs/pid_state.png)
-![pid2](./imgs/pid_cotrol.png)
+![pid2](./imgs/pid_control.png)
 
 ### Linear Quadratic regulator
 ![lqr1](./imgs/lqr_state.png)
-![lqr2](./imgs/lqr_cotrol.png)
+![lqr2](./imgs/lqr_control.png)
