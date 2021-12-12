@@ -1,0 +1,36 @@
+### Paramteres used by the allocation node ###
+allocation_node:
+  ros__parameters:
+    n: 6                                                          # Control DOFs
+    r:  8                                                          # Number of thrusters
+    k: 0.000004                                              # Thrust coefficient
+    # Thruster 6DOF pose w.r.t COG [x,y,z,r,p,y]
+    T1: [0.15393, -0.19279, 0.04544, 0.0, -1.57, 0.0]
+    T2: [0.15393, 0.18721, 0.04465, 0.0, -1.57, 0.0]
+    T3: [-0.30907, -0.19279, 0.04544, 0.0, -1.57, 0.0]
+    T4: [-0.30907, 0.18721, 0.04465, 0.0, -1.57, 0.0]
+    T5: [0.13461, -0.28004, -0.04161, 0.0, 0.0, 0.79]
+    T6: [0.13461, 0.27446, -0.04161, 0.0, 0.0, -0.79]
+    T7: [-0.28474, -0.28004, -0.04161, 0.0, 0.0, 2.35619449]
+    T8: [-0.28474, 0.27446, -0.04161, 0.0, 0.0, -2.35619449]
+    # Control wrench topic name
+    control_wrench_topic: "/swift/thruster_manager/input_stamped"
+    # Fitted 3rd order polynomial coefficients between y (pwm) and x (rpm)
+    # -ve rpm region
+    rpm_to_pwm_coeff_left:   [2.04120053e-09, -2.59386577e-05, -3.59600677e-02,  1.48560408e+03]
+    # +ve rpm region
+    rpm_to_pwm_coeff_right: [-3.07782617e-09,  2.75316620e-05,  4.14148724e-02,  1.51146156e+03]
+    max_rpm: 3600                                  #(rpm
+    min_rpm: 347                                     #(rpm)
+    neutral_pwm: 1500                            #(µs)
+    min_pwm: 1100                                 #(µs)
+    max_pwm: 1896                                #(µs)
+    # Published pwm vector topic name
+    output_pwm_topic: "/swift/thruster_manager/pwm"
+
+
+    
+    
+    
+
+    
