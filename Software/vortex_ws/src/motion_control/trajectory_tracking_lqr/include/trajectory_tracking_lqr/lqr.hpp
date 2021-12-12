@@ -34,9 +34,27 @@ class LQR
 {
 public:
   /*
-   * @brief Constructor that initializes all parameters
+   * @brief set lqr params
+   * @param m -> AUV mass in kilogram
+   *                volume
+   *                r_cob -> vector from center of Buoyancy to the origin
+   *                r_cog -> vector from center of Gravity to the origin
+   *                Ib -> Inertia vector [ixx, iyy, izz, ixy, ixz, iyz]
+   *                Mr -> Rigid body mass matrix
+   *                Ma -> Added mass matrix
+   *                DLinear -> Linear damping coefficients vector
+   *                Dquad -> Quadratic damping coefficients vector
+   *                Q -> the state weighting matrix for the optimization problem
+   *                R -> the control forces weighting matrix the optimization
+   * problem tau_max -> maximum forces and torques vector for control saturation
+   *                error_max -> maximum tracking error for error saturation
    */
-  LQR();
+  void set_params(
+    const double & m, const double & volume, const Vector6d & Ib,
+    const Vector3d & r_cob, const Vector3d & r_cog,
+    const Vector6d & Ma, const Vector6d & Dlinear,
+    const Vector6d & Dquad, const Vector12d & Q, const Vector6d & R,
+    const Vector6d & tau_max, const Vector12d & error_max);
   /*
    * @brief LQR control action
    * @param state vector, desired state vector and acceleration feedforward
@@ -100,11 +118,11 @@ private:
   double mass_{0.0};
   double volume_{0.0};
   // Origin to CB [xb ,yb ,zb ]
-  Vector3d rb_;
+  Vector3d r_cob_;
   // Origin to CG [xg ,yg ,zg ]
-  Vector3d rg_;
+  Vector3d r_cog_;
   // Inertia matrix
-  Matrix3d Ib_;
+  Vector6d Ib_;
   // Rigid-body mass matrix
   Matrix6d Mr_;
   // Added-mass matrix
@@ -112,13 +130,17 @@ private:
   // Total mass matrix
   Matrix6d M_;
   // Linear Damping  matrix
-  Matrix6d DL_;
+  Matrix6d Dlinear_;
   // NonLinear Damping matrix
-  Matrix6d DNL_;
+  Matrix6d Dquad_;
   // The control forces weighting matrix
   Matrix6d R_;
   // The state weighting matrix
   Matrix12d Q_;
+  // Saturation values for control forces and torques
+  Vector6d tau_max_;
+  // Saturation values for tracking error
+  Vector12d error_max_;
 };
 
 #endif  // TRAJECTORY_TRACKING_LQR__LQR_HPP_

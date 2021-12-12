@@ -19,83 +19,62 @@
 #include <memory>
 #include "geometry/support.h"
 
-LQR::LQR()
+void LQR::set_params(
+  const double & m, const double & volume, const Vector6d & Ib,
+  const Vector3d & r_cob, const Vector3d & r_cog,
+  const Vector6d & Ma, const Vector6d & Dlinear,
+  const Vector6d & Dquad, const Vector12d & Q,
+  const Vector6d & R, const Vector6d & tau_max,
+  const Vector12d & error_max)
 {
   /* Paramteres initilization for SWIFT AUV
-   * rb_ -> vector from center of Buoyancy to the origin
-   * rg_ -> vector from center of Gravity to the origin
-   * Ib_ -> Inertia matrix
+   * r_cob_ -> vector from center of Buoyancy to the origin
+   * r_cog_ -> vector from center of Gravity to the origin
+   * Ib_ -> Inertia vector [ixx, iyy, izz, ixy, ixz, iyz]
    * Mr_ -> Rigid body mass matrix
    * Ma_ -> Added mass matrix
-   * DL_ -> Linear damping coefficients vector
-   * DNL_ -> Quadratic damping coefficients vector
+   * DLinear_ -> Linear damping coefficients vector
+   * Dquad_ -> Quadratic damping coefficients vector
    * Q_ -> the state weighting matrix for the optimization problem
    * R_ -> the control forces weighting matrix the optimization problem
    */
-  // Center of Gravitiy CG is the origin
-  rg_(0, 0) = 0.0;
-  rg_(1, 0) = 0.0;
-  rg_(2, 0) = 0.0;
-  rb_(0, 0) = 0.0;
-  rb_(1, 0) = 0.0;
-  // All the equations are derived in NED frame, CB is above the CG therefore it
-  // has a -ve sign in z
-  rb_(2, 0) = -0.12489;
-  mass_ = 35.5;
-  volume_ = 0.0364;
-  // Inertia matrix
-  Ib_(0, 0) = 0.8061;
-  Ib_(0, 1) = -0.0059;
-  Ib_(0, 2) = 0.0005;
-  Ib_(1, 0) = -0.0059;
-  Ib_(1, 1) = 0.8;
-  Ib_(1, 2) = -0.0113;
-  Ib_(2, 0) = 0.0005;
-  Ib_(2, 1) = -0.0113;
-  Ib_(2, 2) = 1.5599;
+  this->mass_ = m;
+  this->volume_ = volume;
+  this->Ib_ = Ib;
+  this->r_cob_ = r_cob;
+  this->r_cog_ = r_cog;
+  this->Ma_ = Ma.asDiagonal();
+  this->Dlinear_ = Dlinear.asDiagonal();
+  this->Dquad_ = Dquad.asDiagonal();
+  this->Q_ = Q.asDiagonal();
+  this->R_ = R.asDiagonal();
+  this->tau_max_ = tau_max;
+  this->error_max_ = error_max;
   // Rigid-Body System Inertia Matrix, (equation 3.44) Fossen 2011 book
-  Mr_.block<3, 3>(0, 0) = mass_ * Matrix3d::Identity();
-  Mr_.block<3, 3>(3, 3) = Ib_;
-  Mr_.block<3, 3>(0, 3) = -mass_ * skew(rg_);
-  Mr_.block<3, 3>(3, 0) = mass_ * skew(rg_);
-  Ma_(0, 0) = 13;
-  Ma_(1, 1) = 20;
-  Ma_(2, 2) = 35;
-  Ma_(3, 3) = 12.2;
-  Ma_(4, 4) = 12.37;
-  Ma_(5, 5) = 7.3;
-  M_ = Mr_ + Ma_;
-  DL_(0, 0) = -22.8;
-  DL_(1, 1) = -30.95;
-  DL_(2, 2) = -50.26;
-  DL_(3, 3) = -16.05;
-  DL_(4, 4) = -16.73;
-  DL_(5, 5) = -5.13;
-  DNL_(0, 0) = -28.43;
-  DNL_(1, 1) = -55.98;
-  DNL_(2, 2) = -137.5;
-  DNL_(3, 3) = 0.0;
-  DNL_(4, 4) = 0.0;
-  DNL_(5, 5) = 0.0;
-  Q_ = Matrix12d::Identity();
-  Q_(0, 0) = 2.5;
-  Q_(1, 1) = 2.5;
-  Q_(2, 2) = 2.5;
-  R_ = 0.01 * Matrix6d::Identity();
+  this->Mr_.block<3, 3>(0, 0) = mass_ * Matrix3d::Identity();
+  Matrix3d inertia_matrix;
+  inertia_matrix << Ib_(0), Ib_(3), Ib_(4), Ib_(3), Ib_(1), Ib_(5), Ib_(4),
+    Ib_(5), Ib_(2);
+  this->Mr_.block<3, 3>(3, 3) = inertia_matrix;
+  this->Mr_.block<3, 3>(0, 3) = -mass_ * skew(r_cog_);
+  this->Mr_.block<3, 3>(3, 0) = mass_ * skew(r_cog_);
+  // Total Mass Matrix
+  this->M_ = this->Mr_ + this->Ma_;
 }
+
 Matrix6d LQR::calculate_damping_matrix(Vector6d & nu)
 {
   /* Calculating the total damping matrix D
    * D(v) = D_linear + D_nonlinear * |nu|)
    * [nu] is the body velocity vector
    */
-  Matrix6d D = DL_;
-  D(0, 0) += DNL_(0, 0) * std::abs(nu(0));
-  D(1, 1) += DNL_(1, 1) * std::abs(nu(1));
-  D(2, 2) += DNL_(2, 2) * std::abs(nu(2));
-  D(3, 3) += DNL_(3, 3) * std::abs(nu(3));
-  D(4, 4) += DNL_(4, 4) * std::abs(nu(4));
-  D(5, 5) += DNL_(5, 5) * std::abs(nu(5));
+  Matrix6d D = Dlinear_;
+  D(0, 0) += Dquad_(0, 0) * std::abs(nu(0));
+  D(1, 1) += Dquad_(1, 1) * std::abs(nu(1));
+  D(2, 2) += Dquad_(2, 2) * std::abs(nu(2));
+  D(3, 3) += Dquad_(3, 3) * std::abs(nu(3));
+  D(4, 4) += Dquad_(4, 4) * std::abs(nu(4));
+  D(5, 5) += Dquad_(5, 5) * std::abs(nu(5));
   return D;
 }
 Matrix6d LQR::calculate_jacobian_matrix(Vector3d & euler)
@@ -129,18 +108,21 @@ Vector6d LQR::calculate_restoring_forces(Vector3d & euler)
   /* Restoring forces and moments
    * Reference: equation (4.6) Fossen 2011
    */
-  double W = mass_ * 9.81;
-  double B = volume_ * 1028 * 9.81;
+  double W = mass_ * 9.806;
+  double B = volume_ * 1028 * 9.896;
   Vector6d g;
   g(0, 0) = (W - B) * sin(euler(1));
   g(1, 0) = -(W - B) * cos(euler(1)) * sin(euler(0));
   g(2, 0) = -(W - B) * cos(euler(1)) * cos(euler(0));
-  g(3, 0) = -(rg_(1, 0) * W - rb_(1, 0) * B) * cos(euler(1)) * cos(euler(0)) +
-    (rg_(2, 0) * W - rb_(2, 0) * B) * cos(euler(1)) * sin(euler(0));
-  g(4, 0) = (rg_(2, 0) * W - rb_(2, 0) * B) * sin(euler(1)) +
-    (rg_(0, 0) * W - rb_(0, 0) * B) * cos(euler(1)) * cos(euler(0));
-  g(5, 0) = -(rg_(0, 0) * W - rb_(0, 0) * B) * cos(euler(1)) * sin(euler(0)) -
-    (rg_(1, 0) * W - rb_(1, 0) * B) * sin(euler(1));
+  g(3, 0) =
+    -(r_cog_(1, 0) * W - r_cob_(1, 0) * B) * cos(euler(1)) * cos(euler(0)) +
+    (r_cog_(2, 0) * W - r_cob_(2, 0) * B) * cos(euler(1)) * sin(euler(0));
+  g(4, 0) =
+    (r_cog_(2, 0) * W - r_cob_(2, 0) * B) * sin(euler(1)) +
+    (r_cog_(0, 0) * W - r_cob_(0, 0) * B) * cos(euler(1)) * cos(euler(0));
+  g(5, 0) =
+    -(r_cog_(0, 0) * W - r_cob_(0, 0) * B) * cos(euler(1)) * sin(euler(0)) -
+    (r_cog_(1, 0) * W - r_cob_(1, 0) * B) * sin(euler(1));
   return g;
 }
 void LQR::saturate_control(Vector6d & tau)
@@ -148,10 +130,10 @@ void LQR::saturate_control(Vector6d & tau)
   /* Saturating the control forces and moments at ± 40 [N, N.m]
    */
   for (int i = 0; i <= 5; i++) {
-    if (tau(i) > 40) {
-      tau(i) = 40;
-    } else if (tau(i) < -40) {
-      tau(i) = -40;
+    if (tau(i) > tau_max_(i)) {
+      tau(i) = tau_max_(i);
+    } else if (tau(i) < -tau_max_(i)) {
+      tau(i) = -tau_max_(i);
     }
   }
 }
@@ -160,10 +142,10 @@ void LQR::saturate_error(Vector12d & delta)
   /* Saturating the state errors ± 0.8 for avoiding agressive control actions
    */
   for (int i = 0; i <= 11; i++) {
-    if (delta(i) > 0.8) {
-      delta(i) = 0.8;
-    } else if (delta(i) < -0.8) {
-      delta(i) = -0.8;
+    if (delta(i) > error_max_(i)) {
+      delta(i) = error_max_(i);
+    } else if (delta(i) < -error_max_(i)) {
+      delta(i) = -error_max_(i);
     }
   }
 }

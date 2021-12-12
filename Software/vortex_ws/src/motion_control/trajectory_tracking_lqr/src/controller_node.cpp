@@ -20,6 +20,7 @@
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <vector>
 
 using std::placeholders::_1;
 
@@ -28,6 +29,7 @@ using std::placeholders::_1;
 Controller::Controller(const rclcpp::NodeOptions & options)
 : Node(options.arguments()[0], options)
 {
+  // =========================================================================
   // Subscribers initialization
   state_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
     "/swift/pose_gt", 1, std::bind(&Controller::stateCallback, this, _1));
@@ -49,30 +51,35 @@ Controller::Controller(const rclcpp::NodeOptions & options)
     "/swift/thruster_manager/input_stamped", 1);
   pwm_client_ =
     this->create_client<custom_ros_interfaces::srv::PWM>("control_pwm");
+  // =========================================================================
+  // Getting LQR parameters
+  double mass = this->get_parameter("mass").as_double();
+  double volume = this->get_parameter("volume").as_double();
+  Eigen::VectorXd Ib =
+    vector_to_eigen(this->get_parameter("Ib").as_double_array());
+  Eigen::VectorXd Dlinear =
+    vector_to_eigen(this->get_parameter("Dlinear").as_double_array());
+  Eigen::VectorXd Dquad =
+    vector_to_eigen(this->get_parameter("Dquad").as_double_array());
+  Eigen::VectorXd Ma =
+    vector_to_eigen(this->get_parameter("Ma").as_double_array());
+  Eigen::VectorXd r_cog =
+    vector_to_eigen(this->get_parameter("r_cog").as_double_array());
+  Eigen::VectorXd r_cob =
+    vector_to_eigen(this->get_parameter("r_cob").as_double_array());
+  Eigen::VectorXd Q =
+    vector_to_eigen(this->get_parameter("Q").as_double_array());
+  Eigen::VectorXd R =
+    vector_to_eigen(this->get_parameter("R").as_double_array());
+  Eigen::VectorXd tau_max =
+    vector_to_eigen(this->get_parameter("tau_max").as_double_array());
+  Eigen::VectorXd error_max =
+    vector_to_eigen(this->get_parameter("error_max").as_double_array());
+  // Setting the parameters
+  this->lqr_.set_params(mass, volume, Ib, r_cob, r_cog, Ma, Dlinear, Dquad, Q,
+    R, tau_max, error_max);
 }
-Vector3d Controller::q_to_euler(Vector4d quat)
-{
-  /* Attitude conversion from quaternion to Euler
-   * Reference: Equation (2.58) Fossen 2011
-   */
-  double e1 = quat(0);
-  double e2 = quat(1);
-  double e3 = quat(2);
-  double eta = quat(3);
-  Matrix3d R;
-  R << 1 - 2 * (e2 * e2 + e3 * e3), 2 * (e1 * e2 - e3 * eta),
-    2 * (e1 * e3 + e2 * eta), 2 * (e1 * e2 + e3 * eta),
-    1 - 2 * (e1 * e1 + e3 * e3), 2 * (e2 * e3 - e1 * eta),
-    2 * (e1 * e3 - e2 * eta), 2 * (e2 * e3 + e1 * eta),
-    1 - 2 * (e1 * e1 + e2 * e2);
-  Vector3d euler;
-  // Pitch, treating singularity cases θ = ±90
-  double den = sqrt(1 - R(2, 0) * R(2, 0));
-  euler << atan2(R(2, 1), R(2, 2)), -atan(R(2, 0) / std::max(0.001, den)),
-    atan2(R(1, 0), R(0, 0));
-
-  return euler;
-}
+// =========================================================================
 /* Callbacks*/
 void Controller::pointCallback(const geometry_msgs::msg::Point::SharedPtr msg)
 {
@@ -92,6 +99,7 @@ void Controller::pointCallback(const geometry_msgs::msg::Point::SharedPtr msg)
   translation_start_stamp_ = this->get_clock()->now().seconds();
   los_.setpoint(Vector2d(msg->x, msg->y));
 }
+// =========================================================================
 void Controller::attitudeCallback(
   const geometry_msgs::msg::Point::SharedPtr msg)
 {
@@ -110,6 +118,7 @@ void Controller::attitudeCallback(
   rotation_duration_ = trajectory_generator_.rotation3D_duration;
   rotation_start_stamp_ = this->get_clock()->now().seconds();
 }
+// =========================================================================
 void Controller::rollCallback(const std_msgs::msg::Float32::SharedPtr msg)
 {
   /* Handle reference roll angle by fitting 1D trajectory from current roll
@@ -124,6 +133,7 @@ void Controller::rollCallback(const std_msgs::msg::Float32::SharedPtr msg)
   rotation_duration_ = trajectory_generator_.rotation1D_duration;
   rotation_start_stamp_ = this->get_clock()->now().seconds();
 }
+// =========================================================================
 void Controller::pitchCallback(const std_msgs::msg::Float32::SharedPtr msg)
 {
   /* Handle reference pitch angle by fitting 1D trajectory from current pitch
@@ -138,7 +148,7 @@ void Controller::pitchCallback(const std_msgs::msg::Float32::SharedPtr msg)
   rotation_duration_ = trajectory_generator_.rotation1D_duration;
   rotation_start_stamp_ = this->get_clock()->now().seconds();
 }
-
+// =========================================================================
 void Controller::yawCallback(const std_msgs::msg::Float32::SharedPtr msg)
 {
   /* Handle reference yaw angle by fitting 1D trajectory from current yaw angle
@@ -153,6 +163,7 @@ void Controller::yawCallback(const std_msgs::msg::Float32::SharedPtr msg)
   rotation_duration_ = trajectory_generator_.rotation1D_duration;
   rotation_start_stamp_ = this->get_clock()->now().seconds();
 }
+// =========================================================================
 void Controller::holdCallback(const std_msgs::msg::Float32::SharedPtr msg)
 {
   /* Handle hold command
@@ -164,6 +175,7 @@ void Controller::holdCallback(const std_msgs::msg::Float32::SharedPtr msg)
   x_hold_.setZero();
   x_hold_.block<6, 1>(0, 0) = x_.head<6>();
 }
+// =========================================================================
 void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
   /* Handle state message
@@ -298,6 +310,7 @@ void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
     }
   }
 }
+// =========================================================================
 void Controller::publish_control_wrench()
 {
   auto tau = geometry_msgs::msg::WrenchStamped();
@@ -312,7 +325,7 @@ void Controller::publish_control_wrench()
   tau.header.stamp = this->get_clock()->now();
   tau_pub_->publish(tau);
 }
-
+// =========================================================================
 void Controller::request_pwm_srv()
 {
   Vector6d control_pwm = this->thrust_to_pwm();
@@ -325,6 +338,7 @@ void Controller::request_pwm_srv()
   request->yaw = std::ceil(control_pwm(5));
   auto result = pwm_client_->async_send_request(request);
 }
+// =========================================================================
 Vector6d Controller::thrust_to_pwm()
 {
   /* There are 3 regions of thrust: deadband, +ve polynomial and -v polynomail
@@ -364,11 +378,41 @@ Vector6d Controller::thrust_to_pwm()
   }
   return control_pwm;
 }
+// =========================================================================
+Vector3d Controller::q_to_euler(Vector4d quat)
+{
+  /* Attitude conversion from quaternion to Euler
+   * Reference: Equation (2.58) Fossen 2011
+   */
+  double e1 = quat(0);
+  double e2 = quat(1);
+  double e3 = quat(2);
+  double eta = quat(3);
+  Matrix3d R;
+  R << 1 - 2 * (e2 * e2 + e3 * e3), 2 * (e1 * e2 - e3 * eta),
+    2 * (e1 * e3 + e2 * eta), 2 * (e1 * e2 + e3 * eta),
+    1 - 2 * (e1 * e1 + e3 * e3), 2 * (e2 * e3 - e1 * eta),
+    2 * (e1 * e3 - e2 * eta), 2 * (e2 * e3 + e1 * eta),
+    1 - 2 * (e1 * e1 + e2 * e2);
+  Vector3d euler;
+  // Pitch, treating singularity cases θ = ±90
+  double den = sqrt(1 - R(2, 0) * R(2, 0));
+  euler << atan2(R(2, 1), R(2, 2)), -atan(R(2, 0) / std::max(0.001, den)),
+    atan2(R(1, 0), R(0, 0));
 
+  return euler;
+}
+// =========================================================================
+inline Eigen::VectorXd Controller::vector_to_eigen(std::vector<double> v)
+{
+  return Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(v.data(), v.size());
+}
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
   rclcpp::NodeOptions options;
+  options.allow_undeclared_parameters(true);
+  options.automatically_declare_parameters_from_overrides(true);
   options.arguments({"controller_node"});
   std::shared_ptr<Controller> node = std::make_shared<Controller>(options);
   rclcpp::spin(node);

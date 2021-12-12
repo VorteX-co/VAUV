@@ -15,6 +15,7 @@
 #ifndef TRAJECTORY_TRACKING_LQR__CONTROLLER_NODE_HPP_
 #define TRAJECTORY_TRACKING_LQR__CONTROLLER_NODE_HPP_
 #include <memory>
+#include <vector>
 #include "custom_ros_interfaces/srv/pwm.hpp"
 #include "geometry_msgs/msg/wrench_stamped.hpp"
 #include "los_steering.hpp"
@@ -111,6 +112,11 @@ private:
    * @brief Convert the control forces to PWM for T200 thrusters
    */
   Vector6d thrust_to_pwm();
+  /*
+   * @brief Convert std::vector to Eigen::VectorXd
+   * @param: std::vector<double> v
+   */
+  inline Eigen::VectorXd vector_to_eigen(std::vector<double> v);
 
   // Variables
   Vector12d x_;           // AUV state
