@@ -106,23 +106,16 @@ Matrix6d LQR::calculate_coriolis_matrix(Vector6d & nu)
 Vector6d LQR::calculate_restoring_forces(Vector3d & euler)
 {
   /* Restoring forces and moments
-   * Reference: equation (4.6) Fossen 2011
+   * Reference: equation (4.5) Fossen 2011
    */
-  double W = mass_ * 9.806;
-  double B = volume_ * 1028 * 9.896;
+  // Gravity froce
+  Vector3d Fg {0.0, 0.0, mass_ * 9.806};
+  // Buoyancy force
+  Vector3d Fb {0.0, 0.0, -volume_ * 1000 * 9.896};
+  // rotation from Body to Inertial
+  Matrix3d R = RBtoI(euler);
   Vector6d g;
-  g(0, 0) = (W - B) * sin(euler(1));
-  g(1, 0) = -(W - B) * cos(euler(1)) * sin(euler(0));
-  g(2, 0) = -(W - B) * cos(euler(1)) * cos(euler(0));
-  g(3, 0) =
-    -(r_cog_(1, 0) * W - r_cob_(1, 0) * B) * cos(euler(1)) * cos(euler(0)) +
-    (r_cog_(2, 0) * W - r_cob_(2, 0) * B) * cos(euler(1)) * sin(euler(0));
-  g(4, 0) =
-    (r_cog_(2, 0) * W - r_cob_(2, 0) * B) * sin(euler(1)) +
-    (r_cog_(0, 0) * W - r_cob_(0, 0) * B) * cos(euler(1)) * cos(euler(0));
-  g(5, 0) =
-    -(r_cog_(0, 0) * W - r_cob_(0, 0) * B) * cos(euler(1)) * sin(euler(0)) -
-    (r_cog_(1, 0) * W - r_cob_(1, 0) * B) * sin(euler(1));
+  g << -(R * (Fg + Fb)), -(R * (skew(r_cog_) * Fg + skew(r_cob_) * Fb));
   return g;
 }
 void LQR::saturate_control(Vector6d & tau)
