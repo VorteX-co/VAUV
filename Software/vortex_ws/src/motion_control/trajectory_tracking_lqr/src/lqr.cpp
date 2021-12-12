@@ -38,7 +38,8 @@ LQR::LQR()
   rg_(2, 0) = 0.0;
   rb_(0, 0) = 0.0;
   rb_(1, 0) = 0.0;
-  // All the equations are derived in NED frame, CB is above the CG therefore it has a -ve sign in z
+  // All the equations are derived in NED frame, CB is above the CG therefore it
+  // has a -ve sign in z
   rb_(2, 0) = -0.12489;
   mass_ = 35.5;
   volume_ = 0.0364;
@@ -77,9 +78,9 @@ LQR::LQR()
   DNL_(4, 4) = 0.0;
   DNL_(5, 5) = 0.0;
   Q_ = Matrix12d::Identity();
-  Q_(0,0) = 2.5;
-  Q_(1,1) = 2.5;
-  Q_(2,2) = 2.5;
+  Q_(0, 0) = 2.5;
+  Q_(1, 1) = 2.5;
+  Q_(2, 2) = 2.5;
   R_ = 0.01 * Matrix6d::Identity();
 }
 Matrix6d LQR::calculate_damping_matrix(Vector6d & nu)
@@ -208,7 +209,7 @@ Matrix3d LQR::TBtoI(Vector3d & euler)
    * Reference: equation (2.28.b) Fossen 2011
    */
   double cp = cos(euler(1));
-  cp = sign(cp) * min(0.01745, abs(cp));
+  cp = sign(cp) * std::min(0.01745, abs(cp));
   Matrix3d T;
   T << 1 * cp, sin(euler(0)) * sin(euler(1)), cos(euler(0)) * sin(euler(1)), 0,
     cos(euler(0)) * cp, -cp * sin(euler(0)), 0, sin(euler(0)), cos(euler(0));
@@ -261,13 +262,13 @@ Vector6d LQR::action(Vector12d & x, Vector12d & xd, Vector6d & ffacc)
   Vector3d euler = x.block<3, 1>(3, 0);
   Matrix6d J = calculate_jacobian_matrix(euler);
   // Velocity in body frame
-  Vector6d nu =x.tail<6>();
+  Vector6d nu = x.tail<6>();
   Matrix6d D = calculate_damping_matrix(nu);
   Matrix6d C = calculate_coriolis_matrix(nu);
   Matrix12d A = Matrix12d::Zero();
   A.block<6, 6>(0, 6) = J;
   A.block<6, 6>(6, 6) = -M_.inverse() * (D + C);
-  Eigen::Matrix<double, 12, 6> B = Matrix6d::Zero();
+  Eigen::Matrix<double, 12, 6> B = Eigen::Matrix<double, 12, 6>::Zero();
   B.block<6, 6>(6, 0) = M_.inverse();
   // Solving the algebraic Riccati equation (ARE)
   Matrix12d P = Matrix12d::Zero();

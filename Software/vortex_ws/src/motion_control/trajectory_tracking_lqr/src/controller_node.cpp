@@ -68,7 +68,7 @@ Vector3d Controller::q_to_euler(Vector4d quat)
   Vector3d euler;
   // Pitch, treating singularity cases θ = ±90
   double den = sqrt(1 - R(2, 0) * R(2, 0));
-  euler << atan2(R(2, 1), R(2, 2)), -atan(R(2, 0) / max(0.001, den)),
+  euler << atan2(R(2, 1), R(2, 2)), -atan(R(2, 0) / std::max(0.001, den)),
     atan2(R(1, 0), R(0, 0));
 
   return euler;
@@ -181,106 +181,120 @@ void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
   tf2::fromMsg(msg->twist.twist, velocity);
   x_.block<6, 1>(6, 0) = velocity;
   if (controller_on_) {
-    if (control_mode_ == modes::station_keeping) {
-      /* Setting a hold pose with zero velocity and acceleration
-       */
-      x_desired_ = x_hold_;
-      acc_desired_.setZero();
-      control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
-      this->publish_control_wrench();
-      this->request_pwm_srv();
-    } else if (control_mode_ == modes::point_tracking) {
-      /* Evaluting the  generated trajectory and current clock w.r.t the
-       * starting time point. The output from the generator is
-       * [translation_reference] 9D vector contains [x,y,z] desired position,
-       * linear velocity and linear acceleration.
-       */
-      translation_clock_ =
-        this->get_clock()->now().seconds() - translation_start_stamp_;
-      Vector9d translation_reference =
-        trajectory_generator_.get_translation3D_trajectory(
-        translation_clock_);
-      x_desired_.block<3, 1>(0, 0) = translation_reference.head<3>();
-      x_desired_.block<3, 1>(6, 0) = translation_reference.block<3, 1>(3, 0);
-      acc_desired_.block<3, 1>(0, 0) = translation_reference.tail<3>();
-      /* Calculating a line of sight refence yaw angle position, angular
-       * velocity and angular acceleration
-       */
-      Vector3d planner_pose{x_(0), x_(1), x_(5)};
-      Vector3d planner_velocity{x_(6), x_(7), x_(11)};
-      los_.update_state(planner_pose, planner_velocity);
-      los_.calculate_reference();
-      x_desired_(5) = los_.yaw_des;
-      x_desired_(11) = los_.rd;
-      acc_desired_(5) = los_.rdd;
-      control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
-      this->publish_control_wrench();
-      this->request_pwm_srv();
-    } else if (control_mode_ == modes::attitude_tracking) {
-      /* Evaluting the  generated trajectory and current clock w.r.t the
-       * starting time point. The output from the generator is
-       * [rotation_reference] 9D vector contains [r,p,y] desired angles, angular
-       * velocities and angular accelerations.
-       */
-      rotation_clock_ =
-        this->get_clock()->now().seconds() - rotation_start_stamp_;
-      Vector9d rotation_reference =
-        trajectory_generator_.get_rotation3D_trajectory(rotation_clock_);
-      x_desired_.block<3, 1>(3, 0) = rotation_reference.head<3>();
-      x_desired_.block<3, 1>(9, 0) = rotation_reference.block<3, 1>(3, 0);
-      acc_desired_.block<3, 1>(3, 0) = rotation_reference.tail<3>();
-      control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
-      this->publish_control_wrench();
-      this->request_pwm_srv();
-
-    } else if (control_mode_ == modes::roll_tracking) {
-      /* Evaluting the generated roll trajectory at current clock w.r.t the
-       * starting time point the output from the generator is 3D vector
-       * contains [φ] desired position, angular velocity and angular
-       * acceleration.
-       */
-      rotation_clock_ =
-        this->get_clock()->now().seconds() - rotation_start_stamp_;
-      Vector3d roll_desired =
-        trajectory_generator_.get_rotation1D_trajectory(rotation_clock_);
-      x_desired_(3) = roll_desired(0);
-      x_desired_(9) = roll_desired(1);
-      acc_desired_(3) = roll_desired(2);
-      control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
-      this->publish_control_wrench();
-      this->request_pwm_srv();
-    } else if (control_mode_ == modes::pitch_tracking) {
-      /* Evaluting the generated pitch trajectory at current clock w.r.t the
-       * starting time point the output from the generator is 3D vectors
-       * contains [θ] desired position, angular velocity and angular
-       * acceleration.
-       */
-      rotation_clock_ =
-        this->get_clock()->now().seconds() - rotation_start_stamp_;
-      Vector3d pitch_desired =
-        trajectory_generator_.get_rotation1D_trajectory(rotation_clock_);
-      x_desired_(4) = pitch_desired(0);
-      x_desired_(10) = pitch_desired(1);
-      acc_desired_(4) = pitch_desired(2);
-      control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
-      this->publish_control_wrench();
-      this->request_pwm_srv();
-    } else if (control_mode_ == modes::yaw_tracking) {
-      /* Evaluting the  generated yaw trajectory at current clock w.r.t the
-       * starting time point the output from the generator is 3D vector
-       * contains [ψ] desired position, angular velocity and angular
-       * acceleration.
-       */
-      rotation_clock_ =
-        this->get_clock()->now().seconds() - rotation_start_stamp_;
-      Vector3d yaw_desired =
-        trajectory_generator_.get_rotation1D_trajectory(rotation_clock_);
-      x_desired_(5) = yaw_desired(0);
-      x_desired_(11) = yaw_desired(1);
-      acc_desired_(5) = yaw_desired(2);
-      control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
-      this->publish_control_wrench();
-      this->request_pwm_srv();
+    /* Control action
+     */
+    switch (control_mode_) {
+      case modes::station_keeping: {
+          x_desired_ = x_hold_;
+          acc_desired_.setZero();
+          control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
+          this->publish_control_wrench();
+          this->request_pwm_srv();
+          break;
+        }
+      case modes::point_tracking: {
+          /* Evaluting the  generated trajectory and current clock w.r.t the
+           * starting time point. The output from the generator is
+           * [translation_reference] 9D vector contains [x,y,z] desired position,
+           * linear velocity and linear acceleration.
+           */
+          translation_clock_ =
+            this->get_clock()->now().seconds() - translation_start_stamp_;
+          Vector9d translation_reference =
+            trajectory_generator_.get_translation3D_trajectory(
+            translation_clock_);
+          x_desired_.block<3, 1>(0, 0) = translation_reference.head<3>();
+          x_desired_.block<3, 1>(6, 0) = translation_reference.block<3, 1>(3, 0);
+          acc_desired_.block<3, 1>(0, 0) = translation_reference.tail<3>();
+          /* Calculating a line of sight refence yaw angle position, angular
+           * velocity and angular acceleration
+           */
+          Vector3d planner_pose{x_(0), x_(1), x_(5)};
+          Vector3d planner_velocity{x_(6), x_(7), x_(11)};
+          los_.update_state(planner_pose, planner_velocity);
+          los_.calculate_reference();
+          x_desired_(5) = los_.yaw_des;
+          x_desired_(11) = los_.rd;
+          acc_desired_(5) = los_.rdd;
+          control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
+          this->publish_control_wrench();
+          this->request_pwm_srv();
+          break;
+        }
+      case modes::attitude_tracking: {
+          /* Evaluting the  generated trajectory and current clock w.r.t the
+           * starting time point. The output from the generator is
+           * [rotation_reference] 9D vector contains [r,p,y] desired angles,
+           * angular velocities and angular accelerations.
+           */
+          rotation_clock_ =
+            this->get_clock()->now().seconds() - rotation_start_stamp_;
+          Vector9d rotation_reference =
+            trajectory_generator_.get_rotation3D_trajectory(rotation_clock_);
+          x_desired_.block<3, 1>(3, 0) = rotation_reference.head<3>();
+          x_desired_.block<3, 1>(9, 0) = rotation_reference.block<3, 1>(3, 0);
+          acc_desired_.block<3, 1>(3, 0) = rotation_reference.tail<3>();
+          control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
+          this->publish_control_wrench();
+          this->request_pwm_srv();
+          break;
+        }
+      case modes::roll_tracking: {
+          /* Evaluting the generated roll trajectory at current clock w.r.t the
+           * starting time point the output from the generator is 3D vector
+           * contains [φ] desired position, angular velocity and angular
+           * acceleration.
+           */
+          rotation_clock_ =
+            this->get_clock()->now().seconds() - rotation_start_stamp_;
+          Vector3d roll_desired =
+            trajectory_generator_.get_rotation1D_trajectory(rotation_clock_);
+          x_desired_(3) = roll_desired(0);
+          x_desired_(9) = roll_desired(1);
+          acc_desired_(3) = roll_desired(2);
+          control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
+          this->publish_control_wrench();
+          this->request_pwm_srv();
+          break;
+        }
+      case modes::pitch_tracking: {
+          /* Evaluting the generated pitch trajectory at current clock w.r.t the
+           * starting time point the output from the generator is 3D vectors
+           * contains [Pitchθ] desired position, angular velocity and angular
+           * acceleration.
+           */
+          rotation_clock_ =
+            this->get_clock()->now().seconds() - rotation_start_stamp_;
+          Vector3d pitch_desired =
+            trajectory_generator_.get_rotation1D_trajectory(rotation_clock_);
+          x_desired_(4) = pitch_desired(0);
+          x_desired_(10) = pitch_desired(1);
+          acc_desired_(4) = pitch_desired(2);
+          control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
+          this->publish_control_wrench();
+          this->request_pwm_srv();
+          break;
+        }
+      case modes::yaw_tracking: {
+          /* Evaluting the  generated yaw trajectory at current clock w.r.t the
+           * starting time point the output from the generator is 3D vector
+           * contains [Yawψ] desired position, angular velocity and angular
+           * acceleration.
+           */
+          rotation_clock_ =
+            this->get_clock()->now().seconds() - rotation_start_stamp_;
+          Vector3d yaw_desired =
+            trajectory_generator_.get_rotation1D_trajectory(rotation_clock_);
+          x_desired_(5) = yaw_desired(0);
+          x_desired_(11) = yaw_desired(1);
+          acc_desired_(5) = yaw_desired(2);
+          control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
+          this->publish_control_wrench();
+          this->request_pwm_srv();
+          break;
+        }
+      default:
+        break;
     }
   }
 }
