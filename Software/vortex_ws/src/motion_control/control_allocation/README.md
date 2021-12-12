@@ -2,8 +2,7 @@
 Control Allocation
 ------
 
-For marine craft in n DOF it is necessary to distribute the generalized control forces τ ∈ R ^ n to the actuators in terms of control inputs u ∈ R ^ r
-For marince craft with r actuators and n  controlled DOF, it is necessary to distribute the generalized control forces τ n-D  to the actuators in terms of control inputs u r-D.
+For marince craft with r actuators and n controlled DOF, it is necessary to distribute the generalized control forces τ n-D  to the actuators in terms of control inputs u r-D.
 
 ![control_allocation](./imgs/control_allocation.png)
 
