@@ -109,9 +109,9 @@ Vector6d LQR::calculate_restoring_forces(Vector3d & euler)
    * Reference: equation (4.5) Fossen 2011
    */
   // Gravity froce
-  Vector3d Fg {0.0, 0.0, mass_ * 9.806};
+  Vector3d Fg{0.0, 0.0, mass_ * 9.806};
   // Buoyancy force
-  Vector3d Fb {0.0, 0.0, -volume_ * 1000 * 9.896};
+  Vector3d Fb{0.0, 0.0, -volume_ * 1000 * 9.896};
   // rotation from Body to Inertial
   Matrix3d R = RBtoI(euler);
   Vector6d g;
@@ -162,20 +162,17 @@ Matrix3d LQR::RBtoI(Vector3d & euler)
    * Reference: equation (2.18) Fossen 2011
    * euler -> rpy w.r.t  inertial NED
    */
+  double cphi = cos(euler(0));
+  double sphi = sin(euler(0));
+  double cth = cos(euler(1));
+  double sth = sin(euler(1));
+  double cpsi = cos(euler(2));
+  double spsi = sin(euler(2));
   Matrix3d R;
-  R(0, 0) = cos(euler(2)) * cos(euler(1));
-  R(0, 1) = -sin(euler(2)) * cos(euler(0)) +
-    cos(euler(2)) * sin(euler(1)) * sin(euler(0));
-  R(0, 2) = sin(euler(2)) * sin(euler(0)) +
-    cos(euler(2)) * cos(euler(0)) * sin(euler(1));
-  R(1, 0) = sin(euler(2)) * cos(euler(1));
-  R(1, 1) = cos(euler(2)) * cos(euler(0)) +
-    sin(euler(0)) * sin(euler(2)) * sin(euler(1));
-  R(1, 2) = -cos(euler(2)) * sin(euler(0)) +
-    sin(euler(1)) * sin(euler(2)) * cos(euler(0));
-  R(2, 0) = -sin(euler(1));
-  R(2, 1) = cos(euler(1)) * sin(euler(0));
-  R(2, 2) = cos(euler(1)) * cos(euler(0));
+  R << cpsi * cth, -spsi * cphi + cpsi * sth * sphi,
+    spsi * sphi + cpsi * cphi * sth, spsi * cth,
+    cpsi * cphi + sphi * sth * spsi, -cpsi * sphi + sth * spsi * cphi, -sth,
+    cth * sphi, cth * cphi;
   return R;
 }
 Matrix3d LQR::TBtoI(Vector3d & euler)
@@ -183,12 +180,16 @@ Matrix3d LQR::TBtoI(Vector3d & euler)
   /* Translation matrix from Body frame to Inertial frame
    * Reference: equation (2.28.b) Fossen 2011
    */
-  double cp = cos(euler(1));
-  cp = sign(cp) * std::min(0.01745, abs(cp));
+  double cphi = cos(euler(0));
+  double sphi = sin(euler(0));
+  double cth = cos(euler(1));
+  cth = sign(cth) * std::min(0.01745, abs(cth));
+  double sth = sin(euler(1));
   Matrix3d T;
-  T << 1 * cp, sin(euler(0)) * sin(euler(1)), cos(euler(0)) * sin(euler(1)), 0,
-    cos(euler(0)) * cp, -cp * sin(euler(0)), 0, sin(euler(0)), cos(euler(0));
-  T *= 1 / cp;
+  T <<
+    1.0, sphi * sth / cth, cphi * sth / cth,
+    0.0, cphi, -sphi,
+    0.0, sphi / cth, cphi / cth;
   return T;
 }
 Matrix3d LQR::TItoB(Vector3d & euler)
@@ -196,9 +197,15 @@ Matrix3d LQR::TItoB(Vector3d & euler)
   /* Translation matrix from Inertial frame to body frame
    * Reference: equation (2.28.a) Fossen 2011
    */
+  double cphi = cos(euler(0));
+  double sphi = sin(euler(0));
+  double cth = cos(euler(1));
+  double sth = sin(euler(1));
   Matrix3d T;
-  T << 1, 0, -sin(euler(1)), 0, cos(euler(0)), cos(euler(1)) * sin(euler(0)), 0,
-    -sin(euler(0)), cos(euler(1)) * cos(euler(0));
+  T <<
+    1.0, -sth, 0.0,
+    0.0, cphi, cth * sphi,
+    0.0, -sphi, cth * cphi;
   return T;
 }
 Vector6d LQR::action(Vector12d & x, Vector12d & xd, Vector6d & ffacc)
