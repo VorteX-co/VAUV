@@ -18,52 +18,47 @@
 #include <vector>
 
 /**
- * @brief The LOS class is an implementation of lookahead-based steering law
- *  Reference: Handbook of Marine Craft Hydrodynamics and Motion Control, Thor
- * I. Fossen.
+ * @brief The ILOS class computes the desired
+ * heading angle when the path is straight lines going through a desired
+ * waypoints Reference: E. Børhaug, A. Pavlov and K. Y. Pettersen (2008).
+ * Integral LOS Control for Path Following of Underactuated Marine Surface
+ * Vessels in the presence of Constant Ocean Currents.
  */
-class LOS
+class ILOS
 {
 public:
   /**
-   * @brief  sets the current target position
-   * @param wp  2D-waypoint
+   * @brief  sets ILOS paramteres
+   * @param delta, lookahead distance △ (m)
+   *                R,      radius of acceptance  (m)
+   *                dt,     sampling time              (s)
+   *                kappa, postive gain paramtere for the integral error
+   *                T,         yaw time constant    (s)
    */
-  void setpoint(const Eigen::Vector2d & wp);
+  void set_params(
+    const double & delta, const double & R, const double & dt,
+    const double & kappa, const double & T);
   /**
-   * @brief update the local state variables
-   * @param pose [x y yaw]
-   * @param vel [u v r]
+   * @brief  sets the current target position
+   * @param wpt  2D-waypoint
    */
-  void update_state(const Eigen::Vector3d & pose, const Eigen::Vector3d & vel);
+  void setpoint(const Eigen::Vector2d & wpt);
+  void setpoints(const std::vector<Eigen::Vector2d> & wpts);
   /**
    * @brief steering-law calculation
+   * @param pose [x y yaw]
+   * @return yaw_reference
    */
-  void calculate_reference();
-  /**
-   * @brief  calculate a feasible reference
-   */
-  void smooth_reference();
-  double rd{0.0};
-  double rdd{0.0};
-  double yaw_des{0.0};
-  bool inCircle{false};
+  double calculate_reference(const Eigen::Vector3d & planner_pose);
 
 private:
-  double dt{0.1};     // sampling time
-  double R{0.2};      // Radius of the sphere of acceptance
-  double delta{2.0};  // lookahead distance = [1.5:2.5] * vehicle length
-  Eigen::Vector3d pose_state{0.0, 0.0, 0.0};  // x y yaw
-  Eigen::Vector3d vel_state{0.0, 0.0, 0.0};   // u v r
-  Eigen::Vector2d goal{0.0, 0.0};
-  Eigen::Vector2d prev_goal{0.0, 0.0};
-  double yaw_ref{0.0};
-  double yaw_ref_prev{0.0};
-  double yaw_ref_prev_prev{0.0};
-  double rd_prev{0.0};
-  double r_ref{0.0};
-  double yaw_des_prev{0.0};
-  double yaw_des_prev_prev{0.0};
-  void InCircle();
+  double dt_;          // sampling time
+  double R_;           // Radius of the sphere of acceptance
+  double delta_;       // lookahead distance = [1.5:2.5] * vehicle length
+  double kappa_;       // Integral error gain > 0
+  double T_;           // Yaw time constant
+  double e_int_{0.0};  // Cross-track error integral
+  std::vector<Eigen::Vector2d> wpts_;
+  int k_{0};  // Active waypoint index
 };
 #endif  // TRAJECTORY_TRACKING_LQR__LOS_STEERING_HPP_

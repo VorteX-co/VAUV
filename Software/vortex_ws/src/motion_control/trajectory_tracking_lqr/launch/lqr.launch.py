@@ -25,6 +25,7 @@ def generate_launch_description():
             parameters=[
                 get_package_share_directory(
                     'trajectory_tracking_lqr') + '/params/config.yaml'
-            ]
+            ],
+            output='screen'
         )
     ])

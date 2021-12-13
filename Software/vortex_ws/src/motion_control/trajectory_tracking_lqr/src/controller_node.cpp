@@ -78,6 +78,15 @@ Controller::Controller(const rclcpp::NodeOptions & options)
   // Setting the parameters
   this->lqr_.set_params(mass, volume, Ib, r_cob, r_cog, Ma, Dlinear, Dquad, Q,
     R, tau_max, error_max);
+  // =========================================================================
+  // Getting Line of sight parameters
+  double dt = this->get_parameter("dt").as_double();
+  double delta = this->get_parameter("delta").as_double();
+  double radius_of_acceptance =
+    this->get_parameter("radius_of_acceptance").as_double();
+  double kappa = this->get_parameter("kappa").as_double();
+  double T = this->get_parameter("T").as_double();
+  this->los_.set_params(delta, radius_of_acceptance, dt, kappa, T);
 }
 // =========================================================================
 /* Callbacks*/
@@ -98,6 +107,7 @@ void Controller::pointCallback(const geometry_msgs::msg::Point::SharedPtr msg)
   translation_duration_ = trajectory_generator_.translation3D_duration;
   translation_start_stamp_ = this->get_clock()->now().seconds();
   los_.setpoint(Vector2d(msg->x, msg->y));
+  los_.setpoint(Vector2d(msg->x * 2, msg->y * 2));
 }
 // =========================================================================
 void Controller::attitudeCallback(
@@ -222,12 +232,7 @@ void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
            * velocity and angular acceleration
            */
           Vector3d planner_pose{x_(0), x_(1), x_(5)};
-          Vector3d planner_velocity{x_(6), x_(7), x_(11)};
-          los_.update_state(planner_pose, planner_velocity);
-          los_.calculate_reference();
-          x_desired_(5) = los_.yaw_des;
-          x_desired_(11) = los_.rd;
-          acc_desired_(5) = los_.rdd;
+          x_desired_(5) = los_.calculate_reference(planner_pose);
           control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
           this->publish_control_wrench();
           this->request_pwm_srv();

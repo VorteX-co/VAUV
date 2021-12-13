@@ -124,7 +124,7 @@ private:
   Vector12d x_hold_;      // Hold state
   Vector6d acc_desired_;  // Desired 6DOF acceleration
   TrajectoryGenerator trajectory_generator_;
-  LOS los_;                  //  Line of sight steering-law
+  ILOS los_;                 //  Line of sight steering-law
   LQR lqr_;                  //  Linear Quadratic Regulator
   Vector6d control_wrench_;  //  Control forces and moments
   bool controller_on_{false};

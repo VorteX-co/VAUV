@@ -18,80 +18,54 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-void LOS::setpoint(const Eigen::Vector2d & wp)
+
+void ILOS::set_params(
+  const double & delta, const double & R, const double & dt,
+  const double & kappa, const double & T)
 {
-  prev_goal = goal;
-  goal = wp;
+  delta_ = delta;
+  R_ = R;
+  dt_ = dt;
+  kappa_ = kappa;
+  T_ = T;
 }
-void LOS::update_state(
-  const Eigen::Vector3d & pose,
-  const Eigen::Vector3d & vel)
+void ILOS::setpoint(const Eigen::Vector2d & wpt) {wpts_.push_back(wpt);}
+void ILOS::setpoints(const std::vector<Eigen::Vector2d> & wpts)
 {
-  pose_state = pose;
-  vel_state = vel;
+  wpts_.insert(wpts_.end(), wpts.begin(), wpts.end());
 }
-void LOS::InCircle()
+double ILOS::calculate_reference(const Eigen::Vector3d & planner_pose)
 {
-  double dx = goal(0) - pose_state(0);
-  double dy = goal(1) - pose_state(1);
-  // Check if the vehicle within the sphere of acceptance
-  inCircle = std::sqrt(dx * dx + dy * dy) < R;
-}
-void LOS::calculate_reference()
-{
-  double dx = goal(0) - prev_goal(0);
-  double dy = goal(1) - prev_goal(1);
+  double x = planner_pose(0);
+  double y = planner_pose(1);
+  double xk = wpts_[k_](0);
+  double yk = wpts_[k_](1);
+  double xk_next = wpts_[k_ + 1](0);
+  double yk_next = wpts_[k_ + 1](1);
   // Path-tangential angle, eq. (10.55) p. 258 in Fossen2011.
-  double alpha = std::atan2(dy, dx);
+  double alpha = atan2(yk_next - yk, xk_next - xk);
   // Alonge-track and cross-track errors, eq. (10.58, 10.59) p. 258 in
   // Fossen2011.
-  double s = (pose_state(0) - prev_goal(0)) * cos(alpha) +
-    (pose_state(1) - prev_goal(1)) * sin(alpha);
-  double e = -(pose_state(0) - prev_goal(0)) * sin(alpha) +
-    (pose_state(1) - prev_goal(1)) * cos(alpha);
-  // Velocity-path relative angle, eq. (10.74) p. 261 in Fossen2011.
-  double chi_r = atan(-e / delta);
-  // Desired course angle, eq. (10.72) p. 261 in Fossen2011.
-  double chi_des = alpha + chi_r;
-  // Total speed
-  double Ut = std::sqrt(vel_state(0) * vel_state(0) +
-      vel_state(1) * vel_state(1) + 1e-7);
-  // Side-slip (drift) angle
-  double beta = std::asin(vel_state(1) / Ut);
-  // Storing the previous values for smooth reference calculation
-  yaw_ref_prev_prev = yaw_ref_prev;
-  yaw_ref_prev = yaw_ref;
-  // Desired yaw angle, eq. (10.83) p. 263 in Fossen2011.
-  // yaw_ref = chi_des - beta;
-  // Assuming that beta is very small ~= 0
-  yaw_ref = chi_des;
-  double psie = pose_state(2) - yaw_ref;
-  if (psie > M_PI) {
-    yaw_ref += 2 * M_PI;
+  double s = (x - xk) * cos(alpha) + (y - yk) * sin(alpha);
+  double e = -(x - xk) * sin(alpha) + (y - yk) * cos(alpha);
+  // ILOS guidance law
+  double Kp = 1 / delta_;
+  double Ki = kappa_ * Kp;
+  // Velocity-path relative angle
+  double chi_r = -atan(Kp * e + Ki * e_int_);
+  // Desired Heading angle, eq. (10.72) p. 261 in Fossen2011.
+  double psi_des = alpha + chi_r;
+  // if the next waypoint satisfy the switching criterion, k = k + 1
+  double d =
+    sqrt((xk_next - xk) * (xk_next - xk) + (yk_next - yk) * (yk_next - yk));
+  int n = wpts_.size();
+  if (d - s < R_ && k_ < n) {
+    k_++;
   }
-  if (psie < -M_PI) {
-    yaw_ref -= 2 * M_PI;
-  }
-  smooth_reference();
-
-  // Reference yaw angular rate
-  r_ref = (yaw_des - yaw_des_prev) / dt;  // - 0.1 * psie;
-  rd_prev = rd;
-  // Low-pass filter for smooth output signal
-  rd = rd_prev - 0.25 * (rd_prev - r_ref);
-  rd = std::min(std::max(rd, -0.25), 0.25);
-  // Reference yaw angular acceleration
-  rdd = (rd - rd_prev) / dt;
-  rdd = std::min(std::max(rdd, -0.15), 0.15);
-}
-void LOS::smooth_reference()
-{
-  // Reference model by the dynamics of mass-spring-damper system
-  // The coefficients is based on the work from (Kristoffer Solberg's master
-  // thesis) p.119:120
-  yaw_des_prev_prev = yaw_des_prev;
-  yaw_des_prev = yaw_des;
-  yaw_des = 2.9581e-04 * yaw_ref + 5.9161e-04 * yaw_ref_prev +
-    2.9581e-04 * yaw_ref_prev_prev - -1.9312 * yaw_des_prev -
-    0.9324 * yaw_des_prev_prev;
+  // cross-track error differential equation
+  double e_int_dot =
+    delta_ * e /
+    (delta_ * delta_ + (e + kappa_ * e_int_) * (e + kappa_ * e_int_));
+  e_int_ += e_int_dot * dt_;
+  return psi_des;
 }
