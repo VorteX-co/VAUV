@@ -40,8 +40,8 @@ Nodes
 
 - Subscribed topics:
   - **`/odometry/filtered`** of type `nav_msgs/msg/Odometry`. The current state of the vehicle [pose η, velocity ν].
-  - **`/Controller/cmd_waypoint`** of type `geometry_msgs/msg/Point`. A desired 3D waypoint.
-  - **`/Controller/cmd_attitude`** of type `geometry_msgs/msg/Point`. A desired 3D attitude [rpy].
+  - **`/controller/cmd_waypoint`** of type `geometry_msgs/msg/Point`. A desired 3D waypoint.
+  - **`/controller/cmd_attitude`** of type `geometry_msgs/msg/Point`. A desired 3D attitude [rpy].
 
 - Published topics:
   - **`/swift/thruster_manager/input_stamped`** of type `geometry_msgs::msg::WrenchStamped`. The output control forces and moments.
