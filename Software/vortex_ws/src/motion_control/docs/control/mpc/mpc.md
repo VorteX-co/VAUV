@@ -38,7 +38,7 @@ The function ipopt::solve solves nonlinear programming problems of the form
 
 ### problem::ADvector
 
-Using the CppAD::AD<double> as the base data type for performing the calculation, this permits the automatic calculation of the jacobian of the cost and model constraints for the optimization.
+Using the CppAD::AD<double> as the base data type for performing the calculatins, this permits the automatic calculation of the jacobian of the cost and model constraints for the optimization.
 
 ![ADvector](./ADvector.png)
 

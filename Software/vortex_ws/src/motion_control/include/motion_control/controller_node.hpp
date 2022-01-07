@@ -23,6 +23,8 @@
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/float32.hpp"
+#include "std_msgs/msg/int32_multi_array.hpp"
+#include "thrust_allocation.hpp"
 
 class Controller : public rclcpp::Node
 {
@@ -52,11 +54,17 @@ private:
 
   // Publisher
   rclcpp::Publisher<geometry_msgs::msg::WrenchStamped>::SharedPtr tau_pub_;
+  rclcpp::Publisher<std_msgs::msg::Int32MultiArray>::SharedPtr pwm_pub_;
 
   /**
    * @brief Publish the computed control forces and moments
    */
   void publish_control_wrench();
+  /**
+   * @brief  publish_pwm
+   * @param pwm vector of length equal to the number of thrusters
+   */
+  void publish_pwm(const Eigen::VectorXd & pwm);
   /**
    * @brief from quaternions to Euler conversion
    * @param quaternions vector
@@ -74,7 +82,8 @@ private:
   Vector12d x_hold_;      // Hold state
   Vector6d acc_desired_;  // Desired 6DOF acceleration
   Guidance guidance_;
-  MPC mpc_;                  //  Linear Quadratic Regulator
+  MPC mpc_;  //  Linear Quadratic Regulator
+  Allocator allocator_;
   Vector6d control_wrench_;  //  Control forces and moments
   bool controller_on_{false};
   int control_mode_{0};  // Default station keeping

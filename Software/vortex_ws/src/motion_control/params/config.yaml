@@ -16,20 +16,36 @@ controller_node:
     T: 4
     dt: 0.05
     Q: [1e4, 1e4, 1e4, 1e2, 1e2, 1e4, 1e3, 1e3, 1e3, 1e2, 1e2, 1e3]
-    R1: [1e0, 1e0, 1e0, 1e0, 1e0, 1e0]
-    R2: [0e1, 0e1, 0e1, 0e1, 0e1, 0e1]
+    R1: [1e0, 1e0, 1e0, 2e0, 2e0, 2e0]
+    R2: [0e0, 0e0, 0e0, 0e0, 0e0, 0e0]
     error_max:  [100.0, 100.0, 100.0, 3.14, 3.14, 3.14, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
     tau_max: [1000.0, 1000.0, 1000.0, 1000.0, 1000.0, 1000.0]
     #----------------------------------------------------------------------------------------------------
     # Guidance
     # translation_[velocity, acceleration, jerk]_limits
-    translation_constraints: [0.6, 0.35, 0.0005]
+    translation_constraints: [0.6, 0.35, 0.001]
     # rotation_[velocity, acceleration, jerk]_limits
-    rotation_constraints: [0.4, 0.22, 0.0005]
+    rotation_constraints: [0.4, 0.22, 0.001]
     # Radius of accepetance for waypoints switching
     radius_of_accepetance: 0.25
-    
-    
+    #----------------------------------------------------------------------------------------------------
+    # Thrust allocation
+    r: 8                                                            # Number of thrusters
+    k: 0.000004                                              # Thrust coefficient
+    # Thruster 6DOF pose w.r.t COG [x,y,z,r,p,y]
+    T1: [0.15393, -0.19279, 0.04544, 0.0, -1.57, 0.0]
+    T2: [0.15393, 0.18721, 0.04465, 0.0, -1.57, 0.0]
+    T3: [-0.30907, -0.19279, 0.04544, 0.0, -1.57, 0.0]
+    T4: [-0.30907, 0.18721, 0.04465, 0.0, -1.57, 0.0]
+    T5: [0.13461, -0.28004, -0.04161, 0.0, 0.0, 0.79]
+    T6: [0.13461, 0.27446, -0.04161, 0.0, 0.0, -0.79]
+    T7: [-0.28474, -0.28004, -0.04161, 0.0, 0.0, 2.35619449]
+    T8: [-0.28474, 0.27446, -0.04161, 0.0, 0.0, -2.35619449]
+    # Fitted 3rd order polynomial coefficients between y (pwm) and x (rpm)
+    # -ve rpm region
+    rpm_to_pwm_coeff_left:   [2.04120053e-09, -2.59386577e-05, -3.59600677e-02,  1.48560408e+03]
+    # +ve rpm region
+    rpm_to_pwm_coeff_right: [-3.07782617e-09,  2.75316620e-05,  4.14148724e-02,  1.51146156e+03]
     
 
     

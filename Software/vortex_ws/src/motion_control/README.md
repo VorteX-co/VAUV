@@ -69,5 +69,6 @@ Documentation
 
 * [Modelling](docs/model/model.md)
 * [Guidance](docs/guidance/guidance.md)
-* [Control](docs/control/mpc/mpc.md)
+* [Control](docs/control/mpc.md)
+* [Allocation](docs/control_allocation/control_allocation.md)
 

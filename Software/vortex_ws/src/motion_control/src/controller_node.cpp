@@ -20,6 +20,7 @@
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <vector>
 
 using std::placeholders::_1;
@@ -31,7 +32,7 @@ Controller::Controller(const rclcpp::NodeOptions & options)
 {
   // Subscribers initialization
   state_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-    "/swift/pose_gt", 10, std::bind(&Controller::stateCallback, this, _1));
+    "/rexrov/pose_gt", 10, std::bind(&Controller::stateCallback, this, _1));
   cmd_waypoint_sub_ = this->create_subscription<geometry_msgs::msg::Point>(
     "/controller/cmd_waypoint", 1,
     std::bind(&Controller::pointCallback, this, _1));
@@ -40,8 +41,12 @@ Controller::Controller(const rclcpp::NodeOptions & options)
     std::bind(&Controller::attitudeCallback, this, _1));
   // Publishers initialization
   tau_pub_ = this->create_publisher<geometry_msgs::msg::WrenchStamped>(
-    "/swift/thruster_manager/input_stamped", 1);
-  // Getting  parameters
+    "/rexrov/thruster_manager/input_stamped", 1);
+  pwm_pub_ = this->create_publisher<std_msgs::msg::Int32MultiArray>(
+    "/swift/thruster_manager/pwm", 1);
+  /*****************************************************
+   *  AUV parameters
+   * ***************************************************/
   double mass = this->get_parameter("mass").as_double();
   double volume = this->get_parameter("volume").as_double();
   double dt = this->get_parameter("dt").as_double();
@@ -58,6 +63,9 @@ Controller::Controller(const rclcpp::NodeOptions & options)
     vector_to_eigen(this->get_parameter("r_cog").as_double_array());
   Eigen::VectorXd r_cob =
     vector_to_eigen(this->get_parameter("r_cob").as_double_array());
+  /*****************************************************
+   * Controller parameters
+   * ***************************************************/
   Eigen::VectorXd Q =
     vector_to_eigen(this->get_parameter("Q").as_double_array());
   Eigen::VectorXd R1 =
@@ -68,10 +76,12 @@ Controller::Controller(const rclcpp::NodeOptions & options)
     vector_to_eigen(this->get_parameter("tau_max").as_double_array());
   Eigen::VectorXd error_max =
     vector_to_eigen(this->get_parameter("error_max").as_double_array());
-  // Setting the parameters
+  // Setting the Controller parameters
   this->mpc_.set_params(mass, volume, T, Ib, r_cob, r_cog, Ma, Dlinear, Dquad,
     Q, R1, R2, tau_max, error_max, dt);
-  // Getting Guidance parameteres
+  /*****************************************************
+   *  Guidance parameters
+   * ***************************************************/
   Eigen::VectorXd translation_constraints = vector_to_eigen(
     this->get_parameter("translation_constraints").as_double_array());
   Eigen::VectorXd rotation_constraints = vector_to_eigen(
@@ -80,6 +90,24 @@ Controller::Controller(const rclcpp::NodeOptions & options)
     this->get_parameter("radius_of_accepetance").as_double();
   this->guidance_.set_params(translation_constraints, rotation_constraints,
     radius_of_accepetance);
+  /*****************************************************
+   *  Thrust allocation parameters
+   * ***************************************************/
+  // Number of thusters
+  const int r = this->get_parameter("r").as_int();
+  MatrixXd Tpose(6, r);
+  for (int i = 0; i < r; i++) {
+    // Getting thruster i pose paramter [T1 .. Tr]
+    std::string Tindex = std::to_string(i + 1);
+    Tpose.col(i) =
+      vector_to_eigen(this->get_parameter("T" + Tindex).as_double_array());
+  }
+  const int k = this->get_parameter("k").as_double();
+  VectorXd coeff_left = vector_to_eigen(
+    this->get_parameter("rpm_to_pwm_coeff_left").as_double_array());
+  VectorXd coeff_right = vector_to_eigen(
+    this->get_parameter("rpm_to_pwm_coeff_right").as_double_array());
+  allocator_.set_params(k, Tpose, coeff_left, coeff_right);
 }
 // =========================================================================
 /* Callbacks*/
@@ -143,6 +171,8 @@ void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
     acc_desired_ = desired_acceleration;
     control_wrench_ = mpc_.action(x_, x_desired_, acc_desired_);
     this->publish_control_wrench();
+    Eigen::VectorXd pwm = allocator_.wrench_to_pwm_thrusters(control_wrench_);
+    this->publish_pwm(pwm);
   }
 }
 // =========================================================================
@@ -150,7 +180,7 @@ void Controller::publish_control_wrench()
 {
   auto tau = geometry_msgs::msg::WrenchStamped();
   // The produced forces from the controller are in NED frame.
-  tau.header.frame_id = "swift/base_link_ned";
+  tau.header.frame_id = "rexrov/base_link_ned";
   tau.wrench.force.x = control_wrench_(0);
   tau.wrench.force.y = control_wrench_(1);
   tau.wrench.force.z = control_wrench_(2);
@@ -159,6 +189,14 @@ void Controller::publish_control_wrench()
   tau.wrench.torque.z = control_wrench_(5);
   tau.header.stamp = this->get_clock()->now();
   tau_pub_->publish(tau);
+}
+// =========================================================================
+void Controller::publish_pwm(const Eigen::VectorXd & pwm)
+{
+  std::vector<int> pwm_vec(pwm.data(), pwm.data() + pwm.rows() * pwm.cols());
+  auto pwm_msg = std_msgs::msg::Int32MultiArray();
+  pwm_msg.data = pwm_vec;
+  this->pwm_pub_->publish(pwm_msg);
 }
 // =========================================================================
 Vector3d Controller::quaternion_to_euler(const Vector4d & quaternion)

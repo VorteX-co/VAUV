@@ -18,7 +18,6 @@
 #include <string>
 #include "ipopt_mpc_problem.hpp"
 
-
 void MPC::set_params(
   const double & m, const double & volume, const int & T,
   const Vector6d & Ib, const Vector3d & r_cob,
