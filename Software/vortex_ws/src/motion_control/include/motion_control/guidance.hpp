@@ -31,7 +31,8 @@ public:
     const Vector3d & translation_constraints,
     const Vector3d & rotation_constraints,
     const double & radius_of_acceptance);
-  double los_steering(const Vector2d & p, const Vector2d & pk);
+  void los_setpoint(const Vector2d & p);
+  void los_steering(const Vector2d & p, double & psi_des, double & r_des);
   void generate_trajectory(const Vector6d & state, const Vector6d & reference);
   std::tuple<Vector6d, Vector6d, Vector6d> evaluate_desired_trajectory(
     const double & t);
@@ -40,12 +41,13 @@ private:
   ruckig::Trajectory<6> desired_trajectory_;
   Vector3d translation_constraints_;
   Vector3d rotation_constraints_;
-  std::vector<Vector3d> waypoints_;
-  int k_;
+  Vector2d prev_goal_;
+  Vector2d goal_;
   double dt_;
   double radius_of_acceptance_;
   double kappa_;
   double delta_;
   double e_int_{0.0};
+  double psi_des_smooth_{0.0};
 };
 #endif  // MOTION_CONTROL__GUIDANCE_HPP_

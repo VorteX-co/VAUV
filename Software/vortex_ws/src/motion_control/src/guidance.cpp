@@ -28,18 +28,29 @@ void Guidance::set_params(
   translation_constraints_ = translation_constraints;
   rotation_constraints_ = rotation_constraints;
   radius_of_acceptance_ = radius_of_acceptance;
+  prev_goal_ << 0.0, 0.0;
+  goal_ = prev_goal_;
+  dt_ = 0.1;
+  delta_ = 2.5;
+  kappa_ = 0.2;
 }
 // =========================================================================================
-double Guidance::los_steering(const Vector2d & p, const Vector2d & pk)
+void Guidance::los_setpoint(const Vector2d & p)
+{
+  prev_goal_ = goal_;
+  goal_ = p;
+}
+// =========================================================================================
+void Guidance::los_steering(const Vector2d & p, double & psi_des, double & r_des)
 {
   double x = p(0);
   double y = p(1);
-  double xk = waypoints_[k_](0);
-  double yk = waypoints_[k_](1);
-  double xk_next = waypoints_[k_ + 1](0);
-  double yk_next = waypoints_[k_ + 1](1);
+  double xk_prev = prev_goal_(0);
+  double yk_prev = prev_goal_(1);
+  double xk = goal_(0);
+  double yk = goal_(1);
   // Path-tangential angle, eq. (10.55) p. 258 in Fossen2011.
-  double alpha = atan2(yk_next - yk, xk_next - xk);
+  double alpha = atan2(yk - yk_prev, xk - xk_prev);
   // Alonge-track and cross-track errors, eq. (10.58, 10.59) p. 258 in
   // Fossen2011.
   double s = (x - xk) * cos(alpha) + (y - yk) * sin(alpha);
@@ -50,20 +61,19 @@ double Guidance::los_steering(const Vector2d & p, const Vector2d & pk)
   // Velocity-path relative angle
   double chi_r = -atan(Kp * e + Ki * e_int_);
   // Desired Heading angle, eq. (10.72) p. 261 in Fossen2011.
-  double psi_des = alpha + chi_r;
-  // if the next waypoint satisfy the switching criterion, k = k + 1
-  double d =
-    sqrt((xk_next - xk) * (xk_next - xk) + (yk_next - yk) * (yk_next - yk));
-  int n = waypoints_.size();
-  if (d - s < radius_of_acceptance_ && k_ < n) {
-    k_++;
-  }
+  double psi_ref = alpha + chi_r;
+  // Low-pass filter for smooth signal
+  // T time contant vector for  yaw-angle
+  double T = 5 * (1 / 0.1);
+  psi_des_smooth_ += dt_ * (psi_ref - psi_des_smooth_) / T;
+  psi_des = psi_des_smooth_;
+  r_des = (psi_ref - psi_des_smooth_) / T;
+
   // cross-track error differential equation
   double e_int_dot =
     delta_ * e /
     (delta_ * delta_ + (e + kappa_ * e_int_) * (e + kappa_ * e_int_));
   e_int_ += e_int_dot * dt_;
-  return psi_des;
 }
 // =========================================================================================
 void Guidance::generate_trajectory(

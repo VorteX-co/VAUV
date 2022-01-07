@@ -32,7 +32,7 @@ Controller::Controller(const rclcpp::NodeOptions & options)
 {
   // Subscribers initialization
   state_sub_ = this->create_subscription<nav_msgs::msg::Odometry>(
-    "/rexrov/pose_gt", 10, std::bind(&Controller::stateCallback, this, _1));
+    "/swift/pose_gt", 10, std::bind(&Controller::stateCallback, this, _1));
   cmd_waypoint_sub_ = this->create_subscription<geometry_msgs::msg::Point>(
     "/controller/cmd_waypoint", 1,
     std::bind(&Controller::pointCallback, this, _1));
@@ -41,7 +41,7 @@ Controller::Controller(const rclcpp::NodeOptions & options)
     std::bind(&Controller::attitudeCallback, this, _1));
   // Publishers initialization
   tau_pub_ = this->create_publisher<geometry_msgs::msg::WrenchStamped>(
-    "/rexrov/thruster_manager/input_stamped", 1);
+    "/swift/thruster_manager/input_stamped", 1);
   pwm_pub_ = this->create_publisher<std_msgs::msg::Int32MultiArray>(
     "/swift/thruster_manager/pwm", 1);
   /*****************************************************
@@ -121,12 +121,12 @@ void Controller::pointCallback(const geometry_msgs::msg::Point::SharedPtr msg)
    */
   controller_on_ = true;
   Vector6d pose_state = x_.head<6>();
-  double psi_ref =
-    guidance_.los_steering(Vector2d(x_.head<2>()), Vector2d(msg->x, msg->y));
   Vector6d pose_reference;
   pose_reference << msg->x, msg->y, msg->z, 0, 0, 0.0;
   guidance_.generate_trajectory(pose_state, pose_reference);
   trajectory_start_stamp_ = this->get_clock()->now().seconds();
+  guidance_.los_setpoint(Vector2d(msg->x, msg->y));
+  los_on_ = true;
 }
 // =========================================================================
 void Controller::attitudeCallback(
@@ -142,6 +142,7 @@ void Controller::attitudeCallback(
   pose_reference << x_(0, 0), x_(1, 0), x_(2, 0), msg->x, msg->y, msg->z;
   guidance_.generate_trajectory(pose_state, pose_reference);
   trajectory_start_stamp_ = this->get_clock()->now().seconds();
+  los_on_ = false;
 }
 // =========================================================================
 void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
@@ -170,6 +171,13 @@ void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
 
     x_desired_.block<6, 1>(0, 0) = desired_pose;
     x_desired_.block<6, 1>(6, 0) = desired_velocity;
+    if (los_on_) {
+      double psi_des = 0.0;
+      double r_des = 0.0;
+      guidance_.los_steering(Vector2d(x_(0), x_(1)), psi_des, r_des);
+      x_desired_(5) = psi_des;
+      x_desired_(11) = r_des;
+    }
     acc_desired_ = desired_acceleration;
     control_wrench_ = mpc_.action(x_, x_desired_, acc_desired_);
     // control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
@@ -183,7 +191,7 @@ void Controller::publish_control_wrench()
 {
   auto tau = geometry_msgs::msg::WrenchStamped();
   // The produced forces from the controller are in NED frame.
-  tau.header.frame_id = "rexrov/base_link_ned";
+  tau.header.frame_id = "swift/base_link_ned";
   tau.wrench.force.x = control_wrench_(0);
   tau.wrench.force.y = control_wrench_(1);
   tau.wrench.force.z = control_wrench_(2);

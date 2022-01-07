@@ -88,6 +88,7 @@ private:
   Allocator allocator_;
   Vector6d control_wrench_;  //  Control forces and moments
   bool controller_on_{false};
+  bool los_on_{false};
   int control_mode_{0};  // Default station keeping
   double trajectory_duration_{
     0.0};    // Duration of the generated <6>DOF trajectory
