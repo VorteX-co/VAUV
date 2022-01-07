@@ -79,6 +79,8 @@ Controller::Controller(const rclcpp::NodeOptions & options)
   // Setting the Controller parameters
   this->mpc_.set_params(mass, volume, T, Ib, r_cob, r_cog, Ma, Dlinear, Dquad,
     Q, R1, R2, tau_max, error_max, dt);
+  this->lqr_.set_params(mass, volume, Ib, r_cob, r_cog, Ma, Dlinear, Dquad, Q,
+    R1, tau_max, error_max);
   /*****************************************************
    *  Guidance parameters
    * ***************************************************/
@@ -170,6 +172,7 @@ void Controller::stateCallback(const nav_msgs::msg::Odometry::SharedPtr msg)
     x_desired_.block<6, 1>(6, 0) = desired_velocity;
     acc_desired_ = desired_acceleration;
     control_wrench_ = mpc_.action(x_, x_desired_, acc_desired_);
+    // control_wrench_ = lqr_.action(x_, x_desired_, acc_desired_);
     this->publish_control_wrench();
     Eigen::VectorXd pwm = allocator_.wrench_to_pwm_thrusters(control_wrench_);
     this->publish_pwm(pwm);

@@ -19,6 +19,7 @@
 #include "custom_ros_interfaces/srv/pwm.hpp"
 #include "geometry_msgs/msg/wrench_stamped.hpp"
 #include "guidance.hpp"
+#include "lqr.hpp"
 #include "mpc.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -82,7 +83,8 @@ private:
   Vector12d x_hold_;      // Hold state
   Vector6d acc_desired_;  // Desired 6DOF acceleration
   Guidance guidance_;
-  MPC mpc_;  //  Linear Quadratic Regulator
+  MPC mpc_;  // Model Predictive Controller
+  LQR lqr_;  // Linear Quadratic Regulator
   Allocator allocator_;
   Vector6d control_wrench_;  //  Control forces and moments
   bool controller_on_{false};
