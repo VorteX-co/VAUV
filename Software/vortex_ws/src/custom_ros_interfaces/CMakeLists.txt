@@ -34,6 +34,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "srv/SetMode.srv"
 "srv/Heartbeat.srv"
 "srv/PublishData.srv"
+"srv/PWM.srv"
 "msg/SetLed.msg"
 "msg/Bar30.msg"
 DEPENDENCIES builtin_interfaces geometry_msgs)
