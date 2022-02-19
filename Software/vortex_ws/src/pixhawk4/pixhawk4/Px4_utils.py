@@ -74,6 +74,8 @@ class Px4_utils:
 # pixhawk4 every 1 sec
 
     def heart_beats(node):
+        node.get_logger().info(
+                'HEARTBEAT INITIALIZED')
         while True:
             node.master.mav.heartbeat_send(
                 mavutil.mavlink.MAV_TYPE_GCS,

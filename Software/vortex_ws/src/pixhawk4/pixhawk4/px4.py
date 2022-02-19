@@ -58,8 +58,8 @@ class px4_node(Node):
             ServoMsg, 'Servo_raw', 10)
         self.attitude_publisher = self.create_publisher(
             Attitude, 'Attitude', 10)
-
         self.depth_publisher = self.create_publisher(Depth, 'Depth', 10)
+        self.get_logger().info('PUBLISHERS CREATED')
 
     #    Thrusters subscriber object
         self.setThusters = self.create_subscription(
@@ -67,6 +67,7 @@ class px4_node(Node):
 
         self.setLedLights = self.create_subscription(
             SetLed, 'SetLedLights', self.callback_setFlightMode, 10)
+        self.get_logger().info('SUBSCRIBTORS CREATED')
 
     # create px4 node services
         self.arm_service = self.create_service(Arm, 'Arm', self.callback_arm)
@@ -78,6 +79,7 @@ class px4_node(Node):
             PublishData, 'StartPublishData', self.callback_publishdata)
         self.Thruster_service = self.create_service(
            SetThruster , 'SetThrusters', self.callback_Thrusters)
+        self.get_logger().info('SERVICES INITIALISED')
 
     # creating information and control pixhawk objects
 
@@ -89,6 +91,7 @@ class px4_node(Node):
     # Begining initializations
         self.heart_beat.start()
         self.control.setFlight_mode('MANUAL')
+        self.get_logger().info('MANUAL FLIGHT MODE')
     # Callback functions of services
 
     def callback_arm(self, request, response):
