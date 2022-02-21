@@ -1,9 +1,9 @@
-int32 roll 
-int32 pitch 
-int32 yaw
-int32 throttle 
-int32 forward 
-int32 lateral 
-int32 frameno
+int32 roll 1500
+int32 pitch 1500
+int32 yaw 1500
+int32 throttle 1500 
+int32 forward 1500
+int32 lateral 1500
+int32 frameno 0
 ---
 bool ack
