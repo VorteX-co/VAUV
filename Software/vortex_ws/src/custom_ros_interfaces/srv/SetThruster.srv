@@ -1,0 +1,9 @@
+int32 roll 1500
+int32 pitch 1500
+int32 yaw 1500
+int32 throttle 1500 
+int32 forward 1500
+int32 lateral 1500
+int32 frameno 0
+---
+bool ack

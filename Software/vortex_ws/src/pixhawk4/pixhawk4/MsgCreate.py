@@ -17,6 +17,7 @@
 
 from custom_ros_interfaces.msg import (Attitude, Depth, NavController, RcMsg,
                                        SensorStatus, ServoMsg)
+from sensor_msgs.msg import Imu
 
 # This module is used to create messages that will be published by pixhawk
 
@@ -26,16 +27,28 @@ class MsgCreate:
     # from RAW_IMU object message received from pixhawk4
 
     def getIMUMsg(data):
-        msg = SensorStatus()
-        msg.xacc = data.xacc  # mG
-        msg.yacc = data.yacc  # mG
-        msg.zacc = data.zacc  # mG
-        msg.xgyro = data.xgyro  # mrad/s
-        msg.ygyro = data.ygyro  # mrad/s
-        msg.zgyro = data.zgyro  # mrad/s
-        msg.xmag = data.xmag  # mgauss
-        msg.ymag = data.ymag  # mgauss
-        msg.zmag = data.zmag  # mgauss
+        msg = Imu()
+        msg.header.frame_id='swift/imu_link'
+    
+        msg.linear_acceleration.x = data.xacc /1000 # G
+        msg.linear_acceleration.y = data.yacc /1000 # G
+        msg.linear_acceleration.z = data.zacc /1000 # G
+        msg.linear_acceleration_covariance [0] = 0.00075
+        msg.linear_acceleration_covariance [4] = 0.00075
+        msg.linear_acceleration_covariance [8] = 0.00075
+
+        msg.angular_velocity.x = data.xgyro  /1000 # mrad/s
+        msg.angular_velocity.y = data.ygyro  /1000 # mrad/s
+        msg.angular_velocity.z = data.zgyro  /1000 # mrad/s
+
+        msg.angular_velocity_covariance[0] = 0.00122173
+        msg.angular_velocity_covariance[4] = 0.00122173
+        msg.angular_velocity_covariance[8] = 0.00122173
+
+
+        # msg.xmag = data.xmag  # mgauss
+        # msg.ymag = data.ymag  # mgauss
+        # msg.zmag = data.zmag  # mgauss
         return msg
     # This method creates a ros2 message
     # from NAV_CONTROLLER_OUTPUT object message received from pixhawk4

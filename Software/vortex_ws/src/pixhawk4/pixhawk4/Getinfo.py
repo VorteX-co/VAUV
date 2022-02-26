@@ -39,10 +39,8 @@ class Getinfo:
             mavutil.mavlink.MAV_DATA_STREAM_ALL,
             1, 1)
         while True:
-
             messageIMU = self.master.recv_match(
                 type='SCALED_IMU2', blocking=True)
-            time.sleep(0.1)
             if messageIMU.get_type() == 'SCALED_IMU2':
                 return messageIMU
 
@@ -56,7 +54,6 @@ class Getinfo:
         while True:
             messageNav = self.master.recv_match(
                 type='NAV_CONTROLLER_OUTPUT', blocking=True)
-            time.sleep(0.1)
             if messageNav.get_type() == 'NAV_CONTROLLER_OUTPUT':
                 return messageNav
 
@@ -70,7 +67,6 @@ class Getinfo:
         while True:
             messageAttitude = self.master.recv_match(
                 type='ATTITUDE', blocking=True)
-            time.sleep(0.1)
             if messageAttitude.get_type() == 'ATTITUDE':
                 return messageAttitude
 
@@ -84,7 +80,6 @@ class Getinfo:
         while True:
             messageServo = self.master.recv_match(
                 type='SERVO_OUTPUT_RAW', blocking=True)
-            time.sleep(0.1)
             if messageServo.get_type() == 'SERVO_OUTPUT_RAW':
                 return messageServo
 
@@ -96,7 +91,6 @@ class Getinfo:
         while True:
             messageDepth = self.master.recv_match(
                 type='SCALED_PRESSURE', blocking=True)
-            time.sleep(0.1)
             if messageDepth.get_type() == 'SCALED_PRESSURE':
                 return messageDepth
 
@@ -109,7 +103,6 @@ class Getinfo:
         while True:
             messageRc = self.master.recv_match(
                 type='RC_CHANNELS', blocking=True)
-            time.sleep(0.1)
             if messageRc.get_type() == 'RC_CHANNELS':
                 return messageRc
 

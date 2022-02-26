@@ -36,6 +36,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 "srv/PublishData.srv"
 "srv/PWM.srv"
 "msg/SetLed.msg"
+"srv/SetThruster.srv"
 "msg/Bar30.msg"
 DEPENDENCIES builtin_interfaces geometry_msgs)
 # uncomment the following section in order to fill in

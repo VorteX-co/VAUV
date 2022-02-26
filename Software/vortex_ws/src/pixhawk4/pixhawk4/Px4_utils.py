@@ -74,6 +74,8 @@ class Px4_utils:
 # pixhawk4 every 1 sec
 
     def heart_beats(node):
+        node.get_logger().info(
+                'HEARTBEAT INITIALIZED')
         while True:
             node.master.mav.heartbeat_send(
                 mavutil.mavlink.MAV_TYPE_GCS,
@@ -92,7 +94,7 @@ class Px4_utils:
             Px4_utils.publish_servo(node)
             Px4_utils.publish_attitude(node)
             Px4_utils.publish_depth(node)
-            time.sleep(0.5)
+            
 
 # Following functions uses publisher objects
 # created in px4 node to publish data streams from Pixhawk
@@ -102,50 +104,50 @@ class Px4_utils:
 # and uses MsgCreate class to get custom message object using fetched data
 # then gets publisher instance from px4 node to publish message
 
-    def publish_imu(self):
-        data = Getinfo.getIMU(self.info_px4)
+    def publish_imu(node):
+        data = Getinfo.getIMU(node.info_px4)
         message = MsgCreate.getIMUMsg(data)
-        self.imu_publisher.publish(message)
+        message.header.stamp=node.stamp.now().to_msg()
+        node.imu_publisher.publish(message)
         return
 
-    def publish_nav(self):
-        data = Getinfo.getNav(self.info_px4)
+    def publish_nav(node):
+        data = Getinfo.getNav(node.info_px4)
         message = MsgCreate.getNavMsg(data)
-        self.nav_publisher.publish(message)
+        node.nav_publisher.publish(message)
         return
 
-    def publish_rc(self):
-        data = Getinfo.getRc_channel(self.info_px4)
+    def publish_rc(node):
+        data = Getinfo.getRc_channel(node.info_px4)
         message = MsgCreate.getRcMsg(data)
-        self.rc_publisher.publish(message)
+        node.rc_publisher.publish(message)
         return
 
-    def publish_servo(self):
-        data = Getinfo.getServoStatus(self.info_px4)
+    def publish_servo(node):
+        data = Getinfo.getServoStatus(node.info_px4)
         message = MsgCreate.getServoMsg(data)
-        self.servo_publisher.publish(message)
+        node.servo_publisher.publish(message)
         return
 
-    def publish_attitude(self):
-        data = Getinfo.getAttitude(self.info_px4)
+    def publish_attitude(node):
+        data = Getinfo.getAttitude(node.info_px4)
         message = MsgCreate.getAttitudeMsg(data)
-        self.attitude_publisher.publish(message)
+        node.attitude_publisher.publish(message)
         return
 
-    def publish_depth(self):
-        data = Getinfo.get_depth(self.info_px4)
+    def publish_depth(node):
+        data = Getinfo.get_depth(node.info_px4)
         message = MsgCreate.getDepthMsg(data)
-        self.depth_publisher.publish(message)
+        node.depth_publisher.publish(message)
         return
 
+    #Maps service Message to Rc channel list sent to set_rc_channel
     def set_thrusters(self, message):
-        self.control.set_roll(message.roll)
-        self.control.set_pitch(message.pitch)
-        self.control.set_yaw(message.yaw)
-        self.control.set_throttle(message.throttle)
-        self.control.set_forward(message.forward)
-        self.control.set_lateral(message.lateral)
+        #Rc channel list Structure [Pitch PWM, ROLL PWM, THROTTLE PWM, YAW PWM, FORWARD PWM, LATERAL PWM, CAMERA PAN PWM (SET TO DEFAULT 1500 WHILE MOVING), CAMERA TILT PWM (SET TO DEFAULT 1500 WHILE MOVING)]
+        rc_channel_values = [message.pitch,message.roll,message.throttle,message.yaw,message.forward,message.lateral,1500,1500]
+        self.control.set_rc_channel_pwm(rc_channel_values)
         return True
+
 
     def set_LedLights(self, message):
         if message.servo > 8 or message.servo < 1:

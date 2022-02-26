@@ -46,9 +46,6 @@ class Commands:
             # Check if command in the same in `set_mode`
             if ack_msg['command'] != mavutil.mavlink.MAVLINK_MSG_ID_SET_MODE:
                 continue
-
-            # Print the ACK result !
-            # print(mavutil.mavlink.enums['MAV_RESULT'][ack_msg['result']].description)
             break
 
         return True
@@ -74,53 +71,18 @@ class Commands:
             0,
             1, 0, 0, 0, 0, 0, 0)
         return True
-    # These methods are used to control AUV movement in 3D space under water :
-
-    # Method sets roll rotation channel
-    def set_roll(self, pwm):
-        self.set_rc_channel_pwm(2, pwm)
-        return True
-
-    # Method sets pitch rotation channel
-    def set_pitch(self, pwm):
-        self.set_rc_channel_pwm(1, pwm)
-        return True
-
-    # Method sets yaw rotation channel
-    def set_yaw(self, pwm):
-        self.set_rc_channel_pwm(4, pwm)
-        return True
-
-    # Method controls upwards and downwards movement channel
-    def set_throttle(self, pwm):
-        self.set_rc_channel_pwm(3, pwm)
-        return True
-
-    # Method controls forward and backward movement channel
-    def set_forward(self, pwm):
-        self.set_rc_channel_pwm(5, pwm)
-        return True
-
-    # Method controls Lateral movement channel
-    def set_lateral(self, pwm):
-        self.set_rc_channel_pwm(6, pwm)
-        return True
 
     # Generic method for setting RC_Channels
-    def set_rc_channel_pwm(self, channel_id, pwm=1500):
-        if channel_id < 1 or channel_id > 9:
-            print('Channel does not exist.')
-            return
-
-        rc_channel_values = [65535 for _ in range(9)]
-        rc_channel_values[channel_id - 1] = pwm
+    # RC channels are movement channels that simulate Commands send from a Joystick
+    # Receives an array That sets channel values Array
+    def set_rc_channel_pwm(self,rc_channel_values):
         self.master.mav.rc_channels_override_send(
             self.master.target_system,
             self.master.target_component,
             *rc_channel_values)
         return
 
-    # Single Control Funtion for thrusters
+    # Test thruster Function
     def set_test_motor(self, motor_number, pwm):
         self.master.mav.command_long_send(
             self.master.target_system,
@@ -130,12 +92,8 @@ class Commands:
             pwm, 100, 1, mavutil.mavlink.MOTOR_TEST_ORDER_SEQUENCE, 0)
 
     def init_channels(self):
-        self.set_roll(1500)
-        self.set_pitch(1500)
-        self.set_yaw(1500)
-        self.set_forward(1500)
-        self.set_throttle(1500)
-        self.set_lateral(1500)
+        rc_channel_values = [1500,1500,1500,1500,1500,1500,1500,1500]
+        self.set_rc_channel_pwm(rc_channel_values)
 
     def init_servos(self):
         self.set_servo_pwm(1, 1500)
