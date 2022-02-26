@@ -141,14 +141,13 @@ class Px4_utils:
         node.depth_publisher.publish(message)
         return
 
+    #Maps service Message to Rc channel list sent to set_rc_channel
     def set_thrusters(self, message):
-        self.control.set_roll(message.roll)
-        self.control.set_pitch(message.pitch)
-        self.control.set_yaw(message.yaw)
-        self.control.set_throttle(message.throttle)
-        self.control.set_forward(message.forward)
-        self.control.set_lateral(message.lateral)
+        #Rc channel list Structure [Pitch PWM, ROLL PWM, THROTTLE PWM, YAW PWM, FORWARD PWM, LATERAL PWM, CAMERA PAN PWM (SET TO DEFAULT 1500 WHILE MOVING), CAMERA TILT PWM (SET TO DEFAULT 1500 WHILE MOVING)]
+        rc_channel_values = [message.pitch,message.roll,message.throttle,message.yaw,message.forward,message.lateral,1500,1500]
+        self.control.set_rc_channel_pwm(rc_channel_values)
         return True
+
 
     def set_LedLights(self, message):
         if message.servo > 8 or message.servo < 1:
