@@ -1,0 +1,50 @@
+### Paramteres used by the controller node ###
+controller_node:
+  ros__parameters:
+    ######################################################
+    # AUV
+    mass: 36.7
+    volume: 0.036
+    r_cog: [0.0, 0.0, 0.0]
+    r_cob: [0.0, 0.0, -0.02489]
+    Ma: [13.0, 20.0, 35.0, 10.2, 10.3, 7.35]
+    Dlinear:  [-22.8, -30.95, -50.26, -95.05, -98.0, -11.13]
+    Dquad: [-28.43, -55.98, -137.5, -0.0, -0.0, -0.00]
+    Ib: [0.8061, 0.8, 1.5599, -0.0059, 0.0005, -0.0113]
+    #######################################################
+    # Contrller
+    # sampling time for prediction
+    dt: 0.05
+    # Prediction horizon
+    T: 5 
+    # The error cost weighting matrix
+    Q: [150.0, 150.0, 150.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0, 25.0]
+    # The control forces and control rate weighting Vectors
+    # R1 for forces and torques, R2 for the rate of change of forces and torques
+    R1: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    R2: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    tau_max: [45.0, 45.0, 45.0, 45.0, 45.0, 45.0]
+    #######################################################
+    # Thrust allocation
+    r: 8                                                     # Number of thrusters
+    k: 0.000004                                              # Thrust coefficient
+    # Thruster 6DOF pose w.r.t COG [x,y,z,r,p,y]
+    T1: [0.15393, -0.19279, 0.04544, 0.0, -1.57, 0.0]
+    T2: [0.15393, 0.18721, 0.04465, 0.0, -1.57, 0.0]
+    T3: [-0.30907, -0.19279, 0.04544, 0.0, -1.57, 0.0]
+    T4: [-0.30907, 0.18721, 0.04465, 0.0, -1.57, 0.0]
+    T5: [0.13461, -0.28004, -0.04161, 0.0, 0.0, 0.79]
+    T6: [0.13461, 0.27446, -0.04161, 0.0, 0.0, -0.79]
+    T7: [-0.28474, -0.28004, -0.04161, 0.0, 0.0, 2.35619449]
+    T8: [-0.28474, 0.27446, -0.04161, 0.0, 0.0, -2.35619449]
+    # Fitted 3rd order polynomial coefficients between y (pwm) and x (rpm)
+    # -ve rpm region
+    rpm_to_pwm_coeff_left:   [2.04120053e-09, -2.59386577e-05, -3.59600677e-02,  1.48560408e+03]
+    # +ve rpm region
+    rpm_to_pwm_coeff_right: [-3.07782617e-09,  2.75316620e-05,  4.14148724e-02,  1.51146156e+03]
+
+    
+    
+    
+
+    

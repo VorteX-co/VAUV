@@ -1,18 +1,19 @@
 cmake_minimum_required(VERSION 3.5)
 project(trajectory_tracking_mpc)
 
+add_definitions(-std=c++17)
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
-# Default to C++14
+# Default to C++17
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
+  set(CMAKE_CXX_STANDARD 17)
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  #add_compile_options(-Wall -Wextra -Wpedantic)
+  # add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 # find dependencies
@@ -22,65 +23,39 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(custom_ros_interfaces REQUIRED)
 find_package(Eigen3 REQUIRED)
-find_package(custom_ros_interfaces)
-find_package(Ceres REQUIRED)
-find_package(message_filters)
-find_package(PkgConfig REQUIRED)
+find_package(tf2_eigen REQUIRED)
 
-add_executable(guidance_node src/guidance_node.cpp
-    src/los_steering.cpp
-    lib/auv_guidance/src/math_lib.cpp
-    lib/auv_guidance/src/rot3d.cpp
-    lib/auv_guidance/src/min_jerk_trajectory.cpp
-    lib/auv_guidance/src/min_jerk_time_solver.cpp
-    lib/auv_guidance/src/basic_trajectory.cpp
-    lib/auv_guidance/src/simultaneous_trajectory.cpp
-    lib/auv_guidance/src/long_trajectory.cpp
-    lib/auv_guidance/src/tgen_limits.cpp
-    lib/auv_guidance/src/waypoint.cpp)
-add_executable(maneuver_node src/maneuver_node.cpp  src/maneuver_mpc.cpp)
-add_executable(depth_node src/depth_node.cpp  src/depth_mpc.cpp)
-add_executable(thrust_merger_node src/thrust_merger_node.cpp)
 
-target_link_libraries(guidance_node
-  ${EIGEN3_LIBRARIES}
-  ${CERES_LIBRARIES}
-  ${YAML_CPP_LIBRARIES}
-)
-target_link_libraries(maneuver_node
-  ${EIGEN3_LIBRARIES}
-  ${YAML_CPP_LIBRARIES}
-  ipopt
-)
-target_link_libraries(depth_node
-  ${EIGEN3_LIBRARIES}
-  ${YAML_CPP_LIBRARIES}
-  ipopt
-)
-target_include_directories(guidance_node PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME} ${EIGEN3_INCLUDE_DIRS} ${CERES_INCLUDE_DIRS} ${CMAKE_CURRENT_SOURCE_DIR}/lib/auv_guidance/include)
-target_include_directories(maneuver_node PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME} ${EIGEN3_INCLUDE_DIRS})
-target_include_directories(depth_node PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME} ${EIGEN3_INCLUDE_DIRS})
-target_include_directories(thrust_merger_node PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME})
+add_executable(${PROJECT_NAME} src/mpc.cpp src/controller_node.cpp src/plant.cpp src/thrust_allocation.cpp)
 
-ament_target_dependencies(guidance_node rclcpp custom_ros_interfaces geometry_msgs nav_msgs Eigen3 Ceres)
-ament_target_dependencies(maneuver_node rclcpp custom_ros_interfaces geometry_msgs Eigen3)
-ament_target_dependencies(depth_node rclcpp custom_ros_interfaces geometry_msgs Eigen3)
-ament_target_dependencies(thrust_merger_node rclcpp geometry_msgs message_filters)
+target_link_libraries(${PROJECT_NAME} ${EIGEN3_LIBRARIES} ipopt)
+target_include_directories(${PROJECT_NAME}
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}
+  ${EIGEN3_INCLUDE_DIRS}
+  libs/lin_alg_tools/include)
+
+ament_target_dependencies(${PROJECT_NAME} rclcpp std_msgs geometry_msgs custom_ros_interfaces nav_msgs Eigen3 tf2_eigen)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # uncomment the line when a copyright and license is not present in all source files
+  #set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # uncomment the line when this package is not in a git repo
+  #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-install(TARGETS guidance_node maneuver_node depth_node thrust_merger_node DESTINATION lib/${PROJECT_NAME})
+install(TARGETS ${PROJECT_NAME} DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY
-  params
   launch
+  params
   DESTINATION share/${PROJECT_NAME}
   USE_SOURCE_PERMISSIONS
 )
