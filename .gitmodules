@@ -18,3 +18,6 @@
 [submodule "Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/geometry"]
 	path = Software/vortex_ws/src/motion_control/trajectory_tracking_lqr/libs/geometry
 	url = https://github.com/superjax/geometry.git
+[submodule "Software/vortex_ws/src/motion_planning/libs/ruckig"]
+	path = Software/vortex_ws/src/motion_planning/libs/ruckig
+	url = https://github.com/pantor/ruckig.git
