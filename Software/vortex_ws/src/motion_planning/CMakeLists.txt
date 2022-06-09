@@ -27,6 +27,7 @@ find_package(nav_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(tf2_eigen REQUIRED)
+find_package(ruckig REQUIRED)
 
 
 add_executable(local_planning src/local_planning/optimal_trajectory.cpp src/local_planning/steering.cpp src/local_planning/sinusodial_trajectory.cpp src/local_planning/local_planning_node.cpp)
