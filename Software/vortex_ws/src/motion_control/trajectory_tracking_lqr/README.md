@@ -13,6 +13,7 @@ Table of contents
 * [Nodes](#Nodes)
 * [Usage](#Usage)
 * [Documentation](#Documentation)
+* [Demonstration](#Demonstration)
 * [References](#References)
 
 --------
@@ -25,7 +26,6 @@ Prerequisites
 Dependencies
 ------
 
-* [ruckig](https://github.com/pantor/ruckig)
 * Eigen3
 * [lin_alg_tools](https://github.com/jerelbn/lin_alg_tools)
 * [LAPACK](https://github.com/Reference-LAPACK/lapack)
@@ -38,19 +38,13 @@ Nodes
 ### controller_node
 
 - Subscribed topics:
-  - **`/odometry/filtered`** of type `nav_msgs/msg/Odometry`. The current state of the vehicle [pose η, velocity ν].
-  - **`/LQR/cmd_waypoint`** of type `geometry_msgs/msg/Point`. A desired 3D waypoint.
-   - **`/LQR/cmd_attitude`** of type `geometry_msgs/msg/Point`. A desired 3D attitude [rpy].
-  - **`/LQR/cmd_roll`** of type `std_msgs/msg/Float32`. A desired roll-angle.
-  - **`/LQR/cmd_pitch`** of type `std_msgs/msg/Float32`. A desired pitch-angle.
-  - **`/LQR/cmd_yaw`** of type `std_msgs/msg/Float32`. A desired yaw-angle.
-  - **`/LQR/cmd_hold`** of type `std_msgs/msg/Float32`. A station keeping command.
+  - **`/local_planning/plan`** of type `std_msgs::msg::Float32MultiArray`. The real-time local plan consists of the  current state [pose η, velocity ν],
+ desired_state and desired_acceleration.
+
 
 - Published topics:
-  - **`/swift/thruster_manager/input_stamped`** of type `geometry_msgs::msg::WrenchStamped`. The output control forces and moments.
-
-- Service Clients:
- - **`control_pwm`** of type `custom_ros_interfaces/srv/PWM`. Output control PWM  to the autopilot Pixhawk4.
+ - **`/swift/thruster_manager/input_stamped`** of type `geometry_msgs::msg::WrenchStamped`. The output control forces and moments.
+ - **`/swift/thruster_manager/PWM`** of type `std_msgs::msg::Int32MultiArray`. Output control PWM values for each thruster.
 
 --------
 Usage
@@ -62,71 +56,87 @@ Usage
   $ ros2 launch trajectory_tracking_lqr lqr.launch.py
 ```
 
-* Sending a reference waypoint in ENU inertial frame:
-
-```sh
-  $ ros2 topic pub --once /LQR/cmd_waypoint geometry_msgs/msg/Point "{x: 48.5 , y: 35.5, z: -40.0}"
-```
-
-* Sending a reference roll-angle in ENU inertial frame:
-
-```sh
-  $ ros2 topic pub --once /LQR/cmd_roll std_msgs/msg/Float32 "{data: 0.5}"
-```
-
-* Sending a reference pitch-angle in ENU inertial frame:
-
-```sh
-  $ ros2 topic pub --once /LQR/cmd_pitch std_msgs/msg/Float32 "{data: 0.7071}"
-```
-
-* Sending a reference yaw-angle in ENU inertial frame:
-
-```sh
-  $ ros2 topic pub --once /LQR/cmd_yaw std_msgs/msg/Float32 "{data: 0.52}"
-```
-
 --------
 Documentation
 ------
 
 ### Notations
 
+
 The motion of a marine craft in 6DOF is represented by the pose `η = [x y z φ θ ψ] ` and velocity `ν = [u v w p q r]` vectors according to the SNAME notation
 
 ![SNAME](./imgs/SNAME.png)
 
+
+
 ### AUV state space model
+
 
 For the autonomous underwater vehicle system the the 6 DOF nonlinear equations of motion can be written as:
 
 ![6dof](./imgs/6dof.png)
 
-Constructing the linear parameter varying state space `ẋ = A(t)x + B(t)u`  where  the state vector x is column vector [η ν] and `u` is the control input to the system. The kinematics equation from the previous nonlinear equations of motion is already in this format but the kinetics equations requires a little manipulation
+Constructing the linear time varying state space `ẋ = A(t)x + B(t)u` model is obtained by linearization of the nonlinear equations about an equilibrium point `[η0,ν0]`.
 
-![lpv](./imgs/lpv.png)
+![lTV](./imgs/LTV.png)
 
-The system matrix `A` and control matrix `B` can be written as
 
-![ab](./imgs/ab.png)
+![LTV2](./imgs/LTV2.png)
+
+
+* `Plant` Class contains a methods for kinematics and kinetics calculation based on CppAD for automatic differentation. 
+
+
+### Testing the linearization
+
+
+Choosing the equilibrium state for linearization is the key for good performance. in the following figure the nonlinear damping forces are plotted in dashed-blue and the linear damping forces are plotted in solid-black. The equilibrium velocity is ` nu_eq = Zeros(6x1)`
+
+
+![D_2](./imgs/D_2.png)
+
+
+
+For equilibrium velocity `nu_eq = 0.5 * nu` the linearization is better.
+
+
+![D_](./imgs/D_.png)
+
+
+
+The nonlinear restoring forces and moments and the respective linearization.
+
+
+![g](./imgs/g.png)
+
+
 
 ### LQR Design for Trajectory Tracking
 
-The LQR computes a control law for a given system linear system such that a certain optimality criterion is achieved. This is usually a quadratic cost function that depends on the state and control variables. For the trajectory tracking problem the LQR is designed to track a time-varying reference trajectory `xd =[ηd νd]` for this purpose we augment the state space model to the form `ė = Ae + Bu` where  `e = x-xd` is the tracking error. The optimal feedback control law is computed as `u = -Ke` where K is the optimal control gain founded by minimizing the quadratic performance index
+
+The control objective is to design a LQ optimal tracking controller using a time-varying reference trajectory `xd = [ηd νd]`. For this purpose a quadratic cost function is construced to minimize the tracking error `e := x - xd` subjected to linear system constraints `ẋ = A(t)X + B(t)U`.
+
 
 ![cost](./imgs/cost.png)
 
-### Impelementation
-
-* `Trajectory` Class wrappes the methods provided by [ruckig](https://github.com/pantor/ruckig) library for the generation of smooth time-varying trajectory.
-* `LOS` Class impelements the line-of-sight guidance for automatic steering of the AUV by calculating an appropriate reference yaw-angle `ψd`
-* `LQR` Class contains a method for solving the LQR problem and some methods for kinematics and kinetics calculation.
-* `Controller` Class wrappes the ROS interfacing methods.
 
 
- --------
+* `LQR` Class contains a method for solving this optimization problem using a tool from [lin_alg_tools](https://github.com/jerelbn/lin_alg_tools)
+
+
+--------
+Demonstration
+------
+
+Simulating the LQR to track a desired 3D trajectory colored in dashed-red in the figure below, which is generated by the local planner between a global waypoints represented by the blue spheres. 
+
+![lqr_demo](./imgs/lqr_demo.png)
+
+--------
 References
 ------
 
 [1] Handbook of Marine Craft Hydrodynamics and Motion Control, Thor I. Fossen.
+
+[2] H2 and H∞ Designs for Diving and Course Control of an Autonomous Underwater Vehicle in Presence of Waves, Lúcia Moreira, Carlos Guedes Soares, University of Lisbon, Article in IEEE Journal of Oceanic Engineering · May 2008.
 
