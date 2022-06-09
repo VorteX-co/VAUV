@@ -80,20 +80,20 @@ Model preditive controller depends on an model of the plant dynamics, the autono
 
 
 
-### LQR Design for Trajectory Tracking
+### MPC Design for Trajectory Tracking
 
 
 
 Model predictive control, is an optimal control method where the control law is computed based on optimization process where a cost function `J` is minimized over a fixed horizon `T` subject to the discrete time system nonlinear dynamics `x[t + 1]  = f(xt, ut) * dt` where dt is the sampling time.
 
 
-![mpc_problem](./mpc_problem.png)
+![mpc_problem](./imgs/mpc_problem.png)
 
 
 For solving this  nonlinear constrained optimization problem we are using [Ipopt](https://github.com/coin-or/Ipopt), The function ipopt::solve solves nonlinear programming problems of the form
 
 
-![ipopt_problem](./ipopt_problem.png)
+![ipopt_problem](./imgs/ipopt_problem.png)
 
 
 ` vars ` the initial point where Ipopt starts the optimization process.
@@ -109,13 +109,13 @@ For solving this  nonlinear constrained optimization problem we are using [Ipopt
 Using the CppAD::AD<double> as the base data type for performing the calculation, this permits the automatic calculation of the jacobian of the cost and model constraints for the optimization.
 
 
-![ADvector](./ADvector.png)
+![ADvector](./imgs/ADvector.png)
 
 
 The implementation of the syntax `problem(fg, x)`:
 
 
-![fg](./fg.png)
+![fg](./imgs/fg.png)
 
 
 * Reference Ipopt::[solve](https://coin-or.github.io/CppAD/doc/ipopt_solve.htm).
