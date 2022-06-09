@@ -1,4 +1,4 @@
-# Copyright 2021 VorteX-co.
+# Copyright 2022 VorteX-co.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,34 +20,12 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='trajectory_tracking_mpc',
-            node_executable='guidance_node',
-            node_name='guidance_node',
+            node_executable='trajectory_tracking_mpc',
+            node_name='controller_node',
             parameters=[
                 get_package_share_directory(
-                    'trajectory_tracking_mpc') + '/params/guidance.yaml'
-            ]
-        ),
-        Node(
-            package='trajectory_tracking_mpc',
-            node_executable='maneuver_node',
-            node_name='maneuver_node',
-            parameters=[
-                get_package_share_directory(
-                    'trajectory_tracking_mpc') + '/params/maneuver.yaml'
-            ]
-        ),
-        Node(
-            package='trajectory_tracking_mpc',
-            node_executable='depth_node',
-            node_name='depth_node',
-            parameters=[
-                get_package_share_directory(
-                    'trajectory_tracking_mpc') + '/params/depth.yaml'
-            ]
-        ),
-        Node(
-            package='trajectory_tracking_mpc',
-            node_executable='thrust_merger_node',
-            node_name='thrust_merger_node'
+                    'trajectory_tracking_mpc') + '/params/config.yaml'
+            ],
+            output='screen'
         )
     ])
